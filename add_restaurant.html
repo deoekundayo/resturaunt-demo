@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Restaurant</title>
+  <style>
+    
+    h1 {
+      text-align: center;
+      position: relative;
+  display: inline-block;
+  width: 100%;
+margin-bottom: -5px}
+
+
+    form {
+      width: 500px;
+      margin: 40px auto 0;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    label {
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      margin: 0 10px;
+      padding: 8px 16px;
+    }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+input:focus, textarea:focus {
+  border: 2px solid #4CAF50;
+  outline: none;
+  background-color: #fff;
+}
+
+form {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+.buttons button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button[type="reset"] {
+  background-color: #333;
+  color: white;
+}
+
+.buttons button:hover {
+  opacity: 0.9;
+}
+
+
+label {
+  font-weight: bold;
+  color: #444;
+}
+
+::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+
+input[type="checkbox"] {
+  margin-left: 10px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+input, textarea, button {
+  transition: all 0.2s ease-in-out;
+}
+  </style>
+</head>
+
+<body>
+  <h1>Add Restaurant</h1>
+
+
+  <form id="survey-form">
+    
+    <div class="form">
+      <p>
+        <label for="name">Restaurant Name</label>
+        <input id="name" type="text" placeholder="Enter name here" />
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="address">Restaurant Address</label>
+        <textarea id="address" name="address" placeholder="Enter address here" rows="9" cols="40"></textarea>
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="image-url">Image URL</label>
+        <input id="image-url" type="url" name="image-url" placeholder="Enter URL here" size="40"
+        " />
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="phone-number">Phone Number</label>
+        <input id="phone-number" type="tel" maxlength="14" placeholder="Ex.(123)-456-7890" />
+<script>
+document.getElementById("phone-number").addEventListener("input", function(e) {
+  let x = e.target.value.replace(/\D/g, ""); // remove all non-digits
+  if (x.length > 0) {
+    x = "(" + x;
+  }
+  if (x.length > 4) {
+    x = x.slice(0, 4) + ")-" + x.slice(4);
+  }
+  if (x.length > 9) {
+    x = x.slice(0, 9) + "-" + x.slice(9);
+  }
+  if (x.length > 14) {
+    x = x.slice(0, 14);
+  }
+  e.target.value = x;
+});
+</script>
+      </p>
+    
+      </p>
+    </div>
+
+    <div class="buttons">
+      <p>
+        <button type="reset">Discard</button>
+        <button type="submit">Save</button>
+      </p>
+    </div>
+
+  </form>
+</body>
+
+</html>

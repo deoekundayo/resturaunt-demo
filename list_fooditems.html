@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Food Items</title>
+  <style>
+    h1 {
+      text-align: center;
+      position: relative;
+      display: inline-block;
+      width: 100%;
+margin-bottom: -5px
+    }
+
+    }
+
+    h1::after {
+      bottom: -20px;
+      width: 100px;
+      height: 1px;
+      background: #4CAF50;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f6fa;
+      color: #333;
+    }
+
+    .table-container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: fit-content;
+      max-width: 1000%;
+      margin: 40px auto 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: auto;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    tbody td:nth-child(3) {
+      line-height: 1.6;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    tbody td:nth-child(3) p {
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    td img {
+      max-width: 300px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    button {
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: white;
+      transition: all 0.2s ease-in-out;
+    }
+
+    button:hover {
+background-color: #050505;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Food Items</h1>
+  
+  <div class="table-container">
+    <table>
+    <thead>
+      <tr>
+        <th>Food Item Number</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Available?</th>
+        <th>Vegetarian?</th>
+        <th>Category</th>
+        <th>Cuisine</th>
+        <th>Image</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Pepperoni Pizza</td>
+        <td>
+          A classic favorite topped with rich tomato sauce, melted mozzarella
+          cheese, and generous slices of spicy pepperoni. Baked to perfection
+          with a golden crust for the perfect balance of savory and crispy in
+          every bite.
+        </td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Pizza</td>
+        <td>Italian</td>
+        <td>
+          <img
+            src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRDyJEalW-IRBh84gsK2fYUAUhWTgBjSK8WyD62a7Q7UgyEdg-yunD5cZNmJn23BGetNNsAnG6AGF4bfPU4Le5VcwkBIUhK5iqZRbdzAUUb&usqp=CAc"
+            alt="Pepperoni Pizza" />
+        </td>
+        <td><button type="button">Edit</button></td>
+      </tr>
+
+      <tr>
+        <td>2</td>
+        <td>Classic Cheeseburger</td>
+        <td>
+          Juicy grilled beef patty layered with melted cheddar cheese, crisp
+          lettuce, fresh tomato, onions, and pickles, all stacked on a toasted
+          brioche bun. Served with our signature sauce for a satisfying bite
+          every time.
+        </td>
+        <td>Yes</td>
+        <td>No</td>
+        <td>Burger</td>
+        <td>American</td>
+        <td>
+          <img
+            src="https://images.themodernproper.com/production/posts/2016/ClassicCheeseBurger_9.jpg?w=1200&h=1200&q=60&fm=jpg&fit=crop&dm=1749310239&s=463b18fc3bb51dc5d96e866c848527c4"
+            alt="Classic Cheeseburger" />
+        </td>
+        <td><button type="button">Edit</button></td>
+      </tr>
+
+      <tr>
+        <td>3</td>
+        <td>Macaroni &amp; Cheese</td>
+        <td>
+          Creamy elbow macaroni baked in a rich, velvety cheese sauce and topped
+          with a golden, crispy breadcrumb crust. Comfort food at its finest;
+          warm, cheesy, and deliciously satisfying.
+        </td>
+        <td>No</td>
+        <td>No</td>
+        <td>Pasta</td>
+        <td>American</td>
+        <td>
+          <img
+            src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg&w=160&q=60&c=sc&poi=auto&orient=true&h=90"
+            alt="Macaroni & Cheese" />
+        </td>
+        <td><button type="button">Edit</button></td>
+      </tr>
+
+      <tr>
+        <td>4</td>
+        <td>Classic Hotdog</td>
+        <td>
+          A grilled all-beef frank nestled in a soft, toasted bun, topped with
+          your choice of ketchup, mustard, relish, and onions. A timeless
+          favorite that’s simple, savory, and satisfying in every bite.
+        </td>
+        <td>No</td>
+        <td>No</td>
+        <td>Sandwich</td>
+        <td>American</td>
+        <td>
+          <img
+            src="https://images.ctfassets.net/hhv516v5f7sj/6qGAfeOJOREdrdA3cDUrB8/42ed66b48dc251c6b17630846fd78d5e/selling-page-hotdog-C118-group3-1000x1000.png?w=3840&q=75&fm=webp"
+            alt="Classic Hotdog" />
+        </td>
+        <td><button type="button">Edit</button></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
+</body>
+
+</html>

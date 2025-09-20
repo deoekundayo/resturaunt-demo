@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Add Catagory</title>
+  <style>
+
+    h1 {
+      text-align: center; position: relative;
+  display: inline-block;
+  width: 100%;
+margin-bottom: -5px}
+
+
+
+    form {
+      width: 500px;
+      margin: 40px auto 0;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    label {
+      text-align: right;
+      margin-right: 10px;
+    }
+
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 6px;
+      box-sizing: border-box;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      margin: 0 10px;
+      padding: 8px 16px;
+    }
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f6fa;
+  color: #333;
+}
+
+input:focus, textarea:focus {
+  border: 2px solid #4CAF50;
+  outline: none;
+  background-color: #fff;
+}
+
+form {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+
+.buttons button {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+button[type="reset"] {
+  background-color: #333;
+  color: white;
+}
+
+.buttons button:hover {
+  opacity: 0.9;
+}
+
+
+label {
+  font-weight: bold;
+  color: #444;
+}
+
+::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+
+input[type="checkbox"] {
+  margin-left: 10px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+input, textarea, button {
+  transition: all 0.2s ease-in-out;
+}
+
+</style>
+</head>
+
+<body>
+  <h1>Add Food Category</h1>
+  
+
+  <form id="survey-form">
+
+    <div class="form">
+      <p>
+        <label for="name">Catagory Name</label>
+        <input id="name" type="text" placeholder="Enter name here" />
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="description">Catagory Description</label>
+        <textarea id="description" name="description" placeholder="Enter description here" rows="9" cols="40"></textarea>
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="image-url">Image URL</label>
+        <input id="image-url" type="url" placeholder="Enter URL here" size="40"/>
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="active">Is this catagory active?</label>
+        <input id="yes-active" type="radio" value="Active" name="active" />
+        <label for="yes-active" style="font-weight: normal;">Yes</label>
+        <input id="noactive" type="radio" value="Inactive" name="active" />
+        <label for="no-active" style="font-weight: normal;">No</label>
+      </p>
+    </div>
+
+    <div class="buttons">
+      <p>
+        <button type="reset">Discard</button>
+        <button type="submit">Save</button>
+      </p>
+    </div>
+
+  </form>
+</body>
+
+</html>
