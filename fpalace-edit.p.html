@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Restaurant</title>
+  <link rel="stylesheet" href="form-styles.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <!-- If this image doesn't show, ensure the file name/path is correct. Avoid spaces or URL-encode them. -->
+      <img src="Logo 2.07.50 PM.webp" alt="Food Logo" />
+      <span>We-Eat</span>
+    </div>
+    <div class="auth-buttons">
+      <button class="signin" type="button">Sign In</button>
+      <button class="signout" type="button">Sign Out</button>
+    </div>
+  </header>
+  <form action="info-saved.html" method="post">
+  <h1>Edit Restaurant</h1>
+  
+
+  <form id="survey-form">
+    
+    <div class="form">
+      <p>
+        <label for="name">Restaurant Name</label>
+        <input id="name" type="text" value="Food Palace" required style="font-family: 'Times New Roman', serif;"/>
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="address">Restaurant Address</label>
+        <input id="address" type="text"" value="4727 East Cider street Charlotte, NC" required style="font-family: 'Times New Roman', serif;"/>
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="image-url">Image URL</label>
+        <input id="image-url" type="url" name="image-url" style="font-family: 'Times New Roman', serif;" value="https://northwoodoffice-assets.imgix.net/goBallantyne/images/heroes/NORTHITALIA156-2.jpg" />
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="phone-number">Phone Number</label>
+        <input id="phone-number" type="tel" maxlength="14" value="(704) 858-2285" required style="font-family: 'Times New Roman', serif;"/>
+<script>
+document.getElementById("phone-number").addEventListener("input", function(e) {
+  let x = e.target.value.replace(/\D/g, ""); // remove all non-digits
+  if (x.length > 0) {
+    x = "(" + x;
+  }
+  if (x.length > 4) {
+    x = x.slice(0, 4) + ")-" + x.slice(4);
+  }
+  if (x.length > 9) {
+    x = x.slice(0, 9) + "-" + x.slice(9);
+  }
+  if (x.length > 14) {
+    x = x.slice(0, 14);
+  }
+  e.target.value = x;
+});
+</script>
+      </p>
+    
+      </p>
+    </div>
+
+    <div class="buttons">
+      <p>
+        <button type="reset">Discard</button>
+        <button type="submit">Save</button>
+      </p>
+    </div>
+
+  </form>
+</body>
+<footer class="footer">
+  <div class="footer-section about">
+    <h3>About Us</h3>
+    <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
+  </div>
+
+  <div class="footer-section links">
+    <h3>Quick Links</h3>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Menu</a></li>
+      <li><a href="#">Orders</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+  <div class="footer-section contact">
+    <h3>Contact Us</h3>
+    <p>Email: dummy@we-eat.com</p>
+    <p>Phone: +123 456 7890</p>
+    <p>Address: 1-1 The Center street, First Print State, Mars</p>
+  </div>
+
+  <div class="footer-section social">
+    <h3>Follow Us</h3>
+    <p>Stay connected on social media.</p>
+    <div class="social-icons">
+      <a href="#">Facebook</a> |
+      <a href="#">Instagram</a> |
+      <a href="#">Twitter</a>
+    </div>
+</footer>
+</html>
+</head>
+
+</html>

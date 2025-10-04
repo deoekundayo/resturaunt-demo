@@ -3,34 +3,23 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Add Restaurant</title>
+  <title>Edit Restaurant</title>
   <link rel="stylesheet" href="form-styles.css">
 </head>
 
 <body>
   <header class="header">
     <div class="logo">
-      <!-- If this image doesn't show, ensure the file name/path is correct. Avoid spaces or URL-encode them. -->
-      <img src="Logo 2.07.50 PM.webp" alt="Food Logo" />
+      <img src="Logo 2.07.50 PM.webp" alt="Food Logo"/>
       <span>We-Eat</span>
     </div>
-    <nav class="menu">
-
-      <a href="admindashbord.html" class="menu-btn">Dashboard</a>
-      <a href="list_fooditems.html" class="menu-btn">Food Items</a>
-      <a href="list_cuisines.html" class="menu-btn">Cuisines</a>
-      <a href="list_categories.html" class="menu-btn">Categories</a>
-      <a href="list_restaurants.html" class="menu-btn active">Restaurants</a>
-      <a href="orders.html" class="menu-btn">Orders</a>
-      <a href="users.html" class="menu-btn">Users</a>
-    </nav>
     <div class="auth-buttons">
-      <button class="signin" type="button">Sign In</button>
-      <button class="signout" type="button">Sign Out</button>
+      <button class="signin">Sign In</button>
+      <button class="signout">Sign Out</button>
     </div>
   </header>
   <form action="info-saved.html" method="post">
-  <h1>Add Restaurant</h1>
+  <h1>Edit Restaurant</h1>
   
 
   <form id="survey-form">
@@ -38,29 +27,28 @@
     <div class="form">
       <p>
         <label for="name">Restaurant Name</label>
-        <input id="name" type="text" placeholder="Enter name here" required style="font-family: 'Times New Roman', Times, serif;"/>
+        <input id="name" type="text" value="Taste Hut" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="address">Restaurant Address</label>
-        <input id="address" type="text"" placeholder="Enter address here" required style="font-family: 'Times New Roman', Times, serif;"/>
+        <input id="address" type="text"" value="8172 Driver road Charleston, SC" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" name="image-url" placeholder="Enter URL here" size="40"
-        style="font-family: 'Times New Roman', Times, serif;" />
+        <input id="image-url" type="url" name="image-url" style="font-family: 'Times New Roman', serif;" value="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_760,q_65,w_640,x_4800,y_3225/v1/clients/chandler-redesign/Ginger_Monkey_127_HDR_no_logo_405eedca-205a-48f2-94a3-a2abe902dca5.jpg"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="phone-number" style="display: block; text-align: left;">Phone Number</label>
-        <input id="phone-number" style="font-family: 'Times New Roman', Times, serif;" type="tel" maxlength="14" placeholder="Enter number here" required/>
+        <label for="phone-number">Phone Number</label>
+        <input id="phone-number" type="tel" maxlength="14" value="(843) 237-5297" required style="font-family: 'Times New Roman', serif;"/>
 <script>
 document.getElementById("phone-number").addEventListener("input", function(e) {
   let x = e.target.value.replace(/\D/g, ""); // remove all non-digits
@@ -81,6 +69,7 @@ document.getElementById("phone-number").addEventListener("input", function(e) {
 </script>
       </p>
     
+      </p>
     </div>
 
     <div class="buttons">
@@ -121,7 +110,7 @@ document.getElementById("phone-number").addEventListener("input", function(e) {
         <a href="#">Instagram</a> |
         <a href="#">Twitter</a>
       </div>
-  </footer>
+      </footer>
 </body>
 
 </html>

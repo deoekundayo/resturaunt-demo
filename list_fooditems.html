@@ -1,197 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
+  <!-- Needed for responsiveness -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Food Items</title>
-  <style>
-    h1 {
-      text-align: center;
-      position: relative;
-      display: inline-block;
-      width: 100%;
-margin-bottom: -5px
-    }
-
-    }
-
-    h1::after {
-      bottom: -20px;
-      width: 100px;
-      height: 1px;
-      background: #4CAF50;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f6fa;
-      color: #333;
-    }
-
-    .table-container {
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: fit-content;
-      max-width: 1000%;
-      margin: 40px auto 0;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: auto;
-    }
-
-    th,
-    td {
-      border: 1px solid black;
-      padding: 8px;
-      vertical-align: top;
-      text-align: left;
-    }
-
-    tbody td:nth-child(3) {
-      line-height: 1.6;
-      white-space: normal;
-      word-break: break-word;
-    }
-
-    tbody td:nth-child(3) p {
-      margin: 0;
-      line-height: 1.6;
-    }
-
-    td img {
-      max-width: 300px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    button {
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      padding: 8px 16px;
-      background-color: #4CAF50;
-      color: white;
-      transition: all 0.2s ease-in-out;
-    }
-
-    button:hover {
-background-color: #050505;
-      opacity: 0.9;
-    }
-  </style>
+  
+   <link rel="stylesheet" href="food-item-table.css">
 </head>
 
 <body>
+  <header class="header">
+    <div class="logo">
+      <img src="Logo 2.07.50 PM.webp" alt="Food Logo"/>
+      <span>We-Eat</span>
+    </div>
+    <nav class="menu">
+
+      <a href="admindashbord.html" class="menu-btn">Dashboard</a>
+      <a href="list_fooditems.html" class="menu-btn active">Food Items</a>
+      <a href="list_cuisines.html" class="menu-btn">Cuisines</a>
+      <a href="list_categories.html" class="menu-btn">Categories</a>
+      <a href="list_restaurants.html" class="menu-btn">Restaurants</a>
+      <div class="dropdown">
+      <button class="menu-btn dropbtn">Orders</button>
+      <div class="dropdown-content">
+          <a href="orders.html">View Orders</a>
+          <a href="order-request.html">Request Order</a>
+        </div>
+      </div>
+      <a href="users.html" class="menu-btn">users</a>
+    </nav>
+    <div class="auth-buttons">
+      <button class="signin">Sign In</button>
+      <button class="signout">Sign Out</button>
+    </div>
+  </header>
+  <main class="main">
   <h1>Food Items</h1>
-  
+
   <div class="table-container">
     <table>
-    <thead>
-      <tr>
-        <th>Food Item Number</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Available?</th>
-        <th>Vegetarian?</th>
-        <th>Category</th>
-        <th>Cuisine</th>
-        <th>Image</th>
-        <th>Edit</th>
-      </tr>
-    </thead>
+      <thead>
+        <tr>
+          <th style="width:110px;">Food Item Number</th>
+          <th style="width:100px;">Name</th>
+          <th style="width:300px;">Description</th>
+          <th style="width:100px;">Available?</th>
+          <th style="width:110px;">Vegetarian Option?</th>
+          <th style="width:100px;">Category</th>
+          <th style="width:90px;">Cuisine</th>
+          <th>Image</th>
+          <th style="width:95px;">Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Pepperoni Pizza</td>
+          <td>
+            A classic favorite topped with rich tomato sauce, melted mozzarella
+            cheese, and generous slices of spicy pepperoni. Baked to perfection
+            with a golden crust for the perfect balance of savory and crispy in
+            every bite.
+          </td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Pizza</td>
+          <td>Italian</td>
+          <td>
+            <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRDyJEalW-IRBh84gsK2fYUAUhWTgBjSK8WyD62a7Q7UgyEdg-yunD5cZNmJn23BGetNNsAnG6AGF4bfPU4Le5VcwkBIUhK5iqZRbdzAUUb&usqp=CAc" alt="Pepperoni Pizza" />
+          </td>
+          <td class="buttons">
+            <a href="pizza-edit_f-item.html">
+            <button type="button">Edit</button></td>
+        </td>
+        </tr>
 
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Pepperoni Pizza</td>
-        <td>
-          A classic favorite topped with rich tomato sauce, melted mozzarella
-          cheese, and generous slices of spicy pepperoni. Baked to perfection
-          with a golden crust for the perfect balance of savory and crispy in
-          every bite.
-        </td>
-        <td>Yes</td>
-        <td>No</td>
-        <td>Pizza</td>
-        <td>Italian</td>
-        <td>
-          <img
-            src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRDyJEalW-IRBh84gsK2fYUAUhWTgBjSK8WyD62a7Q7UgyEdg-yunD5cZNmJn23BGetNNsAnG6AGF4bfPU4Le5VcwkBIUhK5iqZRbdzAUUb&usqp=CAc"
-            alt="Pepperoni Pizza" />
-        </td>
-        <td><button type="button">Edit</button></td>
-      </tr>
+        <tr>
+          <td>2</td>
+          <td>Classic Chz. burg.</td>
+          <td>
+            Juicy grilled beef patty layered with melted cheddar cheese, crisp
+            lettuce, fresh tomato, onions, and pickles, all stacked on a toasted
+            brioche bun. Served with our signature sauce for a satisfying bite
+            every time.
+          </td>
+          <td>Yes</td>
+          <td>No</td>
+          <td>Burger</td>
+          <td>American</td>
+          <td>
+            <img src="https://images.themodernproper.com/production/posts/2016/ClassicCheeseBurger_9.jpg?w=1200&h=1200&q=60&fm=jpg&fit=crop&dm=1749310239&s=463b18fc3bb51dc5d96e866c848527c4" alt="Classic Cheeseburger" />
+          </td>
+          <td class="buttons">
+            <a href="ch.burger-edit_f.item.html">
+            <button type="button">Edit</button></td>
+        </tr>
 
-      <tr>
-        <td>2</td>
-        <td>Classic Cheeseburger</td>
-        <td>
-          Juicy grilled beef patty layered with melted cheddar cheese, crisp
-          lettuce, fresh tomato, onions, and pickles, all stacked on a toasted
-          brioche bun. Served with our signature sauce for a satisfying bite
-          every time.
-        </td>
-        <td>Yes</td>
-        <td>No</td>
-        <td>Burger</td>
-        <td>American</td>
-        <td>
-          <img
-            src="https://images.themodernproper.com/production/posts/2016/ClassicCheeseBurger_9.jpg?w=1200&h=1200&q=60&fm=jpg&fit=crop&dm=1749310239&s=463b18fc3bb51dc5d96e866c848527c4"
-            alt="Classic Cheeseburger" />
-        </td>
-        <td><button type="button">Edit</button></td>
-      </tr>
+        <tr>
+          <td>3</td>
+          <td>Macaroni &amp; Cheese</td>
+          <td>
+            Creamy elbow macaroni baked in a rich, velvety cheese sauce and topped
+            with a golden, crispy breadcrumb crust. Comfort food at its finest;
+            warm, cheesy, and deliciously satisfying.
+          </td>
+          <td>No</td>
+          <td>No</td>
+          <td>Pasta</td>
+          <td>American</td>
+          <td>
+            <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg&w=160&q=60&c=sc&poi=auto&orient=true&h=90" alt="Macaroni & Cheese" />
+          </td>
+          <td class="buttons">
+            <a href="mac_n'_cheese-edit.f.item.html">
+            <button type="button">Edit</button></td>
+        </tr>
 
-      <tr>
-        <td>3</td>
-        <td>Macaroni &amp; Cheese</td>
-        <td>
-          Creamy elbow macaroni baked in a rich, velvety cheese sauce and topped
-          with a golden, crispy breadcrumb crust. Comfort food at its finest;
-          warm, cheesy, and deliciously satisfying.
-        </td>
-        <td>No</td>
-        <td>No</td>
-        <td>Pasta</td>
-        <td>American</td>
-        <td>
-          <img
-            src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg&w=160&q=60&c=sc&poi=auto&orient=true&h=90"
-            alt="Macaroni & Cheese" />
-        </td>
-        <td><button type="button">Edit</button></td>
-      </tr>
-
-      <tr>
-        <td>4</td>
-        <td>Classic Hotdog</td>
-        <td>
-          A grilled all-beef frank nestled in a soft, toasted bun, topped with
-          your choice of ketchup, mustard, relish, and onions. A timeless
-          favorite that’s simple, savory, and satisfying in every bite.
-        </td>
-        <td>No</td>
-        <td>No</td>
-        <td>Sandwich</td>
-        <td>American</td>
-        <td>
-          <img
-            src="https://images.ctfassets.net/hhv516v5f7sj/6qGAfeOJOREdrdA3cDUrB8/42ed66b48dc251c6b17630846fd78d5e/selling-page-hotdog-C118-group3-1000x1000.png?w=3840&q=75&fm=webp"
-            alt="Classic Hotdog" />
-        </td>
-        <td><button type="button">Edit</button></td>
-      </tr>
-    </tbody>
+        <tr>
+          <td>4</td>
+          <td>Classic Hotdog</td>
+          <td>
+            A grilled all-beef frank nestled in a soft, toasted bun, topped with
+            your choice of ketchup, mustard, relish, and onions. A timeless
+            favorite that’s simple, savory, and satisfying in every bite.
+          </td>
+          <td>No</td>
+          <td>No</td>
+          <td>Sandwich</td>
+          <td>American</td>
+          <td>
+            <img src="https://images.ctfassets.net/hhv516v5f7sj/6qGAfeOJOREdrdA3cDUrB8/42ed66b48dc251c6b17630846fd78d5e/selling-page-hotdog-C118-group3-1000x1000.png?w=3840&q=75&fm=webp" alt="Classic Hotdog" />
+          </td>
+          <td class="buttons">
+            <a href="hotdog-edit_f.item.html">
+            <button type="button">Edit</button></td>
+        </tr>
+      </tbody>
     </table>
   </div>
-</body>
+  <footer class="footer">
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
+    </div>
 
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section contact">
+      <h3>Contact Us</h3>
+      <p>Email: dummy@we-eat.com</p>
+      <p>Phone: +123 456 7890</p>
+      <p>Address: 1-1 The Center street, First Print State, Mars</p>
+    </div>
+
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <p>Stay connected on social media.</p>
+      <div class="social-icons">
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+    </footer>
+</body>
 </html>

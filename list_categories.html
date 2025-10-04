@@ -2,204 +2,141 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Catagories</title>
-  <style>
-        h1 {
-      text-align: center;
-      position: relative;
-  display: inline-block;
-  width: 100%;
-margin-bottom: -5px}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Categories</title>
+  
+   
+<link rel="stylesheet" href="table.css">
 
-
-    
-
-    form {
-      width: 500px;
-      margin: 40px auto;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    label {
-      text-align: right;
-      margin-right: 10px;
-    }
-
-    input[type="text"],
-    textarea {
-      width: 100%;
-      padding: 6px;
-      box-sizing: border-box;
-    }
-
-    .buttons {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .buttons button {
-      margin: 0 10px;
-      padding: 8px 16px;
-    background-color: #4CAF50;}
-
-.btn:hover {
-  background-color: #050505; 
- transition: background 0.2s;}
-
-
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f6fa;
-  color: #333;
-}
-
-input:focus, textarea:focus {
-  border: 2px solid #4CAF50;
-  outline: none;
-  background-color: #fff;
-}
-
-form {
-  background: #fff;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.buttons button {
-  margin: 0 10px;
-  padding: 8px 16px;
-  background-color: #4CAF50; 
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.2s ease; 
-}
-
-.buttons button:hover {
-  background-color: #050505; 
-}
-
-
-
-
-input, textarea, button {
-  transition: all 0.2s ease-in-out;
-}
-    .table-container {
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: fit-content;
-      max-width: 90%;
-      margin: 40px auto 0;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: auto;
-    }
-
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      vertical-align: top;
-      text-align: left;
-    }
-
-    td img {
-      max-width: 300px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-  </style>
+  
 </head>
 <body>
-  <h1>All Catagories</h1>
+  <header class="header">
+    <div class="logo">
+      <img src="Logo 2.07.50 PM.webp" alt="Food Logo"/>
+      <span>We-Eat</span>
+    </div>
+    <nav class="menu">
+
+      <a href="admindashbord.html" class="menu-btn">Dashboard</a>
+      <a href="list_fooditems.html" class="menu-btn">Food Items</a>
+      <a href="list_cuisines.html" class="menu-btn">Cuisines</a>
+      <a href="list_categories.html" class="menu-btn active">Categories</a>
+      <a href="list_restaurants.html" class="menu-btn">Restaurants</a>
+      <a href="orders.html" class="menu-btn">Orders</a>
+      <a href="users.html" class="menu-btn">Users</a>
+    </nav>
+    <div class="auth-buttons">
+      <button class="signin">Sign In</button>
+      <button class="signout">Sign Out</button>
+    </div>
+  </header>
   
+  <main class="main">
+  <h1>All Categories</h1>
+
   <div class="table-container">
+    <div class="card">
     <table>
-    <thead>
-      <tr>
-        <th>Catagory Number</th>
-        <th>Catagory Name</th>
-        <th>Description</th>
-        <th>Active</th>
-        <th>Image</th>
-        <th>Edit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Pasta</td>
-        <td>All Pastas</td>
-        <td>Yes</td>
-        <td>
-          <img src="https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_auto,w_750/f_auto/types-of-pasta-phpciJX1a" />
+      <thead>
+        <tr>
+          <th>Category Number</th>
+          <th>Category Name</th>
+          <th>Description</th>
+          <th>Active</th>
+          <th>Image</th>
+          <th>Edit</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Pasta</td>
+          <td>All Pastas</td>
+          <td>Yes</td>
+          <td><img src="https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_auto,w_750/f_auto/types-of-pasta-phpciJX1a" width="100" alt="Pasta" /></td>
+          <td class="buttons">
+            <a href="pasta-edit_cat.html">
+              <button type="button">Edit</button>
+            </a>
+          </td>
+          
         </td>
-        <td>
-<div class="buttons">
-<button type="button">Edit</button>
-		</td>
-	  </div>
-      </tr>
-
-      <tr>
-        <td>2</td>
-        <td>Pizza</td>
-        <td>All Pizzas</td>
-        <td>Yes</td>
-        <td>
-          <img src="https://pizarospizza.com/wp-content/uploads/2025/06/pizaros-march22-92-2-scaled-1.webp" />
-        </td>
-        <td>
-<div class="buttons">
-<button type="button">Edit</button></td>
-	  </div>
-      </tr>
-
-      <tr>
-        <td>3</td>
-        <td>Burger</td>
-        <td>All Burgers</td>
-        <td>Yes</td>
-        <td>
-          <img src="https://www.mashed.com/img/gallery/culvers-burgers-ranked-worst-to-best/l-intro-1685326274.jpg" />
-        </td>
-        <td>
-<div class="buttons">
-<button type="button">Edit</button></td>
-	  </div>
-      </tr>
-
-      <tr>
-        <td>4</td>
-        <td>Milkshake</td>
-        <td>All Milkshakes</td>
-        <td>Yes</td>
-        <td>
-          <img src="https://www.gelq.it/modules/ybc_blog/views/img/post/MS_POST.jpg" />
-        </td>
-        <td>
-<div class="buttons">
-<button type="button">Edit</button></td>
-	  </div>
-      </tr>
-    </tbody>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Pizza</td>
+          <td>All Pizzas</td>
+          <td>Yes</td>
+          <td><img src="https://pizarospizza.com/wp-content/uploads/2025/06/pizaros-march22-92-2-scaled-1.webp" width="100" alt="Pizza" /></td>
+          <td class="buttons">
+            <a href="pizza-edit_cat.html">
+              <button type="button">Edit</button>
+            </a>
+          </td>
+          
+        <tr>
+          <td>3</td>
+          <td>Burger</td>
+          <td>All Burgers</td>
+          <td>Yes</td>
+          <td><img src="https://www.mashed.com/img/gallery/culvers-burgers-ranked-worst-to-best/l-intro-1685326274.jpg" width="100" alt="Burger" /></td>
+          <td class="buttons">
+            <a href="burger-edit_cat.html">
+              <button type="button">Edit</button>
+            </a>
+          </td>
+          
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Milkshake</td>
+          <td>All Milkshakes</td>
+          <td>No</td>
+          <td><img src="https://www.gelq.it/modules/ybc_blog/views/img/post/MS_POST.jpg" width="100" alt="Milkshake" /></td>
+          <td class="buttons">
+            <a href="milkshake-edit_cat.html">
+              <button type="button">Edit</button>
+            </a>
+          </td>
+          
+        </tr>
+      </div>
+      </tbody>
     </table>
-  </div>
+    </div>
+  </main>
+  <footer class="footer">
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
+    </div>
+
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section contact">
+      <h3>Contact Us</h3>
+      <p>Email: dummy@we-eat.com</p>
+      <p>Phone: +123 456 7890</p>
+      <p>Address: 1-1 The Center street, First Print State, Mars</p>
+    </div>
+
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <p>Stay connected on social media.</p>
+      <div class="social-icons">
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
 </body>
 </html>

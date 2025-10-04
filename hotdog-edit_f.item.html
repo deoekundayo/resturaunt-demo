@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Edit Food Item</title>
+  <link rel="stylesheet" href="form-styles.css">
+  <!-- Optional: make buttons in the header not submit the form -->
+  
+</head>
+
+<body>
+  <!-- Header (outside the form) -->
+  <header class="header">
+    <div class="logo">
+      <!-- If this image doesn't show, ensure the file name/path is correct. Avoid spaces or URL-encode them. -->
+      <img src="Logo 2.07.50 PM.webp" alt="Food Logo" />
+      <span>We-Eat</span>
+    </div>
+    <div class="auth-buttons">
+      <button class="signin" type="button">Sign In</button>
+      <button class="signout" type="button">Sign Out</button>
+    </div>
+  </header>
+
+  <main>
+    <h1>Add Food Item</h1>
+
+    <!-- Single form (no nesting) -->
+    <form id="survey-form" action="info-saved.html" method="post">
+
+      <div class="form">
+        <p>
+          <label for="name">Food Item Name</label>
+          <input
+            id="name"
+            name="name"
+            type="text"
+            value="Hotdog"
+            required
+            style="font-family: 'Times New Roman', serif;" 
+          />
+        </p>
+      </div>
+
+      <div class="form">
+        <p>
+          <label for="description">Food Item Description</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="9"
+            cols="40"
+            required
+            style="font-family: 'Times New Roman', serif;"
+          >A grilled all-beef frank nestled in a soft, toasted bun, topped with your choice of ketchup, mustard, relish, and onions. A timeless favorite that’s simple, savory, and satisfying in every bite.</textarea>
+        </p>
+      </div>
+
+      <div class="form">
+        <p>
+          <label for="image-url">Image URL</label>
+          <input
+            id="image-url"
+            name="image_url"
+            type="url"
+            size="40"
+            style="font-family: 'Times New Roman', serif;"
+            
+            
+            value="https://images.ctfassets.net/hhv516v5f7sj/6qGAfeOJOREdrdA3cDUrB8/42ed66b48dc251c6b17630846fd78d5e/selling-page-hotdog-C118-group3-1000x1000.png?w=3840&q=75&fm=webp" 
+          />
+        </p>
+      </div>
+
+      <div class="form">
+        <p>
+
+          <label for="category">What category is this food item?</label>
+          <select id="category" name="category" required>
+            <option>Pasta</option>
+            <option>Pizza</option>
+            <option value="Burger" selected>Burger</option>
+            <option>Milkshake</option>
+          </select>
+        </p>
+      </div>
+
+      <div class="form">
+        <p>
+          <label for="cuisine">What cuisine is this food item?</label>
+          <select id="cuisine" name="cuisine" required>
+            <option>Italian</option>
+            <option value="American" selected>American</option>
+            <option>Chinese</option>
+            <option>Nigerian</option>
+          </select>
+        </p>
+      </div>
+
+      <div class="form">
+        <p>
+          <span>Is this item currently available?</span>
+          <!-- Give radios unique IDs; associate labels with matching IDs -->
+          <input id="availability-yes" type="radio" name="availability" value="yes" required />
+          <label for="availability-yes" style="font-weight: normal;">Yes</label>
+
+          <input id="availability-no" type="radio" name="availability" value="no" checked/>
+          <label for="availability-no" style="font-weight: normal;">No</label>
+        </p>
+      </div>
+
+      <div class="form">
+        <p>
+          <span>Does this item have a vegetarian option?</span>
+          <input id="vegetarian-yes" type="radio" name="vegetarian" value="yes" required />
+          <label for="vegetarian-yes" style="font-weight: normal;">Yes</label>
+
+          <input id="vegetarian-no" type="radio" name="vegetarian" value="no" checked />
+          <label for="vegetarian-no" style="font-weight: normal;">No</label>
+        </p>
+      </div>
+
+      <div class="buttons">
+        <p>
+          <button type="reset">Discard</button>
+          <button type="submit">Save</button>
+        </p>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer (outside the form) -->
+  <footer class="footer">
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
+    </div>
+
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section contact">
+      <h3>Contact Us</h3>
+      <p>Email: dummy@we-eat.com</p>
+      <p>Phone: +123 456 7890</p>
+      <p>Address: 1-1 The Center street, First Print State, Mars</p>
+    </div>
+
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <p>Stay connected on social media.</p>
+      <div class="social-icons">
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+  </footer>
+</body>
+</html>
+

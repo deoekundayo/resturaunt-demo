@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Add Cuisine</title>
+  <title>Edit Catagory</title>
   <link rel="stylesheet" href="form-styles.css">
 </head>
 
@@ -13,56 +13,45 @@
       <!-- If this image doesn't show, ensure the file name/path is correct. Avoid spaces or URL-encode them. -->
       <img src="Logo 2.07.50 PM.webp" alt="Food Logo" />
       <span>We-Eat</span>
-      </div>
-      <nav class="menu">
-
-        <a href="admindashbord.html" class="menu-btn">Dashboard</a>
-        <a href="list_fooditems.html" class="menu-btn">Food Items</a>
-        <a href="list_cuisines.html" class="menu-btn active">Cuisines</a>
-        <a href="list_categories.html" class="menu-btn">Categories</a>
-        <a href="list_restaurants.html" class="menu-btn">Restaurants</a>
-        <a href="orders.html" class="menu-btn">Orders</a>
-        <a href="users.html" class="menu-btn">Users</a>
-      </nav>
-    
+    </div>
     <div class="auth-buttons">
       <button class="signin" type="button">Sign In</button>
       <button class="signout" type="button">Sign Out</button>
     </div>
   </header>
-  <form action="info-saved.html" method="post">
-  <h1>Add Cuisine</h1>
+  <form action="info-saved.html" method="post"> 
+  <h1>Edit Food Category</h1>
   
 
   <form id="survey-form">
 
     <div class="form">
       <p>
-        <label for="name">Cuisine Name</label>
-        <input id="name" type="text" placeholder="Enter name here" required style="font-family: 'Times New Roman', Times, serif;" />
+        <label for="name">Catagory Name</label>
+        <input id="name" type="text" value="Pizza" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="description">Cuisine Description</label>
-        <textarea id="description" name="description" placeholder="Enter description here" rows="2" cols="40" required style="font-family: 'Times New Roman', Times, serif;"></textarea>
+        <label for="description">Catagory Description</label>
+        <textarea id="description" name="description" rows="2" cols="40"  required style="font-family: 'Times New Roman', serif;">All Pizzas</textarea>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" placeholder="Enter URL here" size="40" style="font-family: 'Times New Roman', Times, serif;" />
+        <input id="image-url" type="url" style="font-family: 'Times New Roman', Times, serif;" value="https://pizarospizza.com/wp-content/uploads/2025/06/pizaros-march22-92-2-scaled-1.webp" size="40"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="yes-active">Is this cuisine currently active</label>
-        <input id="yes-active" type="radio" value="yes-active" name="active" required/>
+        <label for="active">Is this catagory active?</label>
+        <input id="yes-active" type="radio" value="Active" name="active" required checked/>
         <label for="yes-active" style="font-weight: normal;">Yes</label>
-        <input id="no-active" type="radio" value="no-active" name="active" />
+        <input id="noactive" type="radio" value="Inactive" name="active" />
         <label for="no-active" style="font-weight: normal;">No</label>
       </p>
     </div>

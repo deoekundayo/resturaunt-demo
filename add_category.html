@@ -4,117 +4,33 @@
 <head>
   <meta charset="UTF-8" />
   <title>Add Catagory</title>
-  <style>
-
-    h1 {
-      text-align: center; position: relative;
-  display: inline-block;
-  width: 100%;
-margin-bottom: -5px}
-
-
-
-    form {
-      width: 500px;
-      margin: 40px auto 0;
-    }
-
-    .form-row {
-      display: grid;
-      grid-template-columns: 150px 1fr;
-      align-items: center;
-      margin-bottom: 15px;
-    }
-
-    label {
-      text-align: right;
-      margin-right: 10px;
-    }
-
-    input[type="text"],
-    textarea {
-      width: 100%;
-      padding: 6px;
-      box-sizing: border-box;
-    }
-
-    .buttons {
-      text-align: center;
-      margin-top: 20px;
-    }
-
-    .buttons button {
-      margin: 0 10px;
-      padding: 8px 16px;
-    }
-
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f5f6fa;
-  color: #333;
-}
-
-input:focus, textarea:focus {
-  border: 2px solid #4CAF50;
-  outline: none;
-  background-color: #fff;
-}
-
-form {
-  background: #fff;
-  padding: 20px 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-
-.buttons button {
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-button[type="submit"] {
-  background-color: #4CAF50;
-  color: white;
-}
-
-button[type="reset"] {
-  background-color: #333;
-  color: white;
-}
-
-.buttons button:hover {
-  opacity: 0.9;
-}
-
-
-label {
-  font-weight: bold;
-  color: #444;
-}
-
-::placeholder {
-  color: #999;
-  font-style: italic;
-}
-
-
-input[type="checkbox"] {
-  margin-left: 10px;
-  transform: scale(1.2);
-  cursor: pointer;
-}
-
-input, textarea, button {
-  transition: all 0.2s ease-in-out;
-}
-
-</style>
+  <link rel="stylesheet" href="form-styles.css">
 </head>
 
 <body>
+  <header class="header">
+    <div class="logo">
+      <!-- If this image doesn't show, ensure the file name/path is correct. Avoid spaces or URL-encode them. -->
+      <img src="Logo 2.07.50 PM.webp" alt="Food Logo" />
+      <span>We-Eat</span>
+    </div>
+    <nav class="menu">
+
+      <a href="admindashbord.html" class="menu-btn">Dashboard</a>
+      <a href="list_fooditems.html" class="menu-btn">Food Items</a>
+      <a href="list_cuisines.html" class="menu-btn">Cuisines</a>
+      <a href="list_categories.html" class="menu-btn active">Categories</a>
+      <a href="list_restaurants.html" class="menu-btn">Restaurants</a>
+      <a href="orders.html" class="menu-btn">Orders</a>
+      <a href="users.html" class="menu-btn">Users</a>
+    </nav>
+    
+    <div class="auth-buttons">
+      <button class="signin" type="button">Sign In</button>
+      <button class="signout" type="button">Sign Out</button>
+    </div>
+  </header>
+  <form action="info-saved.html" method="post"> 
   <h1>Add Food Category</h1>
   
 
@@ -123,28 +39,28 @@ input, textarea, button {
     <div class="form">
       <p>
         <label for="name">Catagory Name</label>
-        <input id="name" type="text" placeholder="Enter name here" />
+        <input id="name" type="text" placeholder="Enter name here" style="font-family: 'Times New Roman', serif;" required/>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="description">Catagory Description</label>
-        <textarea id="description" name="description" placeholder="Enter description here" rows="9" cols="40"></textarea>
+        <textarea id="description" name="description" placeholder="Enter description here" rows="2" cols="40" style="font-family: 'Times New Roman', serif;" required></textarea>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" placeholder="Enter URL here" size="40"/>
+        <input id="image-url" type="url" placeholder="Enter URL here" size="40" style="font-family: 'Times New Roman', serif;" />
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="active">Is this catagory active?</label>
-        <input id="yes-active" type="radio" value="Active" name="active" />
+        <input id="yes-active" type="radio" value="Active" name="active" required/>
         <label for="yes-active" style="font-weight: normal;">Yes</label>
         <input id="noactive" type="radio" value="Inactive" name="active" />
         <label for="no-active" style="font-weight: normal;">No</label>
@@ -159,6 +75,38 @@ input, textarea, button {
     </div>
 
   </form>
+  <footer class="footer">
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
+    </div>
+
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section contact">
+      <h3>Contact Us</h3>
+      <p>Email: dummy@we-eat.com</p>
+      <p>Phone: +123 456 7890</p>
+      <p>Address: 1-1 The Center street, First Print State, Mars</p>
+    </div>
+
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <p>Stay connected on social media.</p>
+      <div class="social-icons">
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+  </footer>
 </body>
 
 </html>

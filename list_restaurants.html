@@ -2,175 +2,166 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Needed for responsive scaling -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurants</title>
-  <style>
-    h1 {
-      text-align: center;
-      position: relative;
-      display: inline-block;
-      width: 100%;
-    margin-bottom: -5px}
-
-  
-
-    h1::before {
-      bottom: -10px;
-    }
-
-
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f6fa;
-      color: #333;
-    }
-
-    .table-container {
-      background: #fff;
-      padding: 20px 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: fit-content;
-      max-width: 1000%;
-      margin: 40px auto 0;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      table-layout: auto; 
-    }
-
-    th, td {
-      border: 1px solid black;
-      padding: 8px;
-      vertical-align: top;
-      text-align: left;
-    }
-
-    td img {
-      max-width: 300px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    button {
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-      padding: 8px 16px;
-      background-color: #4CAF50;
-      color: white;
-      transition: all 0.2s ease-in-out;
-    }
-
-    button:hover {
-      opacity: 0.9;
-   background-color: #050505; }
-
-    a {
-      color: black;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link rel="stylesheet" href="table.css">
 </head>
 <body>
-  <h1>All Restaurants</h1>
+  <header class="header">
+    <div class="logo">
+      <img src="Logo 2.07.50 PM.webp" alt="Food Logo"/>
+      <span>We-Eat</span>
+    </div>
+    <nav class="menu">
+
+      <a href="admindashbord.html" class="menu-btn">Dashboard</a>
+      <a href="list_fooditems.html" class="menu-btn">Food Items</a>
+      <a href="list_cuisines.html" class="menu-btn">Cuisines</a>
+      <a href="list_categories.html" class="menu-btn">Categories</a>
+      <a href="list_restaurants.html" class="menu-btn active">Restaurants</a>
+      <a href="orders.html" class="menu-btn">Orders</a>
+      <a href="users.html" class="menu-btn">Users</a>
+    </nav>
+    <div class="auth-buttons">
+      <button class="signin">Sign In</button>
+      <button class="signout">Sign Out</button>
+    </div>
+  </header>
+  <main class="main">
+    <h1>All Restaurants</h1>
   
+
+    <div class="card">
+  
+
   <div class="table-container">
     <table>
-    <thead>
-      <tr>
-        <th>Restaurant Number</th>
-        <th>Restaurant Name</th>
-        <th>Restaurant Image</th>
-        <th>Address</th>
-        <th>Contact Info.</th>
-        <th>Edit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Food Palace</td>
-        <td>
-          <img src="https://northwoodoffice-assets.imgix.net/goBallantyne/images/heroes/NORTHITALIA156-2.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-debug=&fp-x=0.4993&fp-y=0.7915&fp-z=1&h=1080&ixlib=php-3.1.0&q=80&v=1718293452&w=1920" />
-        </td>
-        <td>
-          <a href="address:4727 East Cider street Charlotte, NC">
-            4727 East Cider street Charlotte, NC
-          </a>
-        </td>
-        <td>
-          <a href="tel:7048582285">704-858-2285</a>
-        </td>
-        <td>
-          <button type="button">Edit</button>
-        </td>
-      </tr>
+      <thead>
+        <tr>
+          <th>Restaurant Number</th>
+          <th>Restaurant Name</th>
+          <th>Restaurant Image</th>
+          <th>Address</th>
+          <th>Contact Info.</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Food Palace</td>
+          <td>
+            <img src="https://northwoodoffice-assets.imgix.net/goBallantyne/images/heroes/NORTHITALIA156-2.jpg" />
+          </td>
+          <td>
+            <a href="address:4727 East Cider street Charlotte, NC" style="color:#050505;">
+              4727 East Cider street Charlotte, NC
+            </a>
+          </td>
+          <td>
+            <a href="tel:7048582285" style="color:#050505;">704-858-2285</a>
+          </td>
+          <td class="buttons">
+            <a href="fpalace-edit.p.html">
+              <button type="button">Edit</button>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Gourmet Central</td>
+          <td>
+            <img src="https://commonmarketrestaurants.com/wp-content/uploads/2024/03/BALLAST-13.jpg" />
+          </td>
+          <td>
+            <a href="address:2863 Baylor street Greensboro, NC" style="color:#050505;">
+              2863 Baylor street Greensboro, NC
+            </a>
+          </td>
+          <td>
+            <a href="tel:3368248482" style="color:#050505;">336-824-8482</a>
+          </td>
+          <td class="buttons">
+            <a href="gcentral-edit.p.html">
+              <button type="button">Edit</button>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>The Grill</td>
+          <td>
+            <img src="https://assets.bonappetit.com/photos/57d6d72babffea600db60d74/master/pass/tbd-restaurant-grillworks.jpg" />
+          </td>
+          <td>
+            <a href="address:2737 North Stockton boulevard Atlanta, GA" style="color:#050505;">
+              2737 North Stockton boulevard Atlanta, GA
+            </a>
+          </td>
+          <td>
+            <a href="tel:4042959869" style="color:#050505;">404-295-9869</a>
+          </td>
+          <td class="buttons">
+            <a href="tg-edit.p.html">
+              <button type="button">Edit</button>
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Taste Hut</td>
+          <td>
+            <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_760,q_65,w_640,x_4800,y_3225/v1/clients/chandler-redesign/Ginger_Monkey_127_HDR_no_logo_405eedca-205a-48f2-94a3-a2abe902dca5.jpg" />
+          </td>
+          <td>
+            <a href="address:8172 Driver road Charleston, SC" style="color:#050505;">
+              8172 Driver road Charleston, SC
+            </a>
+          </td>
+          <td>
+            <a href="tel:8432375297" style="color:#050505;">843-237-5297</a>
+          </td>
+          <td class="buttons">
+            <a href="th-edit.p.html">
+              <button type="button">Edit</button>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <footer class="footer">
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
+    </div>
 
-      <tr>
-        <td>2</td>
-        <td>Gourmet Central</td>
-        <td>
-          <img src="https://commonmarketrestaurants.com/wp-content/uploads/2024/03/BALLAST-13.jpg" />
-        </td>
-        <td>
-          <a href="address:2863 Baylor street Greensboro, NC">
-            2863 Baylor street Greensboro, NC
-          </a>
-        </td>
-        <td>
-          <a href="tel:3368248482">336-824-8482</a>
-        </td>
-        <td>
-          <button type="button">Edit</button>
-        </td>
-      </tr>
+    <div class="footer-section links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Menu</a></li>
+        <li><a href="#">Orders</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
 
-      <tr>
-        <td>3</td>
-        <td>The Grill</td>
-        <td>
-          <img src="https://assets.bonappetit.com/photos/57d6d72babffea600db60d74/master/pass/tbd-restaurant-grillworks.jpg" />
-        </td>
-        <td>
-          <a href="address:2737 North Stockton boulevard Atlanta, GA">
-            2737 North Stockton boulevard Atlanta, GA
-          </a>
-        </td>
-        <td>
-          <a href="tel:4042959869">404-295-9869</a>
-        </td>
-        <td>
-          <button type="button">Edit</button>
-        </td>
-      </tr>
+    <div class="footer-section contact">
+      <h3>Contact Us</h3>
+      <p>Email: dummy@we-eat.com</p>
+      <p>Phone: +123 456 7890</p>
+      <p>Address: 1-1 The Center street, First Print State, Mars</p>
+    </div>
 
-      <tr>
-        <td>4</td>
-        <td>Taste Hut</td>
-        <td>
-          <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_760,q_65,w_640,x_4800,y_3225/v1/clients/chandler-redesign/Ginger_Monkey_127_HDR_no_logo_405eedca-205a-48f2-94a3-a2abe902dca5.jpg" />
-        </td>
-        <td>
-          <a href="address:8172 Driver road Charleston, SC">
-            8172 Driver road Charleston, SC
-          </a>
-        </td>
-        <td>
-          <a href="tel:8432375297">843-237-5297</a>
-        </td>
-        <td>
-          <button type="button">Edit</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="footer-section social">
+      <h3>Follow Us</h3>
+      <p>Stay connected on social media.</p>
+      <div class="social-icons">
+        <a href="#">Facebook</a> |
+        <a href="#">Instagram</a> |
+        <a href="#">Twitter</a>
+      </div>
+      </footer>
 </body>
 </html>

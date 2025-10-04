@@ -1,0 +1,439 @@
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:22px 20px;
+  background:#4CAF50;
+  color:#333;
+  width: 1298px;   /* match your table width */
+  margin: 0 auto;      /* center it */
+  border-radius: 6px;  /* optional, to match table card style */
+}
+
+/* make sure table-container uses same width */
+.table-container {
+  max-width: 1200px;
+  margin: 20px auto;
+}
+.logo{ display:flex; align-items:center; gap:10px; }
+.logo img{ width:40px; height:40px; object-fit:cover; border-radius:50%; }
+.logo span{ font-size:1.25rem; font-weight:700; color:#333; }
+.auth-buttons{ display:flex; gap:10px; flex-wrap:wrap; }
+.auth-buttons button{
+  padding:8px 12px;
+  border:0; border-radius:8px;
+  background:#fff; color:#333; cursor:pointer;
+} 
+
+/* ========== MENU BAR (Shared Across All Pages) ========== */
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.menu-btn {
+  padding: 10px 18px;              /* uniform size */
+  border-radius: 6px;
+  background: #fff;
+  color: #333;
+  text-decoration: none;
+  font-weight: 600;
+  border: 1px solid #4CAF50;
+  transition: all 0.2s ease;
+  font-family: 'Times New Roman', serif;
+}
+
+.menu-btn:hover {
+  background: #333;
+  color: #fff;
+  transform: translateY(-1px);     /* subtle hover lift */
+}
+
+.menu-btn.active {
+  background-color: #333;       /* active page highlight */
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  padding: 10px 18px;              /* same size even when active */
+}
+
+/* Optional dropdown consistency */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #fff;
+  min-width: 160px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 10px 15px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background: #ccc;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background: #333;
+  color: #fff;
+}
+ 
+
+
+  
+  body {
+  
+  color: #333;                 /* from your original */
+  background-color: #f5f6fa;   /* from your original */
+  margin: 0;
+  padding: 0;
+}
+
+
+h1 {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: -5px;
+  text-align: center;
+}
+
+
+/* ===== Form ===== */
+form {
+  width: 90%;
+  max-width: 100px;
+  margin: 40px auto;
+  background: #fff;            /* from your original */
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+label {
+  text-align: right;
+  margin-right: 10px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  border: 2px solid #4CAF50;   /* from your original */
+  outline: none;
+  background-color: #fff;      /* from your original */
+}
+
+input,
+textarea,
+button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* ===== Buttons ===== */
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+width: 120px; 
+}
+
+/* Match your original: dark primary buttons */
+.buttons button {
+  margin: 0 10px;
+  padding: 8px 16px;
+  background-color: #333;      /* from your original */
+  color: #fff;                 /* from your original */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+.buttons button:hover {
+  background-color: #050505;   /* from your original */
+}
+
+/* Secondary .btn uses green and flips on hover like your original */
+.btn {
+  margin: 0 10px;
+  padding: 8px 16px;
+  background-color: #4CAF50;   /* from your original */
+  color: #fff;                 /* from your original */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+.btn:hover {
+  background-color: #333;      /* from your original */
+  color: #fff;                 /* from your original */
+}
+
+
+
+/* ===== Table Wrapper ===== */
+.table-container {
+  background: #fff;            /* from your original */
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin: 40px auto 0;
+  min-width: 640px;
+  max-width: 100%;
+  overflow-x: auto;            /* keep responsiveness */
+}
+
+/* ===== Table ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  
+}
+
+thead th {
+  background-color: #333;      /* from your original */
+  color: #fff;                 /* from your original */
+}
+
+th,
+td {
+  border: 1px solid black;     /* from your original */
+  padding: 15px;
+  text-align: center;
+  vertical-align: middle;
+  word-break: break-word;
+}
+
+/* Striping from your original */
+tbody tr:nth-child(even) { background-color: #dbd2d2; }  /* from your original */
+tbody tr:nth-child(odd)  { background-color: #4CAF50; }  /* from your original */
+tbody tr:hover           { background-color: #e6f7ff; }  /* from your original */
+
+/* Images in table cells: desktop default */
+td img {
+  max-width: 100px;              /* from your original */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Optional helpers preserved from attached file */
+.container { overflow-x: auto; }
+.table     { width: 100%; border-collapse: collapse; }
+
+/* ---------- DESKTOP (kept identical) ---------- */
+@media (min-width: 1300px) {
+  /* keep your fixed desktop width and centering */
+  .header,
+  .footer {
+    width: 1298px;
+    margin: 0 auto;
+  }
+
+  /* keep table/card width feel consistent with header/footer */
+  .table-container {
+    width: 100%;
+    max-width: 1298px;
+    margin: 40px auto 0;
+  }
+}
+
+/* ---------- GLOBAL TWEAKS FOR SMALLER VIEWPORTS ---------- */
+/* make header/footer/table-container fluid by default, desktop handled above */
+.header,
+.footer,
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ensure the table area scrolls horizontally on narrow screens (no layout break) */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* buttons area shouldn't force columns too wide */
+.buttons {
+  text-align: center;
+  margin-top: 20px;
+  width: auto; /* was 120px; fixed width can cause wrapping issues */
+}
+
+/* ---------- TABLET: up to 1024px ---------- */
+@media (max-width: 1024px) {
+  .header {
+    gap: 12px;
+    padding: 10px 16px;
+  }
+
+  .logo img { width: 36px; height: 36px; }
+  .logo span { font-size: 1.125rem; }
+
+  .auth-buttons { gap: 8px; flex-wrap: wrap; }
+  .auth-buttons button { padding: 6px 10px; }
+
+  /* table legibility on tablet */
+  th, td { padding: 12px; }
+  td img { max-width: 90px; }
+
+  /* footer: 2 columns on tablet */
+  .footer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 28px 16px;
+  }
+}
+
+/* ---------- PHONE: up to 600px ---------- */
+@media (max-width: 600px) {
+  /* stack header content cleanly */
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;  /* center logo/buttons on tiny screens */
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+
+  .logo { width: 100%; justify-content: center; }
+  .logo img { width: 32px; height: 32px; }
+  .logo span { font-size: 1rem; }
+
+  .auth-buttons {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+  }
+  .auth-buttons button {
+    padding: 6px 10px;
+    font-size: 0.95rem;
+  }
+
+  /* form: single-column labels/inputs */
+  .form-row {
+    grid-template-columns: 1fr;       /* already present in your mobile block, keeping it */
+  }
+  label {
+    text-align: left;
+    margin: 0 0 6px 0;
+  }
+
+  /* table: improve fit without crushing text */
+  table { table-layout: fixed; }       /* keeps columns predictable */
+  th, td {
+    padding: 10px;
+    font-size: 14px;
+    white-space: normal;
+  }
+  td img { max-width: 70px; }
+
+  /* footer: stack to 1 column on phones */
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 12px;
+  }
+  .footer h3 { font-size: 1.1rem; }
+  .footer p,
+  .footer a,
+  .footer li { font-size: 0.95rem; }
+}
+
+/* ---------- NICE-TO-HAVES (safe, non-desktop-changing) ---------- */
+/* keep card look but allow small screens to breathe */
+.table-container {
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.1);
+}
+
+/* make sure very narrow devices don't force a min width */
+@media (max-width: 640px) {
+  .table-container { min-width: 0; } /* overrides any previous min-widths */
+}
+
+/* keep social links readable on dark footer */
+.footer a { color: #fff; }
+.footer a:hover { color: #fff; text-decoration: underline; }
+
+/* keep your existing striping & colors as-is (unchanged) */
+
+.footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  background: #333;
+  color: #fff;
+  padding: 40px 20px;
+  width: 1298px;
+}
+
+.footer h3 {
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #4CAF50;
+  text-align: left;
+}
+
+.footer p,
+.footer a,
+.footer li {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #fff;
+  text-decoration: none;
+  text-align: left;
+}
+
+.footer ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer ul li {
+  margin-bottom: 8px;
+}
+
+.footer a:hover {
+  color:#fff;
+}
+
+.social-icons {
+  text-align: left;
+}
+
+.social-icons a {
+  margin: 0 5px;
+  color: #4CAF50;
+  text-align: left;
+}

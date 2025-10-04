@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Add Food Item</title>
+  <title>Edit Food Item</title>
   <link rel="stylesheet" href="form-styles.css">
 </head>
 
@@ -14,16 +14,6 @@
       <img src="Logo 2.07.50 PM.webp" alt="Food Logo" />
       <span>We-Eat</span>
     </div>
-    <nav class="menu">
-
-      <a href="admindashbord.html" class="menu-btn">Dashboard</a>
-      <a href="list_fooditems.html" class="menu-btn active">Food Items</a>
-      <a href="list_cuisines.html" class="menu-btn">Cuisines</a>
-      <a href="list_categories.html" class="menu-btn">Categories</a>
-      <a href="list_restaurants.html" class="menu-btn">Restaurants</a>
-      <a href="orders.html" class="menu-btn">Orders</a>
-      <a href="users.html" class="menu-btn">Users</a>
-    </nav>
     <div class="auth-buttons">
       <button class="signin" type="button">Sign In</button>
       <button class="signout" type="button">Sign Out</button>
@@ -31,28 +21,28 @@
   </header>
   <form action="info-saved.html" method="post">
   
-  <h1>Add Food Item</h1>
+  <h1>Edit Food Item</h1>
 
   <form id="survey-form">
 
     <div class="form">
       <p>
         <label for="name">Food Item Name</label>
-        <input id="name" type="text" placeholder="Enter name here" required style="font-family: 'Times New Roman', Times, serif;" />
+        <input id="name" type="text" placeholder="Enter name here" required value="Macaroni & Cheese" style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="description">Food Item Description</label>
-        <textarea id="description" name="description" placeholder="Enter description here" rows="2" cols="40" required style="font-family: 'Times New Roman', Times, serif;"></textarea>
+        <textarea id="description" name="description" placeholder="Enter description here" rows="9" cols="40" required style="font-family: 'Times New Roman', serif;">Creamy elbow macaroni baked in a rich, velvety cheese sauce and topped with a golden, crispy breadcrumb crust. Comfort food at its finest; warm, cheesy, and deliciously satisfying.</textarea>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" placeholder="Enter URL here" size="40" style="font-family: 'Times New Roman', Times, serif;"/>
+        <input id="image-url" type="url" placeholder="Enter URL here" size="40" style="font-family: 'Times New Roman', serif;" value="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg&w=160&q=60&c=sc&poi=auto&orient=true&h=90"/>
       </p>
     </div>
 
@@ -60,8 +50,7 @@
       <p>
         <label for="category">What category is this food item?</label>
         <select id="category" name="category" required>
-          <option value="" disabled selected>-- Select a category --</option>
-          <option>Pasta</option>
+          <option value="pasta" selected>Pasta</option>
           <option>Pizza</option>
           <option>Burger</option>
           <option>Milkshake</option>
@@ -73,9 +62,8 @@
       <p>
         <label for="cuisine">What cuisine is this food item?</label>
         <select id="cuisine" name="cuisine" required>
-          <option value="" disabled selected>-- Select a cuisine --</option>
           <option>Italian</option>
-          <option>American</option>
+          <option value="American" selected>American</option>
           <option>Chinese</option>
           <option>Nigerian</option>
         </select>
@@ -85,10 +73,10 @@
     <div class="form">
       <p>
         <label for="availability">Is this item currently available?</label>
-        <input id="availability" type="radio" value="yes" name="availability" required/>
+        <input id="availability" type="radio" value="yes" name="availability" required />
 <label for="yes" style="font-weight: normal;">Yes</label>
  
-        <input id="availability" type="radio" value="no" name="availability"/>
+        <input id="availability" type="radio" value="no" name="availability" checked/>
 <label for="no" style="font-weight: normal;">No</label>
       </p>
     </div>
@@ -96,11 +84,11 @@
     <div class="form">
       <p>
         <label for="vegetarian">Does this item have a vegetarian option?</label>
-        <input id="veg.-yes" type="radio" value="yes" name="vegetarian" required/>
+        <input id="veg.-yes" type="radio" value="yes" name="vegetarian" required />
 <label for="yes" style="font-weight: normal;">Yes</label>
 
  <input id="
- " type="radio" value="no" name="vegetarian"/>
+ " type="radio" value="no" name="vegetarian" checked/>
 <label for="no" style="font-weight: normal;">No</label>
       </p>
     </div>
