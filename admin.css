@@ -2,13 +2,29 @@
   text-align: center;
 }
 
+/* Sticky Footer Layout */
+html,
+body {
+  height: 100%;
+}
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background: #f5f6fa;
+}
+.main {
+  flex: 1 0 auto;
+}
+
 /* Header */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-  background: #4CAF50;
+  background: #4caf50;
 }
 
 .logo {
@@ -27,7 +43,7 @@
 .logo span {
   font-size: 1.5rem;
   font-weight: bold;
-  color:#333 ;
+  color: #333;
 }
 
 .auth-buttons {
@@ -54,7 +70,7 @@
 }
 
 .card {
-  background: ;
+  background: #fff;
   border-radius: 12px;
   padding: 20px;
   text-align: center;
@@ -70,7 +86,12 @@
 .card-title {
   margin: 0 0 15px;
   font-size: 1.2rem;
-  
+}
+
+.card-desc {
+  margin: 0 0 16px;
+  color: #555;
+  font-size: 0.95rem;
 }
 
 .card-body {
@@ -96,7 +117,7 @@
 .btn {
   display: inline-block;
   padding: 8px 16px;
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: #fff;
   text-decoration: none;
   border-radius: 6px;
@@ -124,12 +145,13 @@
   background: #333;
   color: #fff;
   padding: 40px 20px;
+  margin-top: auto; /* sticky footer */
 }
 
 .footer h3 {
   margin-bottom: 15px;
   font-size: 1.2rem;
-  color: #4CAF50;
+  color: #4caf50;
   text-align: left;
 }
 
@@ -162,8 +184,47 @@
 
 .social-icons a {
   margin: 0 5px;
-  color: #4CAF50;
+  color: #4caf50;
   text-align: left;
+}
+
+/* Insights (top of dashboard) */
+.insights {
+  max-width: 1200px;
+  margin: 0 auto 10px;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.insight-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.insight-title {
+  font-size: 0.9rem;
+  color: #333;
+  margin: 0 0 6px;
+}
+
+.insight-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #4caf50;
+  margin: 0 0 4px;
+}
+
+.insight-sub {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
 }
 
 /* Accessibility / Motion */
@@ -186,6 +247,10 @@
   .footer {
     grid-template-columns: repeat(2, 1fr);
   }
+  .insights {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 900px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -200,6 +265,9 @@
     font-size: 0.95rem;
   }
   .footer {
+    grid-template-columns: 1fr;
+  }
+  .insights {
     grid-template-columns: 1fr;
   }
 }
