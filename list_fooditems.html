@@ -12,24 +12,60 @@
 <body>
   <header class="header">
     <div class="logo">
-      <img src="Logo 2.07.50 PM.webp" alt="Food Logo"/>
-      <span>We-Eat</span>
+      <img src="chefchain-image.png" alt="ChefChain Logo"/>
+      
     </div>
     <nav class="menu">
 
-      <a href="admindashbord.html" class="menu-btn">Dashboard</a>
-      <a href="list_fooditems.html" class="menu-btn active">Food Items</a>
-      <a href="list_cuisines.html" class="menu-btn">Cuisines</a>
-      <a href="list_categories.html" class="menu-btn">Categories</a>
-      <a href="list_restaurants.html" class="menu-btn">Restaurants</a>
+      <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
+      
       <div class="dropdown">
-      <button class="menu-btn dropbtn">Orders</button>
-      <div class="dropdown-content">
+        <button class="menu-btn dropbtn active">Food Items</button>
+        <div class="dropdown-content">
+          <a href="list_fooditems.html">View Food Items</a>
+          <a href="add_fooditem.html">Add Food Item</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Cuisines</button>
+        <div class="dropdown-content">
+          <a href="list_cuisines.html">View Cuisines</a>
+          <a href="add_cuisine.html">Add Cuisine</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Categories</button>
+        <div class="dropdown-content">
+          <a href="list_categories.html">View Categories</a>
+          <a href="add_category.html">Add Category</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Restaurants</button>
+        <div class="dropdown-content">
+          <a href="list_restaurants.html">View Restaurants</a>
+          <a href="add_restaurant.html">Add Restaurant</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Orders</button>
+        <div class="dropdown-content">
           <a href="orders.html">View Orders</a>
           <a href="order-request.html">Request Order</a>
         </div>
       </div>
-      <a href="users.html" class="menu-btn">users</a>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Users</button>
+        <div class="dropdown-content">
+          <a href="users.html">View Users</a>
+          <a href="add_user.html">Add User</a>
+        </div>
+      </div>
     </nav>
     <div class="auth-buttons">
       <button class="signin">Sign In</button>
@@ -43,15 +79,16 @@
     <table>
       <thead>
         <tr>
-          <th style="width:110px;">Food Item Number</th>
-          <th style="width:100px;">Name</th>
-          <th style="width:300px;">Description</th>
+          <th style="width:90px;">Food Item Number</th>
+          <th style="width:90px;">Name</th>
+          <th style="width:280px;">Description</th>
           <th style="width:100px;">Available?</th>
-          <th style="width:110px;">Vegetarian Option?</th>
+          <th style="width:100px;">Vegetarian Option?</th>
           <th style="width:100px;">Category</th>
-          <th style="width:90px;">Cuisine</th>
-          <th>Image</th>
-          <th style="width:95px;">Edit</th>
+          <th style="width:100px;">Cuisine</th>
+          <th style="width:80px;">Price</th>
+          <th style="width:120px;">Image</th>
+          <th style="width:80px;">Edit</th>
         </tr>
       </thead>
       <tbody>
@@ -68,13 +105,15 @@
           <td>No</td>
           <td>Pizza</td>
           <td>Italian</td>
+          <td>$12.99</td>
           <td>
             <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRDyJEalW-IRBh84gsK2fYUAUhWTgBjSK8WyD62a7Q7UgyEdg-yunD5cZNmJn23BGetNNsAnG6AGF4bfPU4Le5VcwkBIUhK5iqZRbdzAUUb&usqp=CAc" alt="Pepperoni Pizza" />
           </td>
           <td class="buttons">
             <a href="pizza-edit_f-item.html">
-            <button type="button">Edit</button></td>
-        </td>
+              <button type="button">Edit</button>
+            </a>
+          </td>
         </tr>
 
         <tr>
@@ -90,12 +129,15 @@
           <td>No</td>
           <td>Burger</td>
           <td>American</td>
+          <td>$9.99</td>
           <td>
             <img src="https://images.themodernproper.com/production/posts/2016/ClassicCheeseBurger_9.jpg?w=1200&h=1200&q=60&fm=jpg&fit=crop&dm=1749310239&s=463b18fc3bb51dc5d96e866c848527c4" alt="Classic Cheeseburger" />
           </td>
           <td class="buttons">
             <a href="ch.burger-edit_f.item.html">
-            <button type="button">Edit</button></td>
+              <button type="button">Edit</button>
+            </a>
+          </td>
         </tr>
 
         <tr>
@@ -106,16 +148,19 @@
             with a golden, crispy breadcrumb crust. Comfort food at its finest;
             warm, cheesy, and deliciously satisfying.
           </td>
-          <td>No</td>
+          <td>Yes</td>
           <td>No</td>
           <td>Pasta</td>
           <td>American</td>
+          <td>$8.99</td>
           <td>
             <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg&w=160&q=60&c=sc&poi=auto&orient=true&h=90" alt="Macaroni & Cheese" />
           </td>
           <td class="buttons">
             <a href="mac_n'_cheese-edit.f.item.html">
-            <button type="button">Edit</button></td>
+              <button type="button">Edit</button>
+            </a>
+          </td>
         </tr>
 
         <tr>
@@ -130,47 +175,18 @@
           <td>No</td>
           <td>Sandwich</td>
           <td>American</td>
+          <td>$6.99</td>
           <td>
             <img src="https://images.ctfassets.net/hhv516v5f7sj/6qGAfeOJOREdrdA3cDUrB8/42ed66b48dc251c6b17630846fd78d5e/selling-page-hotdog-C118-group3-1000x1000.png?w=3840&q=75&fm=webp" alt="Classic Hotdog" />
           </td>
           <td class="buttons">
             <a href="hotdog-edit_f.item.html">
-            <button type="button">Edit</button></td>
+              <button type="button">Edit</button>
+            </a>
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <footer class="footer">
-    <div class="footer-section about">
-      <h3>About Us</h3>
-      <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
-    </div>
-
-    <div class="footer-section links">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="list_restaurants.html">Home</a></li>
-        <li><a href="list_fooditems.html">Menu</a></li>
-        <li><a href="orders.html">Orders</a></li>
-        <li><a href="users.html">Contact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section contact">
-      <h3>Contact Us</h3>
-      <p>Email: dummy@we-eat.com</p>
-      <p>Phone: +123 456 7890</p>
-      <p>Address: 1-1 The Center street, First Print State, Mars</p>
-    </div>
-
-    <div class="footer-section social">
-      <h3>Follow Us</h3>
-      <p>Stay connected on social media.</p>
-      <div class="social-icons">
-        <a href="#">Facebook</a> |
-        <a href="#">Instagram</a> |
-        <a href="#">Twitter</a>
-      </div>
-    </footer>
 </body>
 </html>

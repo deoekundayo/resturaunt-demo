@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Edit Cuisine</title>
-  <link rel="stylesheet" href="form-styles.css">
+  <title>Add User</title>
+  <link rel="stylesheet" href="add_user.css">
 </head>
 
 <body>
@@ -42,7 +42,7 @@
       </div>
       
       <div class="dropdown">
-        <button class="menu-btn dropbtn active">Restaurants</button>
+        <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
           <a href="list_restaurants.html">View Restaurants</a>
           <a href="add_restaurant.html">Add Restaurant</a>
@@ -58,53 +58,63 @@
       </div>
       
       <div class="dropdown">
-        <button class="menu-btn dropbtn">Users</button>
+        <button class="menu-btn dropbtn active">Users</button>
         <div class="dropdown-content">
           <a href="users.html">View Users</a>
           <a href="add_user.html">Add User</a>
         </div>
       </div>
     </nav>
+    
     <div class="auth-buttons">
       <button class="signin" type="button">Sign In</button>
       <button class="signout" type="button">Sign Out</button>
     </div>
   </header>
   <form action="info-saved.html" method="post">
-  <h1>Edit Cuisine</h1>
+  <h1>Add User</h1>
   
 
   <form id="survey-form">
-
+    
     <div class="form">
       <p>
-        <label for="name">Cuisine Name</label>
-        <input id="name" type="text" value="Italian" required style="font-family:'Times New Roman', serif;"/>
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Enter name here" required style="font-family: 'Times New Roman', Times, serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="description">Cuisine Description</label>
-        <input id="description" type="text" value="All Italian" style="font-family: 'Times New Roman', serif;" required/>
+        <label for="email">Email</label>
+        <input id="email" type="text" placeholder="Enter email here" style="font-family: 'Times New Roman', Times, serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" style="font-family: 'Times New Roman', serif;" value="https://static.wixstatic.com/media/2cbff6_ac782b0eaff94ec0881f0299fdb76ab6~mv2.jpg/v1/fill/w_528,h_410,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2cbff6_ac782b0eaff94ec0881f0299fdb76ab6~mv2.jpg" size="40" />
+        <label for="contact-number">Contact Number</label>
+        <input id="contact-number" style="font-family: 'Times New Roman', Times, serif;" type="tel" maxlength="14" placeholder="Enter number here" required/>
+<script>
+document.getElementById("contact-number").addEventListener("input", function(e) {
+  let x = e.target.value.replace(/\D/g, ""); // remove all non-digits
+  if (x.length > 0) {
+    x = "(" + x;
+  }
+  if (x.length > 4) {
+    x = x.slice(0, 4) + ")-" + x.slice(4);
+  }
+  if (x.length > 9) {
+    x = x.slice(0, 9) + "-" + x.slice(9);
+  }
+  if (x.length > 14) {
+    x = x.slice(0, 14);
+  }
+  e.target.value = x;
+});
+</script>
       </p>
-    </div>
-
-    <div class="form">
-      <p>
-        <label for="yes-active">Is this cuisine currently active</label>
-        <input id="yes-active" type="radio" value="yes-active" name="active" required checked/>
-        <label for="yes-active" style="font-weight: normal;">Yes</label>
-        <input id="no-active" type="radio" value="no-active" name="active" />
-        <label for="no-active" style="font-weight: normal;">No</label>
-      </p>
+    
     </div>
 
     <div class="buttons">
@@ -113,40 +123,7 @@
         <button type="submit">Save</button>
       </p>
     </div>
-
   </form>
-  <footer class="footer">
-    <div class="footer-section about">
-      <h3>About Us</h3>
-      <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
-    </div>
-
-    <div class="footer-section links">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="list_restaurants.html">Home</a></li>
-        <li><a href="list_fooditems.html">Menu</a></li>
-        <li><a href="orders.html">Orders</a></li>
-        <li><a href="users.html">Contact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section contact">
-      <h3>Contact Us</h3>
-      <p>Email: dummy@we-eat.com</p>
-      <p>Phone: +123 456 7890</p>
-      <p>Address: 1-1 The Center street, First Print State, Mars</p>
-    </div>
-
-    <div class="footer-section social">
-      <h3>Follow Us</h3>
-      <p>Stay connected on social media.</p>
-      <div class="social-icons">
-        <a href="#">Facebook</a> |
-        <a href="#">Instagram</a> |
-        <a href="#">Twitter</a>
-      </div>
-  </footer>
 </body>
 
 </html>

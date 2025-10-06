@@ -11,9 +11,60 @@
   <header class="header">
     <div class="logo">
       <!-- If this image doesn't show, ensure the file name/path is correct. Avoid spaces or URL-encode them. -->
-      <img src="Logo 2.07.50 PM.webp" alt="Food Logo" />
-      <span>We-Eat</span>
+      <img src="chefchain-image.png" alt="ChefChain Logo" />
+      
     </div>
+    <nav class="menu">
+      <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Food Items</button>
+        <div class="dropdown-content">
+          <a href="list_fooditems.html">View Food Items</a>
+          <a href="add_fooditem.html">Add Food Item</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Cuisines</button>
+        <div class="dropdown-content">
+          <a href="list_cuisines.html">View Cuisines</a>
+          <a href="add_cuisine.html">Add Cuisine</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Categories</button>
+        <div class="dropdown-content">
+          <a href="list_categories.html">View Categories</a>
+          <a href="add_category.html">Add Category</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn active">Restaurants</button>
+        <div class="dropdown-content">
+          <a href="list_restaurants.html">View Restaurants</a>
+          <a href="add_restaurant.html">Add Restaurant</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Orders</button>
+        <div class="dropdown-content">
+          <a href="orders.html">View Orders</a>
+          <a href="order-request.html">Request Order</a>
+        </div>
+      </div>
+      
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Users</button>
+        <div class="dropdown-content">
+          <a href="users.html">View Users</a>
+          <a href="add_user.html">Add User</a>
+        </div>
+      </div>
+    </nav>
     <div class="auth-buttons">
       <button class="signin" type="button">Sign In</button>
       <button class="signout" type="button">Sign Out</button>
