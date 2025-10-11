@@ -92,61 +92,6 @@ body {
   padding: 10px 18px; /* same size even when active */
 }
 
-.dropbtn,
-button.menu-btn.dropbtn {
-  padding: 10px 18px !important; /* same size as menu-btn */
-  border-radius: 6px;
-  background: #fff;
-  color: #333;
-  text-decoration: none;
-  font-weight: 600;
-  border: 1px solid #4caf50;
-  transition: all 0.2s ease;
-  font-family: "Times New Roman", serif;
-  cursor: pointer;
-}
-
-.dropbtn.active,
-button.menu-btn.dropbtn.active {
-  background-color: #333 !important;
-  color: #fff !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
-
-/* Dropdown styles */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background: #fff;
-  min-width: 160px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: #333;
-  padding: 10px 15px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown-content a:hover {
-  background: #ccc;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-.dropdown:hover .dropbtn {
-  background: #333;
-  color: #fff;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
 /* Cards */
 .card-container {

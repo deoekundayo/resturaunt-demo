@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cuisines</title>
-
   <link rel="stylesheet" href="table.css">
 </head>
 
@@ -12,11 +11,10 @@
   <header class="header">
     <div class="logo">
       <img src="chefchain-image.png" alt="ChefChain Logo"/>
-      
     </div>
     <nav class="menu">
       <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
@@ -24,7 +22,7 @@
           <a href="add_fooditem.html">Add Food Item</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn active">Cuisines</button>
         <div class="dropdown-content">
@@ -32,7 +30,7 @@
           <a href="add_cuisine.html">Add Cuisine</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
@@ -40,7 +38,7 @@
           <a href="add_category.html">Add Category</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
@@ -48,7 +46,7 @@
           <a href="add_restaurant.html">Add Restaurant</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
@@ -56,7 +54,7 @@
           <a href="order-request.html">Request Order</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
@@ -70,82 +68,81 @@
       <button class="signout" type="button">Sign Out</button>
     </div>
   </header>
-  
+
   <main class="main">
     <h1>All Cuisines</h1>
-  
-  <div class="table-container">
-    <table>
-    <thead>
-      <tr>
-        <th>Cuisine Number</th>
-        <th>Cuisine Name</th>
-        <th>Active</th>
-        <th>Image</th>
-        <th>Edit</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>All Italian</td>
-        <td>Yes</td>
-        <td>
-          <img src="https://static.wixstatic.com/media/2cbff6_ac782b0eaff94ec0881f0299fdb76ab6~mv2.jpg/v1/fill/w_528,h_410,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2cbff6_ac782b0eaff94ec0881f0299fdb76ab6~mv2.jpg" width="100" alt="Italian food" />
-        </td>
-        <td class="buttons">
-          <a href="italian-edit_cuisine.html">
-            <button type="button">Edit</button>
-          </a>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>2</td>
-        <td>All American</td>
-        <td>Yes</td>
-        <td>
-          <img src="https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,f_auto,q_60,w_750/v1/classpop/679a768f61781" width="100" alt="American food" />
-        </td>
-        <td class="buttons">
-          <a href="american-edit_cuisine.html">
-            <button type="button">Edit</button>
-          </a>
-        </td>
-      </tr>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Cuisine Number</th>
+            <th>Cuisine Name</th>
+            <th>Active</th>
+            <th>Image</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
 
-      <tr>
-        <td>3</td>
-        <td>All Nigerian</td>
-        <td>No</td>
-        <td>
-          <img src="https://blog.remitly.com/wp-content/uploads/2022/09/different-Nigerian-dishes.jpeg" width="100" alt="Nigerian food" />
-        </td>
-        <td class="buttons">
-          <a href="nigerian-edit_cuisine.html">
-            <button type="button">Edit</button>
-          </a>
-        </td>
-      </tr>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>All Italian</td>
+            <td>Yes</td>
+            <td>
+              <img src="https://static.wixstatic.com/media/2cbff6_ac782b0eaff94ec0881f0299fdb76ab6~mv2.jpg/v1/fill/w_528,h_410,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2cbff6_ac782b0eaff94ec0881f0299fdb76ab6~mv2.jpg" width="100" alt="Italian food" />
+            </td>
+            <td class="buttons">
+              <a href="italian-edit_cuisine.html">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
 
-      <tr>
-        <td>4</td>
-        <td>All Chinese</td>
-        <td>No</td>
-        <td>
-          <img src="https://hips.hearstapps.com/hmg-prod/images/chinese-food-68602c98ca7ab.jpg" width="100" alt="Chinese food" />
-        </td>
+          <tr>
+            <td>2</td>
+            <td>All American</td>
+            <td>Yes</td>
+            <td>
+              <img src="https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,f_auto,q_60,w_750/v1/classpop/679a768f61781" width="100" alt="American food" />
+            </td>
+            <td class="buttons">
+              <a href="american-edit_cuisine.html">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
 
-        <td class="buttons">
-          <a href="chinese-edit_cuisine.html">
-            <button type="button">Edit</button>
-          </a>
-        </td>
-      </tr>
-    </tbody>
-    </table>
-  </div>
+          <tr>
+            <td>3</td>
+            <td>All Nigerian</td>
+            <td>No</td>
+            <td>
+              <img src="https://blog.remitly.com/wp-content/uploads/2022/09/different-Nigerian-dishes.jpeg" width="100" alt="Nigerian food" />
+            </td>
+            <td class="buttons">
+              <a href="nigerian-edit_cuisine.html">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+
+          <tr>
+            <td>4</td>
+            <td>All Chinese</td>
+            <td>No</td>
+            <td>
+              <img src="https://hips.hearstapps.com/hmg-prod/images/chinese-food-68602c98ca7ab.jpg" width="100" alt="Chinese food" />
+            </td>
+            <td class="buttons">
+              <a href="chinese-edit_cuisine.html">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </main>
 </body>
 </html>

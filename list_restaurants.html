@@ -2,20 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Needed for responsive scaling -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurants</title>
   <link rel="stylesheet" href="table.css">
 </head>
+
 <body>
   <header class="header">
     <div class="logo">
       <img src="chefchain-image.png" alt="ChefChain Logo"/>
-      
     </div>
     <nav class="menu">
       <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
@@ -23,7 +22,7 @@
           <a href="add_fooditem.html">Add Food Item</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
@@ -31,7 +30,7 @@
           <a href="add_cuisine.html">Add Cuisine</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
@@ -39,7 +38,7 @@
           <a href="add_category.html">Add Category</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn active">Restaurants</button>
         <div class="dropdown-content">
@@ -47,7 +46,7 @@
           <a href="add_restaurant.html">Add Restaurant</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
@@ -55,7 +54,7 @@
           <a href="order-request.html">Request Order</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
@@ -69,108 +68,106 @@
       <button class="signout">Sign Out</button>
     </div>
   </header>
+
   <main class="main">
     <h1>All Restaurants</h1>
-  
 
-    <div class="card">
-  
-
-  <div class="table-container">
-    <table>
-      <thead>
-        <tr>
-          <th>Restaurant Number</th>
-          <th>Restaurant Name</th>
-          <th>Restaurant Image</th>
-          <th>Address</th>
-          <th>Contact Info.</th>
-          <th>Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Food Palace</td>
-          <td>
-            <img src="https://northwoodoffice-assets.imgix.net/goBallantyne/images/heroes/NORTHITALIA156-2.jpg" />
-          </td>
-          <td>
-            <a href="https://www.google.com/maps?q=4727+East+Cider+Street+Charlotte,+NC" style="color:#050505;">
-              4727 East Cider street Charlotte, NC
-            </a>
-          </td>
-          <td>
-            <a href="tel:7048582285" style="color:#050505;">704-858-2285</a>
-          </td>
-          <td class="buttons">
-            <a href="fpalace-edit.p.html">
-              <button type="button">Edit</button>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Gourmet Central</td>
-          <td>
-            <img src="https://commonmarketrestaurants.com/wp-content/uploads/2024/03/BALLAST-13.jpg" />
-          </td>
-          <td>
-            <a href="https://www.google.com/maps?q=2863+Baylor+Street+Greensboro,+NC" style="color:#050505;">
-              2863 Baylor street Greensboro, NC
-            </a>
-          </td>
-          <td>
-            <a href="tel:3368248482" style="color:#050505;">336-824-8482</a>
-          </td>
-          <td class="buttons">
-            <a href="gcentral-edit.p.html">
-              <button type="button">Edit</button>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>The Grill</td>
-          <td>
-            <img src="https://assets.bonappetit.com/photos/57d6d72babffea600db60d74/master/pass/tbd-restaurant-grillworks.jpg" />
-          </td>
-          <td>
-            <a href="https://www.google.com/maps?q=2737+North+Stockton+Boulevard+Atlanta,+GA" style="color:#050505;">
-              2737 North Stockton boulevard Atlanta, GA
-            </a>
-          </td>
-          <td>
-            <a href="tel:4042959869" style="color:#050505;">404-295-9869</a>
-          </td>
-          <td class="buttons">
-            <a href="tg-edit.p.html">
-              <button type="button">Edit</button>
-            </a>
-          </td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Taste Hut</td>
-          <td>
-            <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_760,q_65,w_640,x_4800,y_3225/v1/clients/chandler-redesign/Ginger_Monkey_127_HDR_no_logo_405eedca-205a-48f2-94a3-a2abe902dca5.jpg" />
-          </td>
-          <td>
-            <a href="https://www.google.com/maps?q=8172+Driver+Road+Charleston,+SC" style="color:#050505;">
-              8172 Driver road Charleston, SC
-            </a>
-          </td>
-          <td>
-            <a href="tel:8432375297" style="color:#050505;">843-237-5297</a>
-          </td>
-          <td class="buttons">
-            <a href="th-edit.p.html">
-              <button type="button">Edit</button>
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Restaurant Number</th>
+            <th>Restaurant Name</th>
+            <th>Restaurant Image</th>
+            <th>Address</th>
+            <th>Contact Info.</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Food Palace</td>
+            <td>
+              <img src="https://northwoodoffice-assets.imgix.net/goBallantyne/images/heroes/NORTHITALIA156-2.jpg" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=4727+East+Cider+Street+Charlotte,+NC" style="color:#050505;">
+                4727 East Cider street Charlotte, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:7048582285" style="color:#050505;">704-858-2285</a>
+            </td>
+            <td class="buttons">
+              <a href="fpalace-edit.p.html">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Gourmet Central</td>
+            <td>
+              <img src="https://commonmarketrestaurants.com/wp-content/uploads/2024/03/BALLAST-13.jpg" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=2863+Baylor+Street+Greensboro,+NC" style="color:#050505;">
+                2863 Baylor street Greensboro, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:3368248482" style="color:#050505;">336-824-8482</a>
+            </td>
+            <td class="buttons">
+              <a href="gcentral-edit.p.html">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>The Grill</td>
+            <td>
+              <img src="https://assets.bonappetit.com/photos/57d6d72babffea600db60d74/master/pass/tbd-restaurant-grillworks.jpg" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=2737+North+Stockton+Boulevard+Atlanta,+GA" style="color:#050505;">
+                2737 North Stockton boulevard Atlanta, GA
+              </a>
+            </td>
+            <td>
+              <a href="tel:4042959869" style="color:#050505;">404-295-9869</a>
+            </td>
+            <td class="buttons">
+              <a href="tg-edit.p.html">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Taste Hut</td>
+            <td>
+              <img src="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_760,q_65,w_640,x_4800,y_3225/v1/clients/chandler-redesign/Ginger_Monkey_127_HDR_no_logo_405eedca-205a-48f2-94a3-a2abe902dca5.jpg" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=8172+Driver+Road+Charleston,+SC" style="color:#050505;">
+                8172 Driver road Charleston, SC
+              </a>
+            </td>
+            <td>
+              <a href="tel:8432375297" style="color:#050505;">843-237-5297</a>
+            </td>
+            <td class="buttons">
+              <a href="th-edit.p.html">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
 </body>
 </html>

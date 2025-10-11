@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <title>Add Catagory</title>
+  <title>Add Category</title>
   <link rel="stylesheet" href="form-styles.css">
 </head>
 
 <body>
   <header class="header">
     <div class="logo">
-      <!-- If this image doesn't show, ensure the file name/path is correct. Avoid spaces or URL-encode them. -->
       <img src="chefchain-image.png" alt="ChefChain Logo" />
-      
     </div>
     <nav class="menu">
       <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
@@ -24,7 +21,7 @@
           <a href="add_fooditem.html">Add Food Item</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
@@ -32,7 +29,7 @@
           <a href="add_cuisine.html">Add Cuisine</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn active">Categories</button>
         <div class="dropdown-content">
@@ -40,7 +37,7 @@
           <a href="add_category.html">Add Category</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
@@ -48,7 +45,7 @@
           <a href="add_restaurant.html">Add Restaurant</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
@@ -56,7 +53,7 @@
           <a href="order-request.html">Request Order</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
@@ -65,28 +62,26 @@
         </div>
       </div>
     </nav>
-    
+
     <div class="auth-buttons">
       <button class="signin" type="button">Sign In</button>
       <button class="signout" type="button">Sign Out</button>
     </div>
   </header>
-  <form action="info-saved.html" method="post"> 
+
   <h1>Add Food Category</h1>
-  
 
-  <form id="survey-form">
-
+  <form action="info-saved.html" method="post" id="survey-form">
     <div class="form">
       <p>
-        <label for="name">Catagory Name</label>
+        <label for="name">Category Name</label>
         <input id="name" type="text" placeholder="Enter name here" style="font-family: 'Times New Roman', serif;" required/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="description">Catagory Description</label>
+        <label for="description">Category Description</label>
         <textarea id="description" name="description" placeholder="Enter description here" rows="2" cols="40" style="font-family: 'Times New Roman', serif;" required></textarea>
       </p>
     </div>
@@ -100,10 +95,10 @@
 
     <div class="form">
       <p>
-        <label for="active">Is this catagory active?</label>
+        <label for="active">Is this category active?</label>
         <input id="yes-active" type="radio" value="Active" name="active" required/>
         <label for="yes-active" style="font-weight: normal;">Yes</label>
-        <input id="noactive" type="radio" value="Inactive" name="active" />
+        <input id="no-active" type="radio" value="Inactive" name="active" />
         <label for="no-active" style="font-weight: normal;">No</label>
       </p>
     </div>
@@ -114,8 +109,6 @@
         <button type="submit">Save</button>
       </p>
     </div>
-
   </form>
 </body>
-
 </html>

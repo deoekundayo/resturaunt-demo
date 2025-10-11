@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Edit Category</title>
-  <link rel="stylesheet" href="form-styles.css">
+  <title>Edit Food Item</title>
+  <link rel="stylesheet" href="edit-id.css">
 </head>
 
 <body>
@@ -15,7 +15,7 @@
       <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn">Food Items</button>
+        <button class="menu-btn dropbtn active">Food Items</button>
         <div class="dropdown-content">
           <a href="list_fooditems.html">View Food Items</a>
           <a href="add_fooditem.html">Add Food Item</a>
@@ -31,7 +31,7 @@
       </div>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn active">Categories</button>
+        <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
           <a href="list_categories.html">View Categories</a>
           <a href="add_category.html">Add Category</a>
@@ -68,37 +68,61 @@
     </div>
   </header>
 
-  <h1>Edit Food Category</h1>
+  <h1>Edit Food Item</h1>
 
   <form action="info-saved.html" method="post" id="survey-form">
     <div class="form">
       <p>
-        <label for="name">Category Name</label>
-        <input id="name" type="text" value="Pasta" required style="font-family: 'Times New Roman', serif;"/>
+        <label for="name">Food Item Name</label>
+        <input id="name" type="text" value="Macaroni & Cheese" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="description">Category Description</label>
-        <textarea id="description" name="description" rows="2" cols="40" required style="font-family: 'Times New Roman', serif;">All Pastas</textarea>
+        <label for="description">Food Item Description</label>
+        <textarea id="description" name="description" rows="2" cols="40" required style="font-family: 'Times New Roman', serif;">Creamy elbow macaroni baked in a rich, velvety cheese sauce and topped with a golden, crispy breadcrumb crust.</textarea>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" style="font-family: 'Times New Roman', Times, serif;" value="https://res.cloudinary.com/hz3gmuqw6/image/upload/c_fill,q_auto,w_750/f_auto/types-of-pasta-phpciJX1a" size="40"/>
+        <input id="image-url" type="url" value="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg&w=160&q=60&c=sc&poi=auto&orient=true&h=90" style="font-family: 'Times New Roman', serif;" size="40"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="active">Is this category active?</label>
-        <input id="yes-active" type="radio" value="Active" name="active" required checked/>
-        <label for="yes-active" style="font-weight: normal;">Yes</label>
-        <input id="no-active" type="radio" value="Inactive" name="active" />
-        <label for="no-active" style="font-weight: normal;">No</label>
+        <label for="category">Category</label>
+        <input id="category" type="text" value="Pasta" required style="font-family: 'Times New Roman', serif;"/>
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="cuisine">Cuisine</label>
+        <input id="cuisine" type="text" value="American" required style="font-family: 'Times New Roman', serif;"/>
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="availability">Is this item currently available?</label>
+        <input id="availability-yes" type="radio" value="yes" name="availability" required checked/>
+        <label for="availability-yes" style="font-weight: normal;">Yes</label>
+        <input id="availability-no" type="radio" value="no" name="availability" />
+        <label for="availability-no" style="font-weight: normal;">No</label>
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="vegetarian">Does this item have a vegetarian option?</label>
+        <input id="veg-yes" type="radio" value="yes" name="vegetarian" required />
+        <label for="veg-yes" style="font-weight: normal;">Yes</label>
+        <input id="veg-no" type="radio" value="no" name="vegetarian" checked/>
+        <label for="veg-no" style="font-weight: normal;">No</label>
       </p>
     </div>
 

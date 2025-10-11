@@ -1,30 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <title>Edit Food Item</title>
-  <link rel="stylesheet" href="form-styles.css">
+  <link rel="stylesheet" href="edit-id.css">
 </head>
 
 <body>
   <header class="header">
     <div class="logo">
-      <!-- If this image doesn't show, ensure the file name/path is correct. Avoid spaces or URL-encode them. -->
       <img src="chefchain-image.png" alt="ChefChain Logo" />
-      
     </div>
     <nav class="menu">
       <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
-      
+
       <div class="dropdown">
-        <button class="menu-btn dropbtn">Food Items</button>
+        <button class="menu-btn dropbtn active">Food Items</button>
         <div class="dropdown-content">
           <a href="list_fooditems.html">View Food Items</a>
           <a href="add_fooditem.html">Add Food Item</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
@@ -32,7 +29,7 @@
           <a href="add_cuisine.html">Add Cuisine</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
@@ -40,15 +37,15 @@
           <a href="add_category.html">Add Category</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
-        <button class="menu-btn dropbtn active">Restaurants</button>
+        <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
           <a href="list_restaurants.html">View Restaurants</a>
           <a href="add_restaurant.html">Add Restaurant</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
@@ -56,7 +53,7 @@
           <a href="order-request.html">Request Order</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
@@ -70,77 +67,62 @@
       <button class="signout" type="button">Sign Out</button>
     </div>
   </header>
-  <form action="info-saved.html" method="post">
-  
+
   <h1>Edit Food Item</h1>
 
-  <form id="survey-form">
-
+  <form action="info-saved.html" method="post" id="survey-form">
     <div class="form">
       <p>
         <label for="name">Food Item Name</label>
-        <input id="name" type="text" placeholder="Enter name here" required value="Classic Cheeseburger" style="font-family: 'Times New Roman', serif;"/>
+        <input id="name" type="text" value="Classic Cheeseburger" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="description">Food Item Description</label>
-        <textarea id="description" name="description" placeholder="Enter description here" rows="9" cols="40" required style="font-family: 'Times New Roman', serif;">Juicy grilled beef patty layered with melted cheddar cheese, crisp lettuce, fresh tomato, onions, and pickles, all stacked on a toasted brioche bun. Served with our signature sauce for a satisfying bite every time.</textarea>
+        <textarea id="description" name="description" rows="2" cols="40" required style="font-family: 'Times New Roman', serif;">Juicy grilled beef patty layered with melted cheddar cheese, crisp lettuce, fresh tomato, onions, and pickles.</textarea>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" placeholder="Enter URL here" size="40" style="font-family: 'Times New Roman', serif;" value="https://images.themodernproper.com/production/posts/2016/ClassicCheeseBurger_9.jpg?w=1200&h=1200&q=60&fm=jpg&fit=crop&dm=1749310239&s=463b18fc3bb51dc5d96e866c848527c4"/>
+        <input id="image-url" type="url" value="https://images.themodernproper.com/production/posts/2016/ClassicCheeseBurger_9.jpg?w=1200&h=1200&q=60&fm=jpg&fit=crop&dm=1749310239&s=463b18fc3bb51dc5d96e866c848527c4" style="font-family: 'Times New Roman', serif;" size="40"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="category">What category is this food item?</label>
-        <select id="category" name="category" required>
-          <option>Pasta</option>
-          <option>Pizza</option>
-          <option value="Cheeseburger" selected>Burger</option>
-          <option>Milkshake</option>
-        </select>
+        <label for="category">Category</label>
+        <input id="category" type="text" value="Burger" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="cuisine">What cuisine is this food item?</label>
-        <select id="cuisine" name="cuisine" required>
-          <option>Italian</option>
-          <option value="American" selected>American</option>
-          <option>Chinese</option>
-          <option>Nigerian</option>
-        </select>
+        <label for="cuisine">Cuisine</label>
+        <input id="cuisine" type="text" value="American" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="availability">Is this item currently available?</label>
-        <input id="availability" type="radio" value="yes" name="availability" required checked/>
-<label for="yes" style="font-weight: normal;">Yes</label>
- 
-        <input id="availability" type="radio" value="no" name="availability"/>
-<label for="no" style="font-weight: normal;">No</label>
+        <input id="availability-yes" type="radio" value="yes" name="availability" required checked/>
+        <label for="availability-yes" style="font-weight: normal;">Yes</label>
+        <input id="availability-no" type="radio" value="no" name="availability" />
+        <label for="availability-no" style="font-weight: normal;">No</label>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="vegetarian">Does this item have a vegetarian option?</label>
-        <input id="veg.-yes" type="radio" value="yes" name="vegetarian" required />
-<label for="yes" style="font-weight: normal;">Yes</label>
-
- <input id="
- " type="radio" value="no" name="vegetarian" checked/>
-<label for="no" style="font-weight: normal;">No</label>
+        <input id="veg-yes" type="radio" value="yes" name="vegetarian" required />
+        <label for="veg-yes" style="font-weight: normal;">Yes</label>
+        <input id="veg-no" type="radio" value="no" name="vegetarian" checked/>
+        <label for="veg-no" style="font-weight: normal;">No</label>
       </p>
     </div>
 
@@ -151,39 +133,5 @@
       </p>
     </div>
   </form>
-    <footer class="footer">
-      <div class="footer-section about">
-        <h3>About Us</h3>
-        <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
-      </div>
-  
-      <div class="footer-section links">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="list_restaurants.html">Home</a></li>
-          <li><a href="list_fooditems.html">Menu</a></li>
-          <li><a href="orders.html">Orders</a></li>
-          <li><a href="users.html">Contact</a></li>
-        </ul>
-      </div>
-  
-      <div class="footer-section contact">
-        <h3>Contact Us</h3>
-        <p>Email: dummy@we-eat.com</p>
-        <p>Phone: +123 456 7890</p>
-        <p>Address: 1-1 The Center street, First Print State, Mars</p>
-      </div>
-  
-      <div class="footer-section social">
-        <h3>Follow Us</h3>
-        <p>Stay connected on social media.</p>
-        <div class="social-icons">
-          <a href="#">Facebook</a> |
-          <a href="#">Instagram</a> |
-          <a href="#">Twitter</a>
-        </div>
-    </footer>
-  
 </body>
-
 </html>

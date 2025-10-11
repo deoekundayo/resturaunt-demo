@@ -181,7 +181,7 @@ textarea {
 
 input {
   display: block; /* so margin auto works */
-  margin: 0 auto; /* centers horizontally *//* give it a fixed width */
+  margin: 0 auto; /* centers horizontally */
   padding: 8px;
 }
 

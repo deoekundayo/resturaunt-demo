@@ -22,6 +22,16 @@ body {
   height: 100%;
 }
 
+body {
+  color: #333;
+  background-color: #f5f6fa;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -61,6 +71,7 @@ body {
   cursor: pointer;
   background-color: #fff;
 }
+
 .menu {
   display: flex;
   flex-wrap: wrap;
@@ -69,7 +80,7 @@ body {
 }
 
 .menu-btn {
-  padding: 10px 18px; /* uniform size */
+  padding: 10px 18px;
   border-radius: 6px;
   background: #fff;
   color: #333;
@@ -83,19 +94,19 @@ body {
 .menu-btn:hover {
   background: #333;
   color: #fff;
-  transform: translateY(-1px); /* subtle hover lift */
+  transform: translateY(-1px);
 }
 
 .menu-btn.active {
-  background-color: #333; /* active page highlight */
+  background-color: #333;
   color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  padding: 10px 18px; /* same size even when active */
+  padding: 10px 18px;
 }
 
 .dropbtn,
 button.menu-btn.dropbtn {
-  padding: 10px 18px !important; /* same size as menu-btn */
+  padding: 10px 18px !important;
   border-radius: 6px;
   background: #fff;
   color: #333;
@@ -114,7 +125,6 @@ button.menu-btn.dropbtn.active {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
 }
 
-/* Optional dropdown consistency */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -144,30 +154,21 @@ button.menu-btn.dropbtn.active {
   color: #fff;
 }
 
-body {
-  color: #333; /* from your original */
-  background-color: #f5f6fa; /* from your original */
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 h1 {
   position: relative;
   display: inline-block;
   width: 100%;
-  margin-bottom: -5px;
+  margin-bottom: 10px;
   text-align: center;
+  font-family: "Times New Roman", serif;
 }
 
 /* ===== Form ===== */
 form {
   width: 90%;
-  max-width: 100px;
+  max-width: 500px;
   margin: 40px auto;
-  background: #fff; /* from your original */
+  background: #fff;
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -178,11 +179,13 @@ form {
   grid-template-columns: 150px 1fr;
   align-items: center;
   margin-bottom: 15px;
+  font-family: "Times New Roman", serif;
 }
 
 label {
   text-align: right;
   margin-right: 10px;
+  font-family: "Times New Roman", serif;
 }
 
 input[type="text"],
@@ -194,9 +197,9 @@ textarea {
 
 input:focus,
 textarea:focus {
-  border: 2px solid #4caf50; /* from your original */
+  border: 2px solid #4caf50;
   outline: none;
-  background-color: #fff; /* from your original */
+  background-color: #fff;
 }
 
 input,
@@ -209,53 +212,51 @@ button {
 .buttons {
   text-align: center;
   margin-top: 20px;
-  width: 120px;
 }
 
-/* Match your original: dark primary buttons */
 .buttons button {
   margin: 0 10px;
   padding: 8px 16px;
-  background-color: #333; /* from your original */
-  color: #fff; /* from your original */
+  background-color: #333;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.2s ease;
 }
+
 .buttons button:hover {
-  background-color: #050505; /* from your original */
+  background-color: #050505;
 }
 
-/* Secondary .btn uses green and flips on hover like your original */
 .btn {
   margin: 0 10px;
   padding: 8px 16px;
-  background-color: #4caf50; /* from your original */
-  color: #fff; /* from your original */
+  background-color: #4caf50;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-weight: bold;
   transition: background-color 0.2s ease;
 }
+
 .btn:hover {
-  background-color: #333; /* from your original */
-  color: #fff; /* from your original */
+  background-color: #333;
+  color: #fff;
 }
 
 /* ===== Table Wrapper ===== */
 .table-container {
-  background: #fff; /* from your original */
+  background: #fff;
   padding: 20px 30px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   margin: 40px auto 0;
-  min-width: 640px;
   max-width: 100%;
-  overflow-x: auto; /* keep responsiveness */
+  overflow-x: auto;
 }
 
 /* ===== Table ===== */
@@ -264,231 +265,49 @@ table {
   border-collapse: collapse;
 }
 
-thead th {
-  background-color: #333; /* from your original */
-  color: #fff; /* from your original */
-}
-
-th,
-td {
-  border: 1px solid black; /* from your original */
-  padding: 15px;
-  text-align: center;
-  vertical-align: middle;
-  word-break: break-word;
-}
-
-/* Striping from your original */
-tbody tr:nth-child(even) {
-  background-color: #dbd2d2;
-} /* from your original */
-tbody tr:nth-child(odd) {
-  background-color: #4caf50;
-} /* from your original */
-tbody tr:hover {
-  background-color: #e6f7ff;
-} /* from your original */
-
-/* Images in table cells: desktop default */
-td img {
-  max-width: 100px; /* from your original */
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 8px;
-}
-
-/* Optional helpers preserved from attached file */
 .container {
   overflow-x: auto;
 }
+
 .table {
   width: 100%;
   border-collapse: collapse;
 }
 
-/* ---------- DESKTOP (kept identical) ---------- */
-@media (min-width: 1300px) {
-  /* keep your fixed desktop width and centering */
-  .header,
-  .footer {
-    width: 1298px;
-    margin: 0 auto;
-  }
-
-  /* keep table/card width feel consistent with header/footer */
-  .table-container {
-    width: 100%;
-    max-width: 1298px;
-    margin: 40px auto 0;
-  }
+thead th {
+  background-color: #333;
+  color: #fff;
 }
 
-/* ---------- GLOBAL TWEAKS FOR SMALLER VIEWPORTS ---------- */
-/* make header/footer/table-container fluid by default, desktop handled above */
-.header,
-.footer,
-.table-container {
-  width: 100%;
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ensure the table area scrolls horizontally on narrow screens (no layout break) */
-.table-container {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* buttons area shouldn't force columns too wide */
-.buttons {
+th,
+td {
+  border: 1px solid black;
+  padding: 15px;
   text-align: center;
-  margin-top: 20px;
-  width: auto; /* was 120px; fixed width can cause wrapping issues */
+  vertical-align: middle;
+  word-break: break-word;
+  font-family: "Times New Roman", serif;
 }
 
-/* ---------- TABLET: up to 1024px ---------- */
-@media (max-width: 1024px) {
-  .header {
-    gap: 12px;
-    padding: 10px 16px;
-  }
-
-  .logo img {
-    width: 36px;
-    height: 36px;
-  }
-  .logo span {
-    font-size: 1.125rem;
-  }
-
-  .auth-buttons {
-    gap: 8px;
-    flex-wrap: wrap;
-  }
-  .auth-buttons button {
-    padding: 6px 10px;
-  }
-
-  /* table legibility on tablet */
-  th,
-  td {
-    padding: 12px;
-  }
-  td img {
-    max-width: 90px;
-    border-radius: 8px;
-  }
-
-  /* footer: 2 columns on tablet */
-  .footer {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-    padding: 28px 16px;
-  }
+tbody tr:nth-child(even) {
+  background-color: #dbd2d2;
 }
 
-/* ---------- PHONE: up to 600px ---------- */
-@media (max-width: 600px) {
-  /* stack header content cleanly */
-  .header {
-    flex-wrap: wrap;
-    justify-content: center; /* center logo/buttons on tiny screens */
-    gap: 10px;
-    padding: 10px 12px;
-    border-radius: 6px;
-  }
-
-  .logo {
-    width: 100%;
-    justify-content: center;
-  }
-  .logo img {
-    width: 32px;
-    height: 32px;
-  }
-  .logo span {
-    font-size: 1rem;
-  }
-
-  .auth-buttons {
-    width: 100%;
-    justify-content: center;
-    gap: 8px;
-  }
-  .auth-buttons button {
-    padding: 6px 10px;
-    font-size: 0.95rem;
-  }
-
-  /* form: single-column labels/inputs */
-  .form-row {
-    grid-template-columns: 1fr; /* already present in your mobile block, keeping it */
-  }
-  label {
-    text-align: left;
-    margin: 0 0 6px 0;
-  }
-
-  /* table: improve fit without crushing text */
-  table {
-    table-layout: fixed;
-  } /* keeps columns predictable */
-  th,
-  td {
-    padding: 10px;
-    font-size: 14px;
-    white-space: normal;
-  }
-  td img {
-    max-width: 70px;
-    border-radius: 8px;
-  }
-
-  /* footer: stack to 1 column on phones */
-  .footer {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 24px 12px;
-  }
-  .footer h3 {
-    font-size: 1.1rem;
-  }
-  .footer p,
-  .footer a,
-  .footer li {
-    font-size: 0.95rem;
-  }
+tbody tr:nth-child(odd) {
+  background-color: #4caf50;
 }
 
-/* ---------- NICE-TO-HAVES (safe, non-desktop-changing) ---------- */
-/* keep card look but allow small screens to breathe */
-.table-container {
-  background: #fff;
-  padding: 20px 24px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+tbody tr:hover {
+  background-color: #e6f7ff;
 }
 
-/* make sure very narrow devices don't force a min width */
-@media (max-width: 640px) {
-  .table-container {
-    min-width: 0;
-  } /* overrides any previous min-widths */
+td img {
+  max-width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 8px;
 }
-
-/* keep social links readable on dark footer */
-.footer a {
-  color: #fff;
-}
-.footer a:hover {
-  color: #fff;
-  text-decoration: underline;
-}
-
-/* keep your existing striping & colors as-is (unchanged) */
 
 .footer {
   display: grid;
@@ -497,8 +316,7 @@ td img {
   background: #333;
   color: #fff;
   padding: 40px 20px;
-  width: 1298px;
-  margin-top: auto; /* sticky footer */
+  margin-top: auto;
 }
 
 .footer h3 {
@@ -529,6 +347,7 @@ td img {
 
 .footer a:hover {
   color: #fff;
+  text-decoration: underline;
 }
 
 .social-icons {
@@ -539,4 +358,150 @@ td img {
   margin: 0 5px;
   color: #4caf50;
   text-align: left;
+}
+
+/* ---------- DESKTOP ---------- */
+@media (min-width: 1300px) {
+  .header,
+  .footer {
+    width: 1298px;
+    margin: 0 auto;
+  }
+
+  .table-container {
+    width: 100%;
+    max-width: 1298px;
+    margin: 40px auto 0;
+  }
+}
+
+/* ---------- TABLET: up to 1024px ---------- */
+@media (max-width: 1024px) {
+  .header {
+    gap: 12px;
+    padding: 10px 16px;
+  }
+
+  .logo img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo span {
+    font-size: 1.125rem;
+  }
+
+  .auth-buttons {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .auth-buttons button {
+    padding: 6px 10px;
+  }
+
+  th,
+  td {
+    padding: 12px;
+  }
+
+  td img {
+    max-width: 90px;
+    border-radius: 8px;
+  }
+
+  .footer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 28px 16px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  label {
+    text-align: left;
+  }
+}
+
+/* ---------- PHONE: up to 600px ---------- */
+@media (max-width: 600px) {
+  .header {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+
+  .logo {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .logo img {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo span {
+    font-size: 1rem;
+  }
+
+  .auth-buttons {
+    width: 100%;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .auth-buttons button {
+    padding: 6px 10px;
+    font-size: 0.95rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  label {
+    text-align: left;
+    margin: 0 0 6px 0;
+  }
+
+  table {
+    table-layout: fixed;
+  }
+
+  th,
+  td {
+    padding: 10px;
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  td img {
+    max-width: 70px;
+    border-radius: 8px;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 24px 12px;
+  }
+
+  .footer h3 {
+    font-size: 1.1rem;
+  }
+
+  .footer p,
+  .footer a,
+  .footer li {
+    font-size: 0.95rem;
+  }
+
+  .table-container {
+    min-width: 0;
+  }
 }

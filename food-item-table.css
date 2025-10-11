@@ -172,7 +172,7 @@ h1 {
 }
 
 /* =========================
-     Form (kept; width sane)p
+     Form (kept; width sane)
      ========================= */
 form {
   width: min(92%, 720px);

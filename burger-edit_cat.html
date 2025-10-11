@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <title>Edit Catagory</title>
+  <title>Edit Category</title>
   <link rel="stylesheet" href="form-styles.css">
 </head>
 
 <body>
   <header class="header">
     <div class="logo">
-      <!-- If this image doesn't show, ensure the file name/path is correct. Avoid spaces or URL-encode them. -->
       <img src="chefchain-image.png" alt="ChefChain Logo" />
-      
     </div>
     <nav class="menu">
       <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
@@ -24,7 +21,7 @@
           <a href="add_fooditem.html">Add Food Item</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
@@ -32,23 +29,23 @@
           <a href="add_cuisine.html">Add Cuisine</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
-        <button class="menu-btn dropbtn">Categories</button>
+        <button class="menu-btn dropbtn active">Categories</button>
         <div class="dropdown-content">
           <a href="list_categories.html">View Categories</a>
           <a href="add_category.html">Add Category</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
-        <button class="menu-btn dropbtn active">Restaurants</button>
+        <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
           <a href="list_restaurants.html">View Restaurants</a>
           <a href="add_restaurant.html">Add Restaurant</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
@@ -56,7 +53,7 @@
           <a href="order-request.html">Request Order</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
@@ -70,23 +67,21 @@
       <button class="signout" type="button">Sign Out</button>
     </div>
   </header>
-  <form action="info-saved.html" method="post"> 
+
   <h1>Edit Food Category</h1>
-  
 
-  <form id="survey-form">
-
+  <form action="info-saved.html" method="post" id="survey-form">
     <div class="form">
       <p>
-        <label for="name">Catagory Name</label>
+        <label for="name">Category Name</label>
         <input id="name" type="text" value="Burger" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="description">Catagory Description</label>
-        <textarea id="description" name="description" rows="2" cols="40"  required style="font-family: 'Times New Roman', serif;">All Burgers</textarea>
+        <label for="description">Category Description</label>
+        <textarea id="description" name="description" rows="2" cols="40" required style="font-family: 'Times New Roman', serif;">All Burgers</textarea>
       </p>
     </div>
 
@@ -99,10 +94,10 @@
 
     <div class="form">
       <p>
-        <label for="active">Is this catagory active?</label>
+        <label for="active">Is this category active?</label>
         <input id="yes-active" type="radio" value="Active" name="active" required checked/>
         <label for="yes-active" style="font-weight: normal;">Yes</label>
-        <input id="noactive" type="radio" value="Inactive" name="active" />
+        <input id="no-active" type="radio" value="Inactive" name="active" />
         <label for="no-active" style="font-weight: normal;">No</label>
       </p>
     </div>
@@ -113,40 +108,6 @@
         <button type="submit">Save</button>
       </p>
     </div>
-
   </form>
-  <footer class="footer">
-    <div class="footer-section about">
-      <h3>About Us</h3>
-      <p>We-Eat is your go-to platform for ordering delicious meals from top restaurants.</p>
-    </div>
-
-    <div class="footer-section links">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="list_restaurants.html">Home</a></li>
-        <li><a href="list_fooditems.html">Menu</a></li>
-        <li><a href="orders.html">Orders</a></li>
-        <li><a href="users.html">Contact</a></li>
-      </ul>
-    </div>
-
-    <div class="footer-section contact">
-      <h3>Contact Us</h3>
-      <p>Email: dummy@we-eat.com</p>
-      <p>Phone: +123 456 7890</p>
-      <p>Address: 1-1 The Center street, First Print State, Mars</p>
-    </div>
-
-    <div class="footer-section social">
-      <h3>Follow Us</h3>
-      <p>Stay connected on social media.</p>
-      <div class="social-icons">
-        <a href="#">Facebook</a> |
-        <a href="#">Instagram</a> |
-        <a href="#">Twitter</a>
-      </div>
-  </footer>
 </body>
-
 </html>

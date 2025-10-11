@@ -1,158 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Users</title>
+  <link rel="stylesheet" href="table.css">
 </head>
-<link rel="stylesheet" href="table.css">
+
 <body>
-    <!-- HEADER -->
-    <header class="header">
-        <div class="logo">
-            <img src="chefchain-image.png" alt="ChefChain Logo"/>
-            
-        </div>
-        <nav class="menu">
-            <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
-            
-            <div class="dropdown">
-              <button class="menu-btn dropbtn">Food Items</button>
-              <div class="dropdown-content">
-                <a href="list_fooditems.html">View Food Items</a>
-                <a href="add_fooditem.html">Add Food Item</a>
-              </div>
-            </div>
-            
-            <div class="dropdown">
-              <button class="menu-btn dropbtn">Cuisines</button>
-              <div class="dropdown-content">
-                <a href="list_cuisines.html">View Cuisines</a>
-                <a href="add_cuisine.html">Add Cuisine</a>
-              </div>
-            </div>
-            
-            <div class="dropdown">
-              <button class="menu-btn dropbtn">Categories</button>
-              <div class="dropdown-content">
-                <a href="list_categories.html">View Categories</a>
-                <a href="add_category.html">Add Category</a>
-              </div>
-            </div>
-            
-            <div class="dropdown">
-              <button class="menu-btn dropbtn">Restaurants</button>
-              <div class="dropdown-content">
-                <a href="list_restaurants.html">View Restaurants</a>
-                <a href="add_restaurant.html">Add Restaurant</a>
-              </div>
-            </div>
-            
-            <div class="dropdown">
-              <button class="menu-btn dropbtn">Orders</button>
-              <div class="dropdown-content">
-                <a href="orders.html">View Orders</a>
-                <a href="order-request.html">Request Order</a>
-              </div>
-            </div>
-            
-            <div class="dropdown">
-              <button class="menu-btn dropbtn active">Users</button>
-              <div class="dropdown-content">
-                <a href="users.html">View Users</a>
-                <a href="add_user.html">Add User</a>
-              </div>
-            </div>
-          </nav>
-        <div class="auth-buttons">
-            <button class="signin">Sign In</button>
-            <button class="signout">Sign Out</button>
-        </div>
-    </header>
+  <header class="header">
+    <div class="logo">
+      <img src="chefchain-image.png" alt="ChefChain Logo"/>
+    </div>
+    <nav class="menu">
+      <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
 
-    <!-- MAIN CONTENT -->
-    <main class="main">
-        
-            <h1>Users</h1>
-            <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>User ID</th>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Contact Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>C101</td>
-                        <td>John Doe</td>
-                        <td><a href="mailto:john.doe@gmail.com" style="color:#050505;">john.doe@gmail.com</a></td>
-                        <td><a href="tel:9876543210" style="color:#050505;">987-654-3210</a></td>
-                    </tr>
-                    <tr>
-                        <td>C102</td>
-                        <td>Emma Smith</td>
-                        <td><a href="mailto:emma.smith@gmail.com" style="color:#050505;">emma.smith@gmail.com</a></td>
-                        <td><a href="9876543211" style="color:#050505;">987-654-3211</a></td>
-                    </tr>
-                    <tr>
-                        <td>C103</td>
-                        <td>Michael Johnson</td>
-                        <td><a href="mailto:michael.j@gmail.com" style="color:#050505;">michael.j@gmail.com</a></td>
-                        <td><a href="tel:9876543212" style="color:#050505;">987-654-3212</a></td>
-                    </tr>
-                    <tr>
-                        <td>C104</td>
-                        <td>Sarah Wilson</td>
-                        <td><a href="mailto:sarah.w@gmail.com" style="color:#050505;">sarah.w@gmail.com</a></td>
-                        <td><a href="tel:9876543213" style="color:#050505;">987-654-3213</a></td>
-                    </tr>
-                    <tr>
-                        <td>C105</td>
-                        <td>James Brown</td>
-                        <td><a href="mailto:james.b@gmail.com" style="color:#050505;">james.b@gmail.com</a></td>
-                        <td><a href="tel:9876543214" style="color:#050505;">987-654-3214</a></td>
-                    </tr>
-                    <tr>
-                        <td>C106</td>
-                        <td>Lisa Anderson</td>
-                        <td><a href="mailto:lisa.a@gmail.com" style="color:#050505;">lisa.a@gmail.com</a></td>
-                        <td><a href=tel:9876543215" style="color:#050505;">987-654-3215</a></td>
-                    </tr>
-                    <tr>
-                        <td>C107</td>
-                        <td>Robert Taylor</td>
-                        <td><a href="mailto:robert.t@gmail.com" style="color:#050505;">robert.t@gmail.com</a></td>
-                        <td><a href=tel:9876543216" style="color:#050505;">987-654-3216</a></td>
-                        
-                    </tr>
-                    <tr>
-                        <td>C108</td>
-                        <td>Emily Davis</td>
-                        <td><a href="mailto:emily.d@gmail.com" style="color:#050505;">emily.d@gmail.com</a></td>
-                        <td><a href=tel:9876543217" style="color:#050505;">987-654-3217</a></td>
-                    </tr>
-                    <tr>
-                        <td>C109</td>
-                        <td>David Miller</td>
-                        <td><a href="mailto:david.m@gmail.com" style="color:#050505;">david.m@gmail.com</a></td>
-                        <td><a href=tel:9876543218" style="color:#050505;">987-654-3218</a></td>
-                    </tr>
-                    <tr>
-                        <td>C110</td>
-                        <td>Jessica Lee</td>
-                        <td><a href="mailto:jessica.l@gmail.com" style="color:#050505;">mailto:jessica.l@gmail.com</a></td>
-                        <td><a href=tel:9876543219" style="color:#050505;">987-654-3219</a></td>
-                    </tr>
-                </tbody>
-            </table>
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Food Items</button>
+        <div class="dropdown-content">
+          <a href="list_fooditems.html">View Food Items</a>
+          <a href="add_fooditem.html">Add Food Item</a>
         </div>
-    </main>
+      </div>
 
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Cuisines</button>
+        <div class="dropdown-content">
+          <a href="list_cuisines.html">View Cuisines</a>
+          <a href="add_cuisine.html">Add Cuisine</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Categories</button>
+        <div class="dropdown-content">
+          <a href="list_categories.html">View Categories</a>
+          <a href="add_category.html">Add Category</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Restaurants</button>
+        <div class="dropdown-content">
+          <a href="list_restaurants.html">View Restaurants</a>
+          <a href="add_restaurant.html">Add Restaurant</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="menu-btn dropbtn">Orders</button>
+        <div class="dropdown-content">
+          <a href="orders.html">View Orders</a>
+          <a href="order-request.html">Request Order</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="menu-btn dropbtn active">Users</button>
+        <div class="dropdown-content">
+          <a href="users.html">View Users</a>
+          <a href="add_user.html">Add User</a>
+        </div>
+      </div>
+    </nav>
+    <div class="auth-buttons">
+      <button class="signin">Sign In</button>
+      <button class="signout">Sign Out</button>
+    </div>
+  </header>
+
+  <main class="main">
+    <h1>Users</h1>
+
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>User ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>C101</td>
+            <td>John Doe</td>
+            <td><a href="mailto:john.doe@gmail.com" style="color:#050505;">john.doe@gmail.com</a></td>
+            <td><a href="tel:9876543210" style="color:#050505;">987-654-3210</a></td>
+          </tr>
+          <tr>
+            <td>C102</td>
+            <td>Emma Smith</td>
+            <td><a href="mailto:emma.smith@gmail.com" style="color:#050505;">emma.smith@gmail.com</a></td>
+            <td><a href="tel:9876543211" style="color:#050505;">987-654-3211</a></td>
+          </tr>
+          <tr>
+            <td>C103</td>
+            <td>Michael Johnson</td>
+            <td><a href="mailto:michael.j@gmail.com" style="color:#050505;">michael.j@gmail.com</a></td>
+            <td><a href="tel:9876543212" style="color:#050505;">987-654-3212</a></td>
+          </tr>
+          <tr>
+            <td>C104</td>
+            <td>Sarah Wilson</td>
+            <td><a href="mailto:sarah.w@gmail.com" style="color:#050505;">sarah.w@gmail.com</a></td>
+            <td><a href="tel:9876543213" style="color:#050505;">987-654-3213</a></td>
+          </tr>
+          <tr>
+            <td>C105</td>
+            <td>James Brown</td>
+            <td><a href="mailto:james.b@gmail.com" style="color:#050505;">james.b@gmail.com</a></td>
+            <td><a href="tel:9876543214" style="color:#050505;">987-654-3214</a></td>
+          </tr>
+          <tr>
+            <td>C106</td>
+            <td>Lisa Anderson</td>
+            <td><a href="mailto:lisa.a@gmail.com" style="color:#050505;">lisa.a@gmail.com</a></td>
+            <td><a href="tel:9876543215" style="color:#050505;">987-654-3215</a></td>
+          </tr>
+          <tr>
+            <td>C107</td>
+            <td>Robert Taylor</td>
+            <td><a href="mailto:robert.t@gmail.com" style="color:#050505;">robert.t@gmail.com</a></td>
+            <td><a href="tel:9876543216" style="color:#050505;">987-654-3216</a></td>
+          </tr>
+          <tr>
+            <td>C108</td>
+            <td>Emily Davis</td>
+            <td><a href="mailto:emily.d@gmail.com" style="color:#050505;">emily.d@gmail.com</a></td>
+            <td><a href="tel:9876543217" style="color:#050505;">987-654-3217</a></td>
+          </tr>
+          <tr>
+            <td>C109</td>
+            <td>David Miller</td>
+            <td><a href="mailto:david.m@gmail.com" style="color:#050505;">david.m@gmail.com</a></td>
+            <td><a href="tel:9876543218" style="color:#050505;">987-654-3218</a></td>
+          </tr>
+          <tr>
+            <td>C110</td>
+            <td>Jessica Lee</td>
+            <td><a href="mailto:jessica.l@gmail.com" style="color:#050505;">jessica.l@gmail.com</a></td>
+            <td><a href="tel:9876543219" style="color:#050505;">987-654-3219</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
 </body>
-
 </html>

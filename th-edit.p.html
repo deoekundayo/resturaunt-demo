@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <title>Edit Restaurant</title>
-  <link rel="stylesheet" href="form-styles.css">
+  <link rel="stylesheet" href="edit-id.css">
 </head>
 
 <body>
   <header class="header">
     <div class="logo">
-      <img src="Logo 2.07.50 PM.webp" alt="Food Logo"/>
-      <span>We-Eat</span>
+      <img src="chefchain-image.png" alt="ChefChain Logo" />
     </div>
     <nav class="menu">
       <button class="menu-btn dropbtn" onclick="window.location.href='admindashbord.html'">Dashboard</button>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
@@ -23,7 +21,7 @@
           <a href="add_fooditem.html">Add Food Item</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
@@ -31,7 +29,7 @@
           <a href="add_cuisine.html">Add Cuisine</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
@@ -39,7 +37,7 @@
           <a href="add_category.html">Add Category</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn active">Restaurants</button>
         <div class="dropdown-content">
@@ -47,7 +45,7 @@
           <a href="add_restaurant.html">Add Restaurant</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
@@ -55,7 +53,7 @@
           <a href="order-request.html">Request Order</a>
         </div>
       </div>
-      
+
       <div class="dropdown">
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
@@ -65,16 +63,14 @@
       </div>
     </nav>
     <div class="auth-buttons">
-      <button class="signin">Sign In</button>
-      <button class="signout">Sign Out</button>
+      <button class="signin" type="button">Sign In</button>
+      <button class="signout" type="button">Sign Out</button>
     </div>
   </header>
-  <form action="info-saved.html" method="post">
-  <h1>Edit Restaurant</h1>
-  
 
-  <form id="survey-form">
-    
+  <h1>Edit Restaurant</h1>
+
+  <form action="info-saved.html" method="post" id="survey-form">
     <div class="form">
       <p>
         <label for="name">Restaurant Name</label>
@@ -85,41 +81,21 @@
     <div class="form">
       <p>
         <label for="address">Restaurant Address</label>
-        <input id="address" type="text"" value="8172 Driver road Charleston, SC" required style="font-family: 'Times New Roman', serif;"/>
+        <input id="address" type="text" value="8172 Driver road Charleston, SC" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" name="image-url" style="font-family: 'Times New Roman', serif;" value="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_760,q_65,w_640,x_4800,y_3225/v1/clients/chandler-redesign/Ginger_Monkey_127_HDR_no_logo_405eedca-205a-48f2-94a3-a2abe902dca5.jpg"/>
+        <input id="image-url" type="url" value="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_760,q_65,w_640,x_4800,y_3225/v1/clients/chandler-redesign/Ginger_Monkey_127_HDR_no_logo_405eedca-205a-48f2-94a3-a2abe902dca5.jpg" style="font-family: 'Times New Roman', serif;" size="40"/>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="phone-number">Phone Number</label>
-        <input id="phone-number" type="tel" maxlength="14" value="(843) 237-5297" required style="font-family: 'Times New Roman', serif;"/>
-<script>
-document.getElementById("phone-number").addEventListener("input", function(e) {
-  let x = e.target.value.replace(/\D/g, ""); // remove all non-digits
-  if (x.length > 0) {
-    x = "(" + x;
-  }
-  if (x.length > 4) {
-    x = x.slice(0, 4) + ")-" + x.slice(4);
-  }
-  if (x.length > 9) {
-    x = x.slice(0, 9) + "-" + x.slice(9);
-  }
-  if (x.length > 14) {
-    x = x.slice(0, 14);
-  }
-  e.target.value = x;
-});
-</script>
-      </p>
-    
+        <input id="phone-number" type="tel" value="843-237-5297" maxlength="14" required style="font-family: 'Times New Roman', serif;"/>
       </p>
     </div>
 
@@ -130,6 +106,23 @@ document.getElementById("phone-number").addEventListener("input", function(e) {
       </p>
     </div>
   </form>
+  <script>
+    document.getElementById("phone-number").addEventListener("input", function(e) {
+      let x = e.target.value.replace(/\D/g, "");
+      if (x.length > 0) {
+        x = "(" + x;
+      }
+      if (x.length > 4) {
+        x = x.slice(0, 4) + ")-" + x.slice(4);
+      }
+      if (x.length > 9) {
+        x = x.slice(0, 9) + "-" + x.slice(9);
+      }
+      if (x.length > 14) {
+        x = x.slice(0, 14);
+      }
+      e.target.value = x;
+    });
+  </script>
 </body>
-
 </html>
