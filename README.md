@@ -149,13 +149,17 @@ The main dashboard provides insights on:
 - **Active Menu Items**: Track available items and stock status
 - **Customer Satisfaction**: Rating based on recent customer reviews
 
-## 🛠️ Development
+## 🛠️ Technologies & Frameworks
 
-### File Naming Conventions
-- List pages: `list_*.html`
-- Add pages: `add_*.html`
-- Edit pages: `*-edit*.html`
-- Order pages: `order*.html`
+### Core Technologies
+- **HTML5**: Semantic markup for all pages
+- **CSS3**: Custom styling with modern CSS features
+- **Vanilla JavaScript (ES6+)**: All functionality implemented without frameworks
+
+### Design Approach
+- **No Framework Dependencies**: Built entirely with vanilla web technologies
+- **Custom CSS**: Modular CSS files for different components
+- **Lightweight**: No external dependencies for fast loading times
 
 ### CSS Organization
 - `admin.css`: Dashboard-specific styles
@@ -164,6 +168,14 @@ The main dashboard provides insights on:
 - `form-styles.css`: Form elements
 - `add_user.css`: User management styles
 - `edit-id.css`: Edit page styles
+
+## 🛠️ Development
+
+### File Naming Conventions
+- List pages: `list_*.html`
+- Add pages: `add_*.html`
+- Edit pages: `*-edit*.html`
+- Order pages: `order*.html`
 
 ## 🤝 Contributing
 
