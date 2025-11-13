@@ -12,22 +12,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Registered User IDs from the users table
   const REGISTERED_USER_IDS = [
-    'C101', 'C102', 'C103', 'C104', 'C105',
-    'C106', 'C107', 'C108', 'C109', 'C110'
+    '234567', '287654', '215432', '298765', '223456',
+    '276543', '245678', '291234', '267890', '254321'
   ];
   
   // User ID to Email mapping (from the users table)
   const USER_EMAILS = {
-    'C101': 'john.doe@gmail.com',      // John Doe
-    'C102': 'emma.smith@gmail.com',   // Emma Smith
-    'C103': 'michael.j@gmail.com',    // Michael Johnson
-    'C104': 'sarah.w@gmail.com',      // Sarah Wilson
-    'C105': 'james.b@gmail.com',      // James Brown
-    'C106': 'lisa.a@gmail.com',       // Lisa Anderson
-    'C107': 'robert.t@gmail.com',     // Robert Taylor
-    'C108': 'emily.d@gmail.com',      // Emily Davis
-    'C109': 'david.m@gmail.com',      // David Miller
-    'C110': 'jessica.l@gmail.com'    // Jessica Lee
+    '234567': 'john.doe@gmail.com',      // John Doe
+    '287654': 'emma.smith@gmail.com',   // Emma Smith
+    '215432': 'michael.j@gmail.com',    // Michael Johnson
+    '298765': 'sarah.w@gmail.com',      // Sarah Wilson
+    '223456': 'james.b@gmail.com',      // James Brown
+    '276543': 'lisa.a@gmail.com',       // Lisa Anderson
+    '245678': 'robert.t@gmail.com',     // Robert Taylor
+    '291234': 'emily.d@gmail.com',      // Emily Davis
+    '267890': 'david.m@gmail.com',      // David Miller
+    '254321': 'jessica.l@gmail.com'    // Jessica Lee
   };
   
   // Generic password that will be sent to users
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', function() {
     event.preventDefault();
     
     // Get User ID
-    const userId = userIdInput.value.trim().toUpperCase();
+    const userId = userIdInput.value.trim();
     
     // Clear previous messages
     clearMessages();

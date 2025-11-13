@@ -67,7 +67,7 @@ cd resturaunt-demo
 
 2. Open the project:
    - Start by opening `sign-in.html` to log in
-   - Use User ID (C101-C110) and password to authenticate
+   - Use User ID (234567, 287654, 215432, 298765, 223456, 276543, 245678, 291234, 267890, 254321) and password to authenticate
    - Or open `admindashbord.html` directly (will require authentication)
    - Or serve the directory using a local web server
 
@@ -172,8 +172,8 @@ The application features:
 - **Password Storage**: Secure password management using browser localStorage
 
 ### Default Credentials
-- User IDs: C101 through C110 (from registered users table)
-- Default passwords: Match the User ID (e.g., C101 → password: "C101")
+- User IDs: 234567, 287654, 215432, 298765, 223456, 276543, 245678, 291234, 267890, 254321 (from registered users table)
+- Default passwords: Match the User ID (e.g., 234567 → password: "234567")
 - Users can change their passwords after first login
 
 ### Navigation

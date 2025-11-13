@@ -12,25 +12,25 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Registered User IDs from the users table
   const REGISTERED_USER_IDS = [
-    'C101', 'C102', 'C103', 'C104', 'C105',
-    'C106', 'C107', 'C108', 'C109', 'C110'
+    '234567', '287654', '215432', '298765', '223456',
+    '276543', '245678', '291234', '267890', '254321'
   ];
   
   // User credentials mapping: User ID -> Password
   // In a real application, this would be stored securely on a server
-  // For demo purposes, default password is set to the User ID (e.g., C101 -> password: "C101")
+  // For demo purposes, default password is set to the User ID (e.g., 234567 -> password: "234567")
   // You can customize passwords for each user here
   const DEFAULT_USER_CREDENTIALS = {
-    'C101': 'C101',  // John Doe
-    'C102': 'C102',  // Emma Smith
-    'C103': 'C103',  // Michael Johnson
-    'C104': 'C104',  // Sarah Wilson
-    'C105': 'C105',  // James Brown
-    'C106': 'C106',  // Lisa Anderson
-    'C107': 'C107',  // Robert Taylor
-    'C108': 'C108',  // Emily Davis
-    'C109': 'C109',  // David Miller
-    'C110': 'C110'   // Jessica Lee
+    '234567': '234567',  // John Doe
+    '287654': '287654',  // Emma Smith
+    '215432': '215432',  // Michael Johnson
+    '298765': '298765',  // Sarah Wilson
+    '223456': '223456',  // James Brown
+    '276543': '276543',  // Lisa Anderson
+    '245678': '245678',  // Robert Taylor
+    '291234': '291234',  // Emily Davis
+    '267890': '267890',  // David Miller
+    '254321': '254321'   // Jessica Lee
   };
   
   // User credentials object (will be populated with defaults and localStorage)
@@ -88,8 +88,8 @@ document.addEventListener('DOMContentLoaded', function() {
    * @returns {boolean} - Returns true if credentials are valid, false otherwise
    */
   function validateCredentials(userId, password) {
-    // Trim whitespace and convert to uppercase for User ID (to match table format)
-    const trimmedUserId = userId.trim().toUpperCase();
+    // Trim whitespace for User ID (numeric IDs don't need uppercase conversion)
+    const trimmedUserId = userId.trim();
     const trimmedPassword = password.trim();
     
     // Check if User ID exists in registered users
@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
     clearError();
     
     // Validate the credentials
-    const trimmedUserId = enteredUsername.trim().toUpperCase();
+    const trimmedUserId = enteredUsername.trim();
     
     // Check if User ID exists in registered users
     const isUserIdRegistered = REGISTERED_USER_IDS.includes(trimmedUserId) || 

@@ -14,22 +14,22 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Registered User IDs from the users table
   const REGISTERED_USER_IDS = [
-    'C101', 'C102', 'C103', 'C104', 'C105',
-    'C106', 'C107', 'C108', 'C109', 'C110'
+    '234567', '287654', '215432', '298765', '223456',
+    '276543', '245678', '291234', '267890', '254321'
   ];
   
   // Default user credentials (same as in authentication.js)
   const DEFAULT_USER_CREDENTIALS = {
-    'C101': 'C101',
-    'C102': 'C102',
-    'C103': 'C103',
-    'C104': 'C104',
-    'C105': 'C105',
-    'C106': 'C106',
-    'C107': 'C107',
-    'C108': 'C108',
-    'C109': 'C109',
-    'C110': 'C110'
+    '234567': '234567',
+    '287654': '287654',
+    '215432': '215432',
+    '298765': '298765',
+    '223456': '223456',
+    '276543': '276543',
+    '245678': '245678',
+    '291234': '291234',
+    '267890': '267890',
+    '254321': '254321'
   };
   
   /**
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
     event.preventDefault();
     
     // Get form values
-    const userId = userIdInput.value.trim().toUpperCase();
+    const userId = userIdInput.value.trim();
     const currentPassword = currentPasswordInput.value.trim();
     const newPassword = newPasswordInput.value.trim();
     const confirmPassword = confirmPasswordInput.value.trim();
