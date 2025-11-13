@@ -46,8 +46,10 @@ ChefChain is an admin dashboard system that provides a centralized interface for
 
 ### User Management
 - View registered customers
+- Add new users to the system
 - Manage user access
 - Customer account administration
+- User authentication and password management
 
 ## 🚀 Getting Started
 
@@ -64,7 +66,9 @@ cd resturaunt-demo
 ```
 
 2. Open the project:
-   - Simply open `admindashbord.html` in your web browser to access the admin dashboard
+   - Start by opening `sign-in.html` to log in
+   - Use User ID (C101-C110) and password to authenticate
+   - Or open `admindashbord.html` directly (will require authentication)
    - Or serve the directory using a local web server
 
 ### Using a Local Server (Optional)
@@ -79,7 +83,9 @@ python -m http.server 8000
 npx http-server
 ```
 
-Then navigate to `http://localhost:8000/admindashbord.html`
+Then navigate to:
+- `http://localhost:8000/sign-in.html` (recommended - login page)
+- `http://localhost:8000/admindashbord.html` (direct dashboard access)
 
 ## 📁 Project Structure
 
@@ -119,13 +125,22 @@ resturaunt-demo/
 │   ├── add_user.html           # Add new user
 │   └── add_user.css            # User form styling
 │
+├── Authentication/
+│   ├── sign-in.html            # User login page
+│   ├── change-password.html    # Password change page
+│   ├── forgot-password.html    # Password reset page
+│   └── JS/
+│       ├── authentication.js   # Login validation logic
+│       ├── change-password.js # Password change logic
+│       └── forgot-password.js # Password reset logic
+│
 ├── Styles/
 │   ├── table.css               # Table styling
 │   ├── food-item-table.css     # Food item table styles
-│   ├── form-styles.css         # Form styling
+│   ├── form-styles.css         # Form styling (used by all forms)
 │   └── edit-id.css             # Edit page styles
 │
-└── info-saved.html             # Success confirmation page
+└── info-saved.html             # Success confirmation page with auto-redirect
 ```
 
 ## 🎨 User Interface
@@ -136,10 +151,35 @@ The application features:
 - Key metrics at a glance
 - Easy access to CRUD operations
 - Consistent styling across all pages
+- Unified form layouts across add and edit pages
+- Auto-redirect after form submissions (4-second countdown)
 
-## 🔐 Authentication
+## 🔐 Authentication & Security
 
-The dashboard includes Sign In/Sign Out buttons for user authentication (implementation pending).
+### User Authentication
+- **Sign In Page**: Secure login with User ID and password validation
+- **User ID Validation**: Validates against registered users in the system
+- **Password Protection**: Secure password-based authentication
+- **Session Management**: Authentication status tracked via sessionStorage
+
+### Password Management
+- **Change Password**: Users can update their passwords with validation
+- **Forgot Password**: Password reset functionality with email-based recovery
+- **Password Requirements**:
+  - Minimum 6 characters
+  - At least 1 number
+  - At least 1 special character
+- **Password Storage**: Secure password management using browser localStorage
+
+### Default Credentials
+- User IDs: C101 through C110 (from registered users table)
+- Default passwords: Match the User ID (e.g., C101 → password: "C101")
+- Users can change their passwords after first login
+
+### Navigation
+- All Sign In buttons redirect to `sign-in.html`
+- All Sign Out buttons redirect to `sign-in.html`
+- Consistent authentication UI across all pages
 
 ## 📊 Dashboard Metrics
 
@@ -165,9 +205,14 @@ The main dashboard provides insights on:
 - `admin.css`: Dashboard-specific styles
 - `table.css`: General table styling
 - `food-item-table.css`: Food item table styles
-- `form-styles.css`: Form elements
+- `form-styles.css`: Unified form styling (used by all add/edit forms)
 - `add_user.css`: User management styles
-- `edit-id.css`: Edit page styles
+- `edit-id.css`: Legacy edit page styles (being phased out)
+
+### JavaScript Organization
+- `JS/authentication.js`: User login validation and session management
+- `JS/change-password.js`: Password change functionality with validation
+- `JS/forgot-password.js`: Password reset and email notification logic
 
 ## 🛠️ Development
 
@@ -185,16 +230,30 @@ The main dashboard provides insights on:
 4. Push to the branch (`git push origin feature/new-feature`)
 5. Open a Pull Request
 
+## 🔄 Form Submission & Redirects
+
+All forms in the system include automatic redirect functionality:
+- After successful form submission, users are redirected to the corresponding list page
+- 4-second countdown timer shows before redirect
+- Redirect destinations:
+  - Food Items → `list_fooditems.html`
+  - Cuisines → `list_cuisines.html`
+  - Categories → `list_categories.html`
+  - Restaurants → `list_restaurants.html`
+  - Users → `users.html`
+  - Orders → `orders.html`
+
 ## 📝 Future Enhancements
 
 - Backend integration for data persistence
-- Real authentication system
+- Server-side authentication and session management
 - API integration for order processing
 - Mobile application
 - Advanced analytics and reporting
 - Multi-language support
 - Payment gateway integration
 - Real-time notifications
+- Email service integration for password resets
 
 ## 📄 License
 
