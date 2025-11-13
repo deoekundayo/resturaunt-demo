@@ -63,14 +63,14 @@
       </div>
     </nav>
     <div class="auth-buttons">
-      <button class="signin" type="button">Sign In</button>
-      <button class="signout" type="button">Sign Out</button>
+      <button class="signin" type="button" onclick="window.location.href='sign-in.html'">Sign In</button>
+      <button class="signout" type="button" onclick="window.location.href='sign-in.html'">Sign Out</button>
     </div>
   </header>
 
   <h1>Add Restaurant</h1>
 
-  <form action="info-saved.html" method="post" id="survey-form">
+  <form action="info-saved.html?redirect=list_restaurants.html" method="post" id="survey-form">
     <div class="form">
       <p>
         <label for="name">Restaurant Name</label>

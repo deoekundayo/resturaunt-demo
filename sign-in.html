@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign In - ChefChain</title>
+  <link rel="stylesheet" href="form-styles.css">
+  <style>
+    .sign-in-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: calc(100vh - 100px);
+      padding: 20px;
+    }
+    
+    .sign-in-form {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 450px;
+      padding: 40px;
+      width: 100%;
+    }
+    
+    .sign-in-form h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #444;
+      font-weight: 600;
+      text-align: left;
+      font-family: "Times New Roman", serif;
+    }
+    
+    .form-group input[type="text"],
+    .form-group input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-family: "Times New Roman", serif;
+      font-size: 16px;
+    }
+    
+    .form-group input[type="text"]:focus,
+    .form-group input[type="password"]:focus {
+      border: 2px solid #4caf50;
+      outline: none;
+    }
+    
+    #message {
+      display: none;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 5px;
+      text-align: center;
+      font-family: "Times New Roman", serif;
+      font-size: 14px;
+    }
+    
+    .sign-in-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: "Times New Roman", serif;
+      transition: background-color 0.3s ease;
+    }
+    
+    .sign-in-button:hover {
+      background-color: #45a049;
+    }
+    
+    .sign-in-button:active {
+      transform: scale(0.98);
+    }
+    
+    .add-user-button {
+      width: 100%;
+      padding: 12px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      font-family: "Times New Roman", serif;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+    
+    .add-user-button:hover {
+      background-color: #555;
+    }
+    
+    .add-user-button:active {
+      transform: scale(0.98);
+    }
+    
+    .forgot-password-link {
+      display: block;
+      text-align: right;
+      margin-top: 8px;
+      margin-bottom: 0;
+      color: #333;
+      font-size: 14px;
+      font-family: "Times New Roman", serif;
+    }
+    
+    .forgot-password-link a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .forgot-password-link a:hover {
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 480px) {
+      .sign-in-form {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="logo">
+      <img src="chefchain-image.png" alt="ChefChain Logo" />
+    </div>
+  </header>
+
+  <div class="sign-in-container">
+    <form id="signInForm" class="sign-in-form">
+      <h1>User Login</h1>
+      
+      <div class="form-group">
+        <label for="userName">User ID</label>
+        <input 
+          type="text" 
+          id="userName" 
+          name="userName" 
+          placeholder="Enter your user ID" 
+          required 
+          autocomplete="username"
+        />
+      </div>
+      
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input 
+          type="password" 
+          id="password" 
+          name="password" 
+          placeholder="Enter your password" 
+          required 
+          autocomplete="current-password"
+        />
+        <div class="forgot-password-link">
+          <a href="forgot-password.html">Forgot Password?</a> | 
+          <a href="change-password.html">Change Password</a>
+        </div>
+      </div>
+      
+      <div id="message"></div>
+      
+      <button type="submit" class="sign-in-button" style="width: 100%;">Sign In</button>
+      <button type="button" onclick="window.location.href='add_user.html'" class="add-user-button">Add New User</button>
+    </form>
+  </div>
+
+  <script src="JS/authentication.js"></script>
+</body>
+</html>
+

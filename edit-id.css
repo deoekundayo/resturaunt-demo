@@ -179,11 +179,14 @@ textarea {
   text-align: center;
 }
 
-input {
+input,
+select {
   display: block; /* so margin auto works */
   margin: 0 auto; /* centers horizontally */
   width: 120px; /* give it a fixed width */
   padding: 8px;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 input:focus,
