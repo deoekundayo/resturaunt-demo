@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Edit Restaurant</title>
+  <title>Category Form</title>
   <link rel="stylesheet" href="form-styles.css">
 </head>
 
@@ -18,7 +18,7 @@
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
           <a href="list_fooditems.html">View Food Items</a>
-          <a href="add_fooditem.html">Add Food Item</a>
+          <a href="form_fooditem.html">Add Food Item</a>
         </div>
       </div>
 
@@ -26,23 +26,23 @@
         <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
           <a href="list_cuisines.html">View Cuisines</a>
-          <a href="add_cuisine.html">Add Cuisine</a>
+          <a href="form_cuisine.html">Add Cuisine</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn">Categories</button>
+        <button class="menu-btn dropbtn active">Categories</button>
         <div class="dropdown-content">
           <a href="list_categories.html">View Categories</a>
-          <a href="add_category.html">Add Category</a>
+          <a href="form_category.html">Add Category</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn active">Restaurants</button>
+        <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
           <a href="list_restaurants.html">View Restaurants</a>
-          <a href="add_restaurant.html">Add Restaurant</a>
+          <a href="form_restaurant.html">Add Restaurant</a>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
           <a href="orders.html">View Orders</a>
-          <a href="order-request.html">Request Order</a>
+          <a href="form_order.html">Request Order</a>
         </div>
       </div>
 
@@ -58,44 +58,48 @@
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
           <a href="users.html">View Users</a>
-          <a href="add_user.html">Add User</a>
+          <a href="form_user.html">Add User</a>
         </div>
       </div>
     </nav>
+
     <div class="auth-buttons">
       <button class="signin" type="button" onclick="window.location.href='sign-in.html'">Sign In</button>
       <button class="signout" type="button" onclick="window.location.href='sign-in.html'">Sign Out</button>
     </div>
   </header>
 
-  <h1>Edit Restaurant</h1>
+  <h1>Add Food Category</h1>
 
-  <form action="info-saved.html?redirect=list_restaurants.html" method="post" id="survey-form">
+  <form id="survey-form">
     <div class="form">
       <p>
-        <label for="name">Restaurant Name</label>
-        <input id="name" type="text" value="Taste Hut" required style="font-family: 'Times New Roman', serif;"/>
+        <label for="name">Category Name</label>
+        <input id="name" type="text" placeholder="Enter name here" style="font-family: 'Times New Roman', serif;" required/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="address">Restaurant Address</label>
-        <input id="address" type="text" value="8172 Driver road Charleston, SC" required style="font-family: 'Times New Roman', serif;"/>
+        <label for="description">Category Description</label>
+        <textarea id="description" name="description" placeholder="Enter description here" rows="2" cols="40" style="font-family: 'Times New Roman', serif;" required></textarea>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" value="https://assets.simpleviewinc.com/simpleview/image/upload/c_fill,f_jpg,g_xy_center,h_760,q_65,w_640,x_4800,y_3225/v1/clients/chandler-redesign/Ginger_Monkey_127_HDR_no_logo_405eedca-205a-48f2-94a3-a2abe902dca5.jpg" style="font-family: 'Times New Roman', serif;" size="40"/>
+        <input id="image-url" type="url" placeholder="Enter URL here" size="40" style="font-family: 'Times New Roman', serif;" />
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="phone-number">Phone Number</label>
-        <input id="phone-number" type="tel" value="843-237-5297" maxlength="14" required style="font-family: 'Times New Roman', serif;"/>
+        <label for="active">Is this category active?</label>
+        <input id="yes-active" type="radio" value="Active" name="active" required/>
+        <label for="yes-active" style="font-weight: normal;">Yes</label>
+        <input id="no-active" type="radio" value="Inactive" name="active" />
+        <label for="no-active" style="font-weight: normal;">No</label>
       </p>
     </div>
 
@@ -106,23 +110,12 @@
       </p>
     </div>
   </form>
+
+  <script src="JS/utils.js"></script>
+  <script src="JS/form-handlers.js"></script>
   <script>
-    document.getElementById("phone-number").addEventListener("input", function(e) {
-      let x = e.target.value.replace(/\D/g, "");
-      if (x.length > 0) {
-        x = "(" + x;
-      }
-      if (x.length > 4) {
-        x = x.slice(0, 4) + ")-" + x.slice(4);
-      }
-      if (x.length > 9) {
-        x = x.slice(0, 9) + "-" + x.slice(9);
-      }
-      if (x.length > 14) {
-        x = x.slice(0, 14);
-      }
-      e.target.value = x;
-    });
+    handleCategoryForm();
   </script>
 </body>
 </html>
+

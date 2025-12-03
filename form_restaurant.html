@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Edit Cuisine</title>
+  <title>Restaurant Form</title>
   <link rel="stylesheet" href="form-styles.css">
 </head>
 
@@ -18,15 +18,15 @@
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
           <a href="list_fooditems.html">View Food Items</a>
-          <a href="add_fooditem.html">Add Food Item</a>
+          <a href="form_fooditem.html">Add Food Item</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn active">Cuisines</button>
+        <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
           <a href="list_cuisines.html">View Cuisines</a>
-          <a href="add_cuisine.html">Add Cuisine</a>
+          <a href="form_cuisine.html">Add Cuisine</a>
         </div>
       </div>
 
@@ -34,15 +34,15 @@
         <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
           <a href="list_categories.html">View Categories</a>
-          <a href="add_category.html">Add Category</a>
+          <a href="form_category.html">Add Category</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn">Restaurants</button>
+        <button class="menu-btn dropbtn active">Restaurants</button>
         <div class="dropdown-content">
           <a href="list_restaurants.html">View Restaurants</a>
-          <a href="add_restaurant.html">Add Restaurant</a>
+          <a href="form_restaurant.html">Add Restaurant</a>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
           <a href="orders.html">View Orders</a>
-          <a href="order-request.html">Request Order</a>
+          <a href="form_order.html">Request Order</a>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
           <a href="users.html">View Users</a>
-          <a href="add_user.html">Add User</a>
+          <a href="form_user.html">Add User</a>
         </div>
       </div>
     </nav>
@@ -68,37 +68,34 @@
     </div>
   </header>
 
-  <h1>Edit Cuisine</h1>
+  <h1>Add Restaurant</h1>
 
-  <form action="info-saved.html?redirect=list_cuisines.html" method="post" id="survey-form">
+  <form id="survey-form">
     <div class="form">
       <p>
-        <label for="name">Cuisine Name</label>
-        <input id="name" type="text" value="Italian" required style="font-family:'Times New Roman', serif;"/>
+        <label for="name">Restaurant Name</label>
+        <input id="name" type="text" placeholder="Enter name here" required style="font-family: 'Times New Roman', Times, serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="description">Cuisine Description</label>
-        <input id="description" type="text" value="All Italian" style="font-family: 'Times New Roman', serif;" required/>
+        <label for="address">Restaurant Address</label>
+        <input id="address" type="text" placeholder="Enter address here" required style="font-family: 'Times New Roman', Times, serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" style="font-family: 'Times New Roman', serif;" value="https://static.wixstatic.com/media/2cbff6_ac782b0eaff94ec0881f0299fdb76ab6~mv2.jpg/v1/fill/w_528,h_410,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/2cbff6_ac782b0eaff94ec0881f0299fdb76ab6~mv2.jpg" size="40" />
+        <input id="image-url" type="url" name="image-url" placeholder="Enter URL here" size="40" style="font-family: 'Times New Roman', Times, serif;" />
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="yes-active">Is this cuisine currently active?</label>
-        <input id="yes-active" type="radio" value="yes-active" name="active" required checked/>
-        <label for="yes-active" style="font-weight: normal;">Yes</label>
-        <input id="no-active" type="radio" value="no-active" name="active" />
-        <label for="no-active" style="font-weight: normal;">No</label>
+        <label for="phone-number" style="display: block; text-align: left;">Phone Number</label>
+        <input id="phone-number" style="font-family: 'Times New Roman', Times, serif;" type="tel" maxlength="14" placeholder="Enter number here" required/>
       </p>
     </div>
 
@@ -109,5 +106,12 @@
       </p>
     </div>
   </form>
+
+  <script src="JS/utils.js"></script>
+  <script src="JS/form-handlers.js"></script>
+  <script>
+    handleRestaurantForm();
+  </script>
 </body>
 </html>
+

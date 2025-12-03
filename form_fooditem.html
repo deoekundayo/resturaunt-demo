@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Edit Food Item</title>
+  <title>Food Item Form</title>
   <link rel="stylesheet" href="form-styles.css">
 </head>
 
@@ -18,7 +18,7 @@
         <button class="menu-btn dropbtn active">Food Items</button>
         <div class="dropdown-content">
           <a href="list_fooditems.html">View Food Items</a>
-          <a href="add_fooditem.html">Add Food Item</a>
+          <a href="form_fooditem.html">Add Food Item</a>
         </div>
       </div>
 
@@ -26,7 +26,7 @@
         <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
           <a href="list_cuisines.html">View Cuisines</a>
-          <a href="add_cuisine.html">Add Cuisine</a>
+          <a href="form_cuisine.html">Add Cuisine</a>
         </div>
       </div>
 
@@ -34,7 +34,7 @@
         <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
           <a href="list_categories.html">View Categories</a>
-          <a href="add_category.html">Add Category</a>
+          <a href="form_category.html">Add Category</a>
         </div>
       </div>
 
@@ -42,7 +42,7 @@
         <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
           <a href="list_restaurants.html">View Restaurants</a>
-          <a href="add_restaurant.html">Add Restaurant</a>
+          <a href="form_restaurant.html">Add Restaurant</a>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
           <a href="orders.html">View Orders</a>
-          <a href="order-request.html">Request Order</a>
+          <a href="form_order.html">Request Order</a>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
           <a href="users.html">View Users</a>
-          <a href="add_user.html">Add User</a>
+          <a href="form_user.html">Add User</a>
         </div>
       </div>
     </nav>
@@ -68,50 +68,54 @@
     </div>
   </header>
 
-  <h1>Edit Food Item</h1>
+  <h1>Add Food Item</h1>
 
-  <form action="info-saved.html?redirect=list_fooditems.html" method="post" id="survey-form">
+  <form id="survey-form">
     <div class="form">
       <p>
         <label for="name">Food Item Name</label>
-        <input id="name" type="text" value="Classic Hotdog" required style="font-family: 'Times New Roman', serif;"/>
+        <input id="name" type="text" placeholder="Enter name here" required style="font-family: 'Times New Roman', Times, serif;" />
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="description">Food Item Description</label>
-        <textarea id="description" name="description" rows="2" cols="40" required style="font-family: 'Times New Roman', serif;">A grilled all-beef frank nestled in a soft, toasted bun, topped with your choice of ketchup, mustard, relish, and onions.</textarea>
+        <textarea id="description" name="description" placeholder="Enter description here" rows="2" cols="40" required style="font-family: 'Times New Roman', Times, serif;"></textarea>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" value="https://images.ctfassets.net/hhv516v5f7sj/6qGAfeOJOREdrdA3cDUrB8/42ed66b48dc251c6b17630846fd78d5e/selling-page-hotdog-C118-group3-1000x1000.png?w=3840&q=75&fm=webp" style="font-family: 'Times New Roman', serif;" size="40"/>
+        <input id="image-url" type="url" placeholder="Enter URL here" size="40" style="font-family: 'Times New Roman', Times, serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="category">Category</label>
-        <input id="category" type="text" value="Sandwich" required style="font-family: 'Times New Roman', serif;"/>
+        <label for="category">What category is this food item?</label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>-- Select a category --</option>
+        </select>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="cuisine">Cuisine</label>
-        <input id="cuisine" type="text" value="American" required style="font-family: 'Times New Roman', serif;"/>
+        <label for="cuisine">What cuisine is this food item?</label>
+        <select id="cuisine" name="cuisine" required>
+          <option value="" disabled selected>-- Select a cuisine --</option>
+        </select>
       </p>
     </div>
 
     <div class="form">
       <p>
         <label for="availability">Is this item currently available?</label>
-        <input id="availability-yes" type="radio" value="yes" name="availability" required />
+        <input id="availability-yes" type="radio" value="yes" name="availability" required/>
         <label for="availability-yes" style="font-weight: normal;">Yes</label>
-        <input id="availability-no" type="radio" value="no" name="availability" checked/>
+        <input id="availability-no" type="radio" value="no" name="availability"/>
         <label for="availability-no" style="font-weight: normal;">No</label>
       </p>
     </div>
@@ -119,9 +123,9 @@
     <div class="form">
       <p>
         <label for="vegetarian">Does this item have a vegetarian option?</label>
-        <input id="veg-yes" type="radio" value="yes" name="vegetarian" required />
+        <input id="veg-yes" type="radio" value="yes" name="vegetarian" required/>
         <label for="veg-yes" style="font-weight: normal;">Yes</label>
-        <input id="veg-no" type="radio" value="no" name="vegetarian" checked/>
+        <input id="veg-no" type="radio" value="no" name="vegetarian"/>
         <label for="veg-no" style="font-weight: normal;">No</label>
       </p>
     </div>
@@ -133,5 +137,12 @@
       </p>
     </div>
   </form>
+
+  <script src="JS/utils.js"></script>
+  <script src="JS/form-handlers.js"></script>
+  <script>
+    handleFoodItemForm();
+  </script>
 </body>
 </html>
+

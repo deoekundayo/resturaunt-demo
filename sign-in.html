@@ -176,19 +176,24 @@
           autocomplete="current-password"
         />
         <div class="forgot-password-link">
-          <a href="forgot-password.html">Forgot Password?</a> | 
-          <a href="change-password.html">Change Password</a>
+          <a href="#" id="forgotPasswordLink" onclick="event.preventDefault(); showForgotPasswordModal();">Forgot Password?</a> 
         </div>
       </div>
       
       <div id="message"></div>
       
-      <button type="submit" class="sign-in-button" style="width: 100%;">Sign In</button>
-      <button type="button" onclick="window.location.href='add_user.html'" class="add-user-button">Add New User</button>
+      <div class="buttons">
+        <p>
+          <button type="button" onclick="window.location.href='form_user.html'" style="background-color: #333; color: #fff; width: 200px;">Add New User</button>
+          <button type="submit">Sign In</button>
+        </p>
+      </div>
     </form>
   </div>
 
   <script src="JS/authentication.js"></script>
+  <script src="JS/email-templates.js"></script>
+  <script src="JS/forgot-password-modal.js"></script>
 </body>
 </html>
 

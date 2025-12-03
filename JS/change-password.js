@@ -12,6 +12,57 @@ document.addEventListener('DOMContentLoaded', function() {
   const confirmPasswordInput = document.getElementById('confirmPassword');
   const messageElement = document.getElementById('message');
   
+  // Check if user came from password reset link
+  const urlParams = new URLSearchParams(window.location.search);
+  const resetToken = urlParams.get('token');
+  const userIdFromLink = urlParams.get('userId');
+  
+  // If coming from reset link, validate token and pre-fill userId
+  if (resetToken && userIdFromLink) {
+    // Validate reset token
+    try {
+      const stored = localStorage.getItem('passwordResetTokens');
+      if (stored) {
+        const resetTokens = JSON.parse(stored);
+        const tokenData = resetTokens[userIdFromLink];
+        
+        if (tokenData && tokenData.token === resetToken) {
+          // Check if token is expired
+          if (Date.now() > tokenData.expires) {
+            alert('This password reset link has expired. Please request a new one.');
+            window.location.href = 'sign-in.html';
+            return;
+          }
+          
+          // Token is valid, pre-fill userId and hide the field
+          userIdInput.value = userIdFromLink;
+          document.getElementById('userIdGroup').style.display = 'none';
+          userIdInput.required = false;
+          
+          // Focus on current password field
+          setTimeout(() => currentPasswordInput.focus(), 100);
+        } else {
+          alert('Invalid password reset link. Please request a new one.');
+          window.location.href = 'sign-in.html';
+          return;
+        }
+      } else {
+        alert('Invalid password reset link. Please request a new one.');
+        window.location.href = 'sign-in.html';
+        return;
+      }
+    } catch (e) {
+      console.error('Error validating reset token:', e);
+      alert('Error validating reset link. Please try again.');
+      window.location.href = 'sign-in.html';
+      return;
+    }
+  } else {
+    // Not from reset link, show userId field
+    document.getElementById('userIdGroup').style.display = 'flex';
+    userIdInput.required = true;
+  }
+  
   // Registered User IDs from the users table
   const REGISTERED_USER_IDS = [
     '234567', '287654', '215432', '298765', '223456',
@@ -200,18 +251,22 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Save new password
     if (savePassword(userId, newPassword)) {
-      showMessage('Password changed successfully! Redirecting to sign-in page...', false);
-      
       // Clear form
       userIdInput.value = '';
       currentPasswordInput.value = '';
       newPasswordInput.value = '';
       confirmPasswordInput.value = '';
       
-      // Redirect to sign-in page after 2 seconds
-      setTimeout(function() {
-        window.location.href = 'sign-in.html';
-      }, 2000);
+      // Show success message popup and redirect
+      if (typeof showSuccessMessage === 'function') {
+        showSuccessMessage('Password changed successfully!', 'sign-in.html', 2000);
+      } else {
+        // Fallback if success message function is not available
+        showMessage('Password changed successfully! Redirecting to sign-in page...', false);
+        setTimeout(function() {
+          window.location.href = 'sign-in.html';
+        }, 2000);
+      }
     } else {
       showMessage('Error saving password. Please try again.', true);
     }

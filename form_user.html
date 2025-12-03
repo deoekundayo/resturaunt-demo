@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>View/Edit Order</title>
-  <link rel="stylesheet" href="edit-id.css">
+  <title>User Form</title>
+  <link rel="stylesheet" href="add_user.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
           <a href="list_fooditems.html">View Food Items</a>
-          <a href="add_fooditem.html">Add Food Item</a>
+          <a href="form_fooditem.html">Add Food Item</a>
         </div>
       </div>
 
@@ -26,7 +26,7 @@
         <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
           <a href="list_cuisines.html">View Cuisines</a>
-          <a href="add_cuisine.html">Add Cuisine</a>
+          <a href="form_cuisine.html">Add Cuisine</a>
         </div>
       </div>
 
@@ -34,7 +34,7 @@
         <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
           <a href="list_categories.html">View Categories</a>
-          <a href="add_category.html">Add Category</a>
+          <a href="form_category.html">Add Category</a>
         </div>
       </div>
 
@@ -42,71 +42,54 @@
         <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
           <a href="list_restaurants.html">View Restaurants</a>
-          <a href="add_restaurant.html">Add Restaurant</a>
+          <a href="form_restaurant.html">Add Restaurant</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn active">Orders</button>
+        <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
           <a href="orders.html">View Orders</a>
-          <a href="order-request.html">Request Order</a>
+          <a href="form_order.html">Request Order</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn">Users</button>
+        <button class="menu-btn dropbtn active">Users</button>
         <div class="dropdown-content">
           <a href="users.html">View Users</a>
-          <a href="add_user.html">Add User</a>
+          <a href="form_user.html">Add User</a>
         </div>
       </div>
     </nav>
+
     <div class="auth-buttons">
       <button class="signin" type="button" onclick="window.location.href='sign-in.html'">Sign In</button>
       <button class="signout" type="button" onclick="window.location.href='sign-in.html'">Sign Out</button>
     </div>
   </header>
 
-  <h1>View/Edit Order</h1>
+  <h1>Add User</h1>
 
-  <form action="info-saved.html?redirect=orders.html" method="post" id="survey-form">
+  <form id="survey-form">
     <div class="form">
       <p>
-        <label for="order-id">Order ID</label>
-        <input id="order-id" type="text" value="ORD005" style="font-family: 'Times New Roman', serif;" required/>
+        <label for="name">Name</label>
+        <input id="name" type="text" placeholder="Enter name here" required style="font-family: 'Times New Roman', Times, serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="order-content">Order Content</label>
-        <input id="order-content" type="text" value="Sandwiches" style="font-family: 'Times New Roman', serif;" required/>
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="Enter email here" style="font-family: 'Times New Roman', Times, serif;"/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="date">Order Date</label>
-        <input type="date" id="date" name="date" value="2020-06-21" style="font-family: 'Times New Roman', serif;" min="2020-01-01" max="2025-12-31">
-      </p>
-    </div>
-
-    <div class="form">
-      <p>
-        <label for="order-status">Order Status</label>
-        <select id="order-status" name="order-status" style="font-family: 'Times New Roman', serif;">
-          <option value="Delivered" selected>Delivered</option>
-          <option value="Pending Delivery">Pending Delivery</option>
-          <option value="Not Delivered">Not Delivered</option>
-        </select>
-      </p>
-    </div>
-
-    <div class="form">
-      <p>
-        <label for="quantity">Quantity</label>
-        <input id="quantity" type="number" value="500" size="40" style="font-family: 'Times New Roman', serif;" />
+        <label for="contact-number">Contact Number</label>
+        <input id="contact-number" style="font-family: 'Times New Roman', Times, serif;" type="tel" maxlength="14" placeholder="Enter number here" required/>
       </p>
     </div>
 
@@ -117,5 +100,12 @@
       </p>
     </div>
   </form>
+
+  <script src="JS/utils.js"></script>
+  <script src="JS/form-handlers.js"></script>
+  <script>
+    handleUserForm();
+  </script>
 </body>
 </html>
+

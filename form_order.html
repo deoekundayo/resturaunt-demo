@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Edit Restaurant</title>
-  <link rel="stylesheet" href="form-styles.css">
+  <title>Order Form</title>
+  <link rel="stylesheet" href="edit-id.css">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
           <a href="list_fooditems.html">View Food Items</a>
-          <a href="add_fooditem.html">Add Food Item</a>
+          <a href="form_fooditem.html">Add Food Item</a>
         </div>
       </div>
 
@@ -26,7 +26,7 @@
         <button class="menu-btn dropbtn">Cuisines</button>
         <div class="dropdown-content">
           <a href="list_cuisines.html">View Cuisines</a>
-          <a href="add_cuisine.html">Add Cuisine</a>
+          <a href="form_cuisine.html">Add Cuisine</a>
         </div>
       </div>
 
@@ -34,23 +34,23 @@
         <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
           <a href="list_categories.html">View Categories</a>
-          <a href="add_category.html">Add Category</a>
+          <a href="form_category.html">Add Category</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn active">Restaurants</button>
+        <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
           <a href="list_restaurants.html">View Restaurants</a>
-          <a href="add_restaurant.html">Add Restaurant</a>
+          <a href="form_restaurant.html">Add Restaurant</a>
         </div>
       </div>
 
       <div class="dropdown">
-        <button class="menu-btn dropbtn">Orders</button>
+        <button class="menu-btn dropbtn active">Orders</button>
         <div class="dropdown-content">
           <a href="orders.html">View Orders</a>
-          <a href="order-request.html">Request Order</a>
+          <a href="form_order.html">Request Order</a>
         </div>
       </div>
 
@@ -58,7 +58,7 @@
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
           <a href="users.html">View Users</a>
-          <a href="add_user.html">Add User</a>
+          <a href="form_user.html">Add User</a>
         </div>
       </div>
     </nav>
@@ -68,34 +68,45 @@
     </div>
   </header>
 
-  <h1>Edit Restaurant</h1>
+  <h1>Order Request</h1>
 
-  <form action="info-saved.html?redirect=list_restaurants.html" method="post" id="survey-form">
+  <form id="survey-form">
     <div class="form">
       <p>
-        <label for="name">Restaurant Name</label>
-        <input id="name" type="text" value="The Grill" required style="font-family: 'Times New Roman', serif;"/>
+        <label for="order-id">Order ID</label>
+        <input id="order-id" type="text" placeholder="Enter ID" style="font-family: 'Times New Roman', serif;" required/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="address">Restaurant Address</label>
-        <input id="address" type="text" value="2737 North Stockton boulevard Atlanta, GA" required style="font-family: 'Times New Roman', serif;"/>
+        <label for="order-content">Order Content</label>
+        <input id="order-content" type="text" placeholder="Enter contents" style="font-family: 'Times New Roman', serif;" required/>
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="image-url">Image URL</label>
-        <input id="image-url" type="url" value="https://assets.bonappetit.com/photos/57d6d72babffea600db60d74/master/pass/tbd-restaurant-grillworks.jpg" style="font-family: 'Times New Roman', serif;" size="40"/>
+        <label for="date">Order Date</label>
+        <input type="date" id="date" name="date" style="font-family: 'Times New Roman', serif;" min="2025-10-01">
       </p>
     </div>
 
     <div class="form">
       <p>
-        <label for="phone-number">Phone Number</label>
-        <input id="phone-number" type="tel" value="404-295-9869" maxlength="14" required style="font-family: 'Times New Roman', serif;"/>
+        <label for="order-status">Order Status</label>
+        <select id="order-status" name="order-status" style="font-family: 'Times New Roman', serif;">
+          <option value="Delivered">Delivered</option>
+          <option value="Pending Delivery">Pending Delivery</option>
+          <option value="Not Delivered">Not Delivered</option>
+        </select>
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="quantity">Quantity</label>
+        <input id="quantity" type="number" size="40" style="font-family: 'Times New Roman', serif;" />
       </p>
     </div>
 
@@ -106,23 +117,12 @@
       </p>
     </div>
   </form>
+
+  <script src="JS/utils.js"></script>
+  <script src="JS/form-handlers.js"></script>
   <script>
-    document.getElementById("phone-number").addEventListener("input", function(e) {
-      let x = e.target.value.replace(/\D/g, "");
-      if (x.length > 0) {
-        x = "(" + x;
-      }
-      if (x.length > 4) {
-        x = x.slice(0, 4) + ")-" + x.slice(4);
-      }
-      if (x.length > 9) {
-        x = x.slice(0, 9) + "-" + x.slice(9);
-      }
-      if (x.length > 14) {
-        x = x.slice(0, 14);
-      }
-      e.target.value = x;
-    });
+    handleOrderForm();
   </script>
 </body>
 </html>
+
