@@ -81,92 +81,63 @@
             <th>Order Date</th>
             <th>Order Status</th>
             <th>Quantity</th>
+            <th>Order Value</th>
             <th>View/Edit</th>
             <th>User/Client Id</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>ORD001</td>
-            <td>2020-01-12</td>
-            <td>Delivered</td>
-            <td>100</td>
-            <td class="buttons">
-              <a href="form_order.html?id=1">
-                <button type="button">👁 ✏️</button>
-              </a>
-            </td>
-            <td>298765</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>ORD002</td>
-            <td>2020-02-04</td>
-            <td>Delivered</td>
-            <td>300</td>
-            <td class="buttons">
-              <a href="form_order.html?id=2">
-                <button type="button">👁 ✏️</button>
-              </a>
-            </td>
-            <td>287654</td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>ORD003</td>
-            <td>2020-03-07</td>
-            <td>Delivered</td>
-            <td>200</td>
-            <td class="buttons">
-              <a href="form_order.html?id=3">
-                <button type="button">👁 ✏️</button>
-              </a>
-            </td>
-            <td>298765</td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>ORD004</td>
-            <td>2020-04-04</td>
-            <td>Delivered</td>
-            <td>200</td>
-            <td class="buttons">
-              <a href="form_order.html?id=4">
-                <button type="button">👁 ✏️</button>
-              </a>
-            </td>
-            <td>234567</td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>ORD005</td>
-            <td>2020-06-21</td>
-            <td>Delivered</td>
-            <td>500</td>
-            <td class="buttons">
-              <a href="form_order.html?id=5">
-                <button type="button">👁 ✏️</button>
-              </a>
-            </td>
-            <td>234567</td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>ORD006</td>
-            <td>2020-07-05</td>
-            <td>Delivered</td>
-            <td>500</td>
-            <td class="buttons">
-              <a href="form_order.html?id=6">
-                <button type="button">👁 ✏️</button>
-              </a>
-            </td>
-            <td>276543</td>
-          </tr>
+        <tbody id="orders-tbody">
         </tbody>
       </table>
     </div>
   </main>
+  <script>
+    (function() {
+      const AVG_ORDER_VALUE = 22.40;
+      const TOTAL_ORDERS = 1284;
+      const STATUSES = ['Delivered', 'Delivered', 'Delivered', 'Processing', 'Pending', 'Shipped'];
+      const tbody = document.getElementById('orders-tbody');
+      if (!tbody) return;
+
+      function randomInRange(min, max) {
+        return min + Math.random() * (max - min);
+      }
+      function formatDollars(n) {
+        return '$' + n.toFixed(2);
+      }
+      function pad(n, len) {
+        return String(n).padStart(len, '0');
+      }
+      function randomClientId() {
+        return pad(Math.floor(randomInRange(200000, 399999)), 6);
+      }
+
+      var sum = 0;
+      for (var i = 1; i <= TOTAL_ORDERS; i++) {
+        var value = randomInRange(AVG_ORDER_VALUE - 6, AVG_ORDER_VALUE + 6);
+        value = Math.round(value * 100) / 100;
+        sum += value;
+        var date = new Date();
+        date.setDate(date.getDate() - Math.floor(Math.random() * 30));
+        var dateStr = date.toISOString().slice(0, 10);
+        var status = STATUSES[Math.floor(Math.random() * STATUSES.length)];
+        var qty = Math.floor(randomInRange(1, 8));
+        var orderId = 'ORD' + pad(i, 4);
+        var clientId = randomClientId();
+
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td>' + i + '</td>' +
+          '<td>' + orderId + '</td>' +
+          '<td>' + dateStr + '</td>' +
+          '<td>' + status + '</td>' +
+          '<td>' + qty + '</td>' +
+          '<td>' + formatDollars(value) + '</td>' +
+          '<td class="buttons"><a href="form_order.html?id=' + i + '"><button type="button">👁 ✏️</button></a></td>' +
+          '<td>' + clientId + '</td>';
+        tbody.appendChild(tr);
+      }
+    })();
+  </script>
 </body>
 </html>

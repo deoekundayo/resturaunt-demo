@@ -43,6 +43,7 @@
     }
     
     .form-group input[type="text"],
+    .form-group input[type="email"],
     .form-group input[type="password"] {
       width: 100%;
       padding: 12px;
@@ -54,6 +55,7 @@
     }
     
     .form-group input[type="text"]:focus,
+    .form-group input[type="email"]:focus,
     .form-group input[type="password"]:focus {
       border: 2px solid #4caf50;
       outline: none;
@@ -154,14 +156,14 @@
       <h1>User Login</h1>
       
       <div class="form-group">
-        <label for="userName">User ID</label>
+        <label for="email">Email</label>
         <input 
-          type="text" 
-          id="userName" 
-          name="userName" 
-          placeholder="Enter your user ID" 
+          type="email" 
+          id="email" 
+          name="email" 
+          placeholder="Enter your email address" 
           required 
-          autocomplete="username"
+          autocomplete="email"
         />
       </div>
       

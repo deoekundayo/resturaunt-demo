@@ -1,0 +1,9 @@
+{
+  "livePreview.defaultPreviewPath": "index.html",
+  "livePreview.customExternalBrowser": "chrome",
+  "livePreview.openPreviewTarget": "externalBrowser",
+  "livePreview.serverRoot": "${workspaceFolder}/JS",
+  "browser.default": "chrome",
+  "html.preview.defaultPreviewPath": "index.html"
+}
+

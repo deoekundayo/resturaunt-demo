@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Food Items</title>
   <link rel="stylesheet" href="food-item-table.css">
+  <script src="JS/food-items-data.js"></script>
 </head>
 
 <body>
@@ -73,118 +74,99 @@
     <h1>Food Items</h1>
 
     <div class="table-container">
-      <table>
+      <table class="food-items-table">
+        <colgroup>
+          <col style="width:90px;">
+          <col class="col-name">
+          <col style="width:280px;">
+          <col style="width:100px;">
+          <col style="width:100px;">
+          <col style="width:100px;">
+          <col style="width:100px;">
+          <col style="width:80px;">
+          <col style="width:120px;">
+          <col style="width:80px;">
+        </colgroup>
         <thead>
           <tr>
-            <th style="width:90px;">Food Item Number</th>
-            <th style="width:90px;">Name</th>
-            <th style="width:280px;">Description</th>
-            <th style="width:100px;">Available?</th>
-            <th style="width:100px;">Vegetarian Option?</th>
-            <th style="width:100px;">Category</th>
-            <th style="width:100px;">Cuisine</th>
-            <th style="width:80px;">Price</th>
-            <th style="width:120px;">Image</th>
-            <th style="width:80px;">Edit</th>
+            <th>Food Item Number</th>
+            <th class="th-name">Name</th>
+            <th>Description</th>
+            <th>Available?</th>
+            <th>Vegetarian Option?</th>
+            <th>Category</th>
+            <th>Cuisine</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Edit</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>1</td>
-            <td>Pepperoni Pizza</td>
-            <td>
-              A classic favorite topped with rich tomato sauce, melted mozzarella
-              cheese, and generous slices of spicy pepperoni. Baked to perfection
-              with a golden crust for the perfect balance of savory and crispy in
-              every bite.
-            </td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Pizza</td>
-            <td>Italian</td>
-            <td>$12.99</td>
-            <td>
-              <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRDyJEalW-IRBh84gsK2fYUAUhWTgBjSK8WyD62a7Q7UgyEdg-yunD5cZNmJn23BGetNNsAnG6AGF4bfPU4Le5VcwkBIUhK5iqZRbdzAUUb&usqp=CAc" alt="Pepperoni Pizza" />
-            </td>
-            <td class="buttons">
-              <a href="form_fooditem.html?id=1">
-                <button type="button">Edit</button>
-              </a>
-            </td>
-          </tr>
-
-          <tr>
-            <td>2</td>
-            <td>Classic Chz. burg.</td>
-            <td>
-              Juicy grilled beef patty layered with melted cheddar cheese, crisp
-              lettuce, fresh tomato, onions, and pickles, all stacked on a toasted
-              brioche bun. Served with our signature sauce for a satisfying bite
-              every time.
-            </td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Burger</td>
-            <td>American</td>
-            <td>$9.99</td>
-            <td>
-              <img src="https://images.themodernproper.com/production/posts/2016/ClassicCheeseBurger_9.jpg?w=1200&h=1200&q=60&fm=jpg&fit=crop&dm=1749310239&s=463b18fc3bb51dc5d96e866c848527c4" alt="Classic Cheeseburger" />
-            </td>
-            <td class="buttons">
-              <a href="form_fooditem.html?id=2">
-                <button type="button">Edit</button>
-              </a>
-            </td>
-          </tr>
-
-          <tr>
-            <td>3</td>
-            <td>Macaroni &amp; Cheese</td>
-            <td>
-              Creamy elbow macaroni baked in a rich, velvety cheese sauce and topped
-              with a golden, crispy breadcrumb crust. Comfort food at its finest;
-              warm, cheesy, and deliciously satisfying.
-            </td>
-            <td>Yes</td>
-            <td>No</td>
-            <td>Pasta</td>
-            <td>American</td>
-            <td>$8.99</td>
-            <td>
-              <img src="https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F43%2F2022%2F03%2F19%2F238691-Simple-Macaroni-And-Cheese-mfs_006.jpg&w=160&q=60&c=sc&poi=auto&orient=true&h=90" alt="Macaroni & Cheese" />
-            </td>
-            <td class="buttons">
-              <a href="form_fooditem.html?id=3">
-                <button type="button">Edit</button>
-              </a>
-            </td>
-          </tr>
-
-          <tr>
-            <td>4</td>
-            <td>Classic Hotdog</td>
-            <td>
-              A grilled all-beef frank nestled in a soft, toasted bun, topped with
-              your choice of ketchup, mustard, relish, and onions. A timeless
-              favorite that's simple, savory, and satisfying in every bite.
-            </td>
-            <td>No</td>
-            <td>No</td>
-            <td>Sandwich</td>
-            <td>American</td>
-            <td>$6.99</td>
-            <td>
-              <img src="https://images.ctfassets.net/hhv516v5f7sj/6qGAfeOJOREdrdA3cDUrB8/42ed66b48dc251c6b17630846fd78d5e/selling-page-hotdog-C118-group3-1000x1000.png?w=3840&q=75&fm=webp" alt="Classic Hotdog" />
-            </td>
-            <td class="buttons">
-              <a href="form_fooditem.html?id=4">
-                <button type="button">Edit</button>
-              </a>
-            </td>
-          </tr>
+        <tbody id="food-items-tbody">
         </tbody>
       </table>
     </div>
   </main>
+  <script>
+    (function() {
+      var TOTAL = window.FOOD_ITEMS_TOTAL || 98;
+      var AVAILABLE_COUNT = window.FOOD_ITEMS_AVAILABLE_COUNT || 86;
+      var BASE = window.FOOD_ITEMS_BASE || [];
+      var tbody = document.getElementById('food-items-tbody');
+      if (!tbody) return;
+
+      var cats = ['Entrée', 'Sides', 'Salad', 'Pasta', 'Burger', 'Pizza', 'Sandwich', 'Appetizer', 'Dessert', 'Drinks', 'Seafood', 'Noodles', 'Sushi', 'Mexican'];
+      var cuisines = ['American', 'Italian', 'Asian', 'Mexican', 'Greek', 'Thai', 'Indian', 'British', 'Japanese', 'Middle Eastern'];
+      var genericImg = 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=200&h=200&fit=crop';
+
+      for (var i = 0; i < TOTAL; i++) {
+        var num = i + 1;
+        var available = i < AVAILABLE_COUNT ? 'Yes' : 'No';
+        var item;
+        if (i < BASE.length) {
+          item = BASE[i];
+        } else {
+          item = {
+            name: 'Menu Item ' + num,
+            desc: "Chef's special. Fresh ingredients, made to order. Popular choice.",
+            veg: (i % 3 === 0) ? 'Yes' : 'No',
+            cat: cats[i % cats.length],
+            cuisine: cuisines[i % cuisines.length],
+            price: '$' + (8 + (i % 7)) + '.' + (i % 2 === 0 ? '99' : '49'),
+            img: genericImg,
+            alt: 'Menu Item ' + num
+          };
+        }
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td>' + num + '</td>' +
+          '<td>' + escapeHtml(item.name) + '</td>' +
+          '<td>' + escapeHtml(item.desc) + '</td>' +
+          '<td>' + available + '</td>' +
+          '<td>' + (item.veg || 'No') + '</td>' +
+          '<td>' + escapeHtml(item.cat) + '</td>' +
+          '<td>' + escapeHtml(item.cuisine) + '</td>' +
+          '<td>' + escapeHtml(item.price) + '</td>' +
+          '<td><img src="' + escapeAttr(item.img) + '" alt="' + escapeAttr(item.alt || item.name) + '" /></td>' +
+          '<td class="buttons"><a href="form_fooditem.html?id=' + num + '"><button type="button">Edit</button></a></td>';
+        tbody.appendChild(tr);
+      }
+
+      function escapeHtml(s) {
+        if (s == null) return '';
+        var div = document.createElement('div');
+        div.textContent = s;
+        return div.innerHTML;
+      }
+      function escapeAttr(s) {
+        if (s == null) return '';
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;');
+      }
+    })();
+  </script>
 </body>
 </html>

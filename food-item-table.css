@@ -260,11 +260,24 @@ textarea:focus {
 /* =========================
      Table
      ========================= */
-table {
+table.food-items-table {
   width: 100%;
   border-collapse: collapse;
-  table-layout: fixed; /* consistent columns + truncation */
+  table-layout: auto; /* column width from content so Name can flex */
   min-width: 680px; /* keeps columns readable; container scrolls if needed */
+}
+
+/* Name column: flex to content length so words never break mid-word */
+table.food-items-table .col-name {
+  min-width: 14ch; /* at least one long word (e.g. Cheeseburger, Margherita) */
+  width: auto;     /* column grows to fit longest word in column */
+}
+table.food-items-table th.th-name,
+table.food-items-table td:nth-child(2) {
+  word-break: normal;   /* never break within a word */
+  overflow-wrap: break-word; /* wrap only at spaces when needed */
+  white-space: normal;
+  min-width: 14ch;      /* ensure column wide enough for one long word */
 }
 
 thead th {
@@ -282,7 +295,8 @@ td {
   padding: 12px 10px;
   text-align: center;
   vertical-align: middle;
-  word-break: break-word;
+  word-break: normal;
+  overflow-wrap: break-word;
   font-family: "Times New Roman", serif;
 }
 

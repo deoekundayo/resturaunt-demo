@@ -1,6 +1,9 @@
 // Form handlers for different entity types
 
-// Food Item Form Handler
+// API base URL for backend (same port as users API)
+const FOOD_API_URL = 'http://localhost:3001/api';
+
+// Food Item Form Handler – saves to database via API, fallback to localStorage
 function handleFoodItemForm() {
   const form = document.getElementById('survey-form');
   if (!form) return;
@@ -8,76 +11,170 @@ function handleFoodItemForm() {
   const id = getUrlParameter('id');
   const isEdit = id !== null;
 
-  // Load data if editing
+  // Load data if editing (try API first, then localStorage)
+  function populateForm(item) {
+    if (!item) return;
+    document.getElementById('name').value = item.name;
+    document.getElementById('description').value = item.description || '';
+    document.getElementById('image-url').value = item.imageUrl || item.image_url || '';
+    document.getElementById('category').value = item.category;
+    document.getElementById('cuisine').value = item.cuisine;
+    document.getElementById(`availability-${item.available ? 'yes' : 'no'}`).checked = true;
+    document.getElementById(`veg-${item.vegetarian ? 'yes' : 'no'}`).checked = true;
+    document.querySelector('h1').textContent = 'Edit Food Item';
+  }
+
+  // Edit mode: use FOOD_ITEMS_BASE for all items 1–98 (same source and save path for every id)
   if (isEdit) {
-    const foodItems = JSON.parse(localStorage.getItem('foodItems') || '[]');
-    const item = foodItems.find(f => f.id === parseInt(id));
-    
-    if (item) {
-      document.getElementById('name').value = item.name;
-      document.getElementById('description').value = item.description;
-      document.getElementById('image-url').value = item.imageUrl || '';
-      document.getElementById('category').value = item.category;
-      document.getElementById('cuisine').value = item.cuisine;
-      document.getElementById(`availability-${item.available ? 'yes' : 'no'}`).checked = true;
-      document.getElementById(`veg-${item.vegetarian ? 'yes' : 'no'}`).checked = true;
-      document.querySelector('h1').textContent = 'Edit Food Item';
+    const numId = parseInt(id, 10);
+    const BASE = window.FOOD_ITEMS_BASE || [];
+    const availableCount = window.FOOD_ITEMS_AVAILABLE_COUNT != null ? window.FOOD_ITEMS_AVAILABLE_COUNT : 86;
+    const baseItem = BASE[numId - 1];
+    if (baseItem) {
+      populateForm({
+        name: baseItem.name,
+        description: baseItem.desc || '',
+        imageUrl: baseItem.img || baseItem.image_url || '',
+        image_url: baseItem.img || baseItem.image_url || '',
+        category: baseItem.cat || '',
+        cuisine: baseItem.cuisine || '',
+        available: numId <= availableCount,
+        vegetarian: baseItem.veg === 'Yes'
+      });
     }
   }
 
-  // Populate category and cuisine dropdowns
-  const categories = JSON.parse(localStorage.getItem('categories') || '[]');
-  const cuisines = JSON.parse(localStorage.getItem('cuisines') || '[]');
-  
+  // Populate category and cuisine dropdowns from FOOD_ITEMS_BASE (single source of truth), fallback to localStorage
+  const BASE = window.FOOD_ITEMS_BASE || [];
+  let categoryList = [];
+  let cuisineList = [];
+
+  if (BASE.length > 0) {
+    const catSet = new Set();
+    const cuisineSet = new Set();
+    BASE.forEach(item => {
+      if (item.cat && String(item.cat).trim()) catSet.add(String(item.cat).trim());
+      if (item.cuisine && String(item.cuisine).trim()) cuisineSet.add(String(item.cuisine).trim());
+    });
+    categoryList = Array.from(catSet).sort();
+    cuisineList = Array.from(cuisineSet).sort();
+  }
+
+  if (categoryList.length === 0) {
+    const fromStorage = JSON.parse(localStorage.getItem('categories') || '[]');
+    categoryList = fromStorage.map(c => c.name).filter(Boolean).sort();
+  }
+  if (cuisineList.length === 0) {
+    const fromStorage = JSON.parse(localStorage.getItem('cuisines') || '[]');
+    cuisineList = fromStorage.map(c => c.name).filter(Boolean).sort();
+  }
+
   const categorySelect = document.getElementById('category');
   const cuisineSelect = document.getElementById('cuisine');
-  
+
   if (categorySelect && categorySelect.tagName === 'SELECT') {
-    categories.forEach(cat => {
+    while (categorySelect.options.length > 1) categorySelect.remove(1);
+    categoryList.forEach(name => {
       const option = document.createElement('option');
-      option.value = cat.name;
-      option.textContent = cat.name;
+      option.value = name;
+      option.textContent = name;
       categorySelect.appendChild(option);
     });
   }
-  
+
   if (cuisineSelect && cuisineSelect.tagName === 'SELECT') {
-    cuisines.forEach(cuisine => {
+    while (cuisineSelect.options.length > 1) cuisineSelect.remove(1);
+    cuisineList.forEach(name => {
       const option = document.createElement('option');
-      option.value = cuisine.name;
-      option.textContent = cuisine.name;
+      option.value = name;
+      option.textContent = name;
       cuisineSelect.appendChild(option);
     });
   }
 
-  // Handle form submission
-  form.addEventListener('submit', (e) => {
+  // Re-apply category/cuisine in edit mode after dropdowns are built (so selection is preserved)
+  if (isEdit && id) {
+    const editItem = (window.FOOD_ITEMS_BASE || [])[parseInt(id, 10) - 1];
+    if (editItem) {
+      if (editItem.cat && categorySelect) categorySelect.value = editItem.cat;
+      if (editItem.cuisine && cuisineSelect) cuisineSelect.value = editItem.cuisine;
+    }
+  }
+
+  // Handle form submission – save to database (API), fallback to localStorage
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const foodItems = JSON.parse(localStorage.getItem('foodItems') || '[]');
     const formData = {
-      name: document.getElementById('name').value,
-      description: document.getElementById('description').value,
-      imageUrl: document.getElementById('image-url').value,
+      name: document.getElementById('name').value.trim(),
+      description: document.getElementById('description').value.trim(),
+      imageUrl: document.getElementById('image-url').value.trim(),
       category: document.getElementById('category').value,
       cuisine: document.getElementById('cuisine').value,
       available: document.getElementById('availability-yes').checked,
       vegetarian: document.getElementById('veg-yes').checked,
-      price: '$0.00' // Default price
+      price: '$0.00'
     };
 
-    if (isEdit) {
-      const index = foodItems.findIndex(f => f.id === parseInt(id));
-      if (index !== -1) {
-        foodItems[index] = { ...foodItems[index], ...formData };
+    try {
+      let response;
+      if (isEdit) {
+        response = await fetch(`${FOOD_API_URL}/food-items/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+      } else {
+        response = await fetch(`${FOOD_API_URL}/food-items`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
       }
-    } else {
-      const newId = foodItems.length > 0 ? Math.max(...foodItems.map(f => f.id)) + 1 : 1;
-      foodItems.push({ id: newId, ...formData });
-    }
 
-    localStorage.setItem('foodItems', JSON.stringify(foodItems));
-    showSuccessMessage('Food item saved successfully!', 'list_fooditems.html');
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to save food item');
+      }
+
+      const savedItem = result.foodItem || result;
+      const savedId = savedItem ? savedItem.id : id;
+
+      // Keep localStorage in sync for list page / dropdowns if needed
+      const foodItems = JSON.parse(localStorage.getItem('foodItems') || '[]');
+      const payload = {
+        id: savedId,
+        ...formData,
+        imageUrl: formData.imageUrl
+      };
+      if (isEdit) {
+        const index = foodItems.findIndex(f => f.id === parseInt(id));
+        if (index !== -1) foodItems[index] = payload;
+        else foodItems.push(payload);
+      } else {
+        foodItems.push(payload);
+      }
+      localStorage.setItem('foodItems', JSON.stringify(foodItems));
+
+      showSuccessMessage('Food item saved successfully!', 'list_fooditems.html');
+    } catch (error) {
+      console.error('Error saving food item:', error);
+      alert('Error saving to database: ' + error.message + '\n\nMake sure the backend is running at http://localhost:3001. Saving to local storage instead.');
+
+      const foodItems = JSON.parse(localStorage.getItem('foodItems') || '[]');
+      if (isEdit) {
+        const index = foodItems.findIndex(f => f.id === parseInt(id));
+        if (index !== -1) {
+          foodItems[index] = { ...foodItems[index], ...formData };
+        }
+      } else {
+        const newId = foodItems.length > 0 ? Math.max(...foodItems.map(f => f.id)) + 1 : 1;
+        foodItems.push({ id: newId, ...formData });
+      }
+      localStorage.setItem('foodItems', JSON.stringify(foodItems));
+      showSuccessMessage('Food item saved to local storage (backend unavailable).', 'list_fooditems.html');
+    }
   });
 }
 
@@ -235,6 +332,7 @@ function handleUserForm() {
 
   const id = getUrlParameter('id');
   const isEdit = id !== null;
+  const API_URL = 'http://localhost:3001/api';
 
   // Format phone number
   const phoneInput = document.getElementById('contact-number');
@@ -242,40 +340,145 @@ function handleUserForm() {
     formatPhoneNumber(phoneInput);
   }
 
+  // Load user data if editing
   if (isEdit) {
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find(u => u.id === parseInt(id));
-    
-    if (user) {
-      document.getElementById('name').value = user.name;
-      document.getElementById('email').value = user.email || '';
-      document.getElementById('contact-number').value = user.contactNumber || '';
-      document.querySelector('h1').textContent = 'Edit User';
-    }
+    fetch(`${API_URL}/users/${id}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to load user data');
+        }
+        return response.json();
+      })
+      .then(user => {
+        document.getElementById('name').value = user.name || '';
+        document.getElementById('email').value = user.email || '';
+        document.getElementById('contact-number').value = user.contact_number || '';
+        document.querySelector('h1').textContent = 'Edit User';
+      })
+      .catch(error => {
+        console.error('Error loading user:', error);
+        // Fallback to localStorage if API fails
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        const user = users.find(u => u.id === parseInt(id));
+        
+        if (user) {
+          document.getElementById('name').value = user.name;
+          document.getElementById('email').value = user.email || '';
+          document.getElementById('contact-number').value = user.contactNumber || user.contact_number || '';
+          document.querySelector('h1').textContent = 'Edit User';
+        }
+      });
   }
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
     const formData = {
-      name: document.getElementById('name').value,
-      email: document.getElementById('email').value,
-      contactNumber: document.getElementById('contact-number').value
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      contact_number: document.getElementById('contact-number').value.trim(),
+      password: document.getElementById('password').value
     };
 
-    if (isEdit) {
-      const index = users.findIndex(u => u.id === parseInt(id));
-      if (index !== -1) {
-        users[index] = { ...users[index], ...formData };
-      }
-    } else {
-      const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
-      users.push({ id: newId, ...formData });
+    // Validation
+    if (!formData.name || !formData.email || !formData.contact_number) {
+      alert('Please fill in all required fields: Name, Email, and Contact Number');
+      return;
     }
 
-    localStorage.setItem('users', JSON.stringify(users));
-    showSuccessMessage('User saved successfully!', 'users.html');
+    if (!isEdit && !formData.password) {
+      alert('Password is required for new users');
+      return;
+    }
+
+    try {
+      let response;
+      if (isEdit) {
+        // Update existing user
+        const updateData = { ...formData };
+        // Only include password if it's provided (not empty)
+        if (!updateData.password || updateData.password.trim() === '') {
+          delete updateData.password;
+        }
+        
+        response = await fetch(`${API_URL}/users/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updateData)
+        });
+      } else {
+        // Create new user
+        if (!formData.password || formData.password.trim() === '') {
+          alert('Password is required');
+          return;
+        }
+        
+        response = await fetch(`${API_URL}/users`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+      }
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || 'Failed to save user');
+      }
+
+      // Also save to localStorage as backup
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      if (isEdit) {
+        const index = users.findIndex(u => u.id === parseInt(id));
+        if (index !== -1) {
+          users[index] = { 
+            id: parseInt(id),
+            name: formData.name,
+            email: formData.email,
+            contactNumber: formData.contact_number
+          };
+        }
+      } else {
+        const newId = result.user ? result.user.id : (users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1);
+        users.push({ 
+          id: newId,
+          name: formData.name,
+          email: formData.email,
+          contactNumber: formData.contact_number
+        });
+      }
+      localStorage.setItem('users', JSON.stringify(users));
+
+      showSuccessMessage('User saved successfully!', 'users.html');
+    } catch (error) {
+      console.error('Error saving user:', error);
+      alert('Error saving user: ' + error.message + '\n\nMake sure the backend server is running on http://localhost:3001');
+      
+      // Fallback to localStorage only
+      const users = JSON.parse(localStorage.getItem('users') || '[]');
+      const formDataLocal = {
+        name: formData.name,
+        email: formData.email,
+        contactNumber: formData.contact_number
+      };
+
+      if (isEdit) {
+        const index = users.findIndex(u => u.id === parseInt(id));
+        if (index !== -1) {
+          users[index] = { ...users[index], ...formDataLocal };
+        }
+      } else {
+        const newId = users.length > 0 ? Math.max(...users.map(u => u.id)) + 1 : 1;
+        users.push({ id: newId, ...formDataLocal });
+      }
+
+      localStorage.setItem('users', JSON.stringify(users));
+      showSuccessMessage('User saved to local storage (backend unavailable)!', 'users.html');
+    }
   });
 }
 
