@@ -1,0 +1,58 @@
+/* Search bar above table */
+.table-search-wrap {
+  max-width: 1200px;
+  margin: 0 auto 16px;
+  padding: 0 20px;
+}
+
+.table-search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  font-size: 1rem;
+  font-family: "Times New Roman", serif;
+  border: 1px solid #4caf50;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.table-search-input:focus {
+  outline: none;
+  border-color: #333;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.3);
+}
+
+.table-search-input::placeholder {
+  color: #999;
+}
+
+/* Status filter (orders table) – change first value to move filter up/down */
+.table-filter-wrap {
+  max-width: 1200px;
+  margin: 35px auto 16px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.table-filter-label {
+  font-family: "Times New Roman", serif;
+  font-size: 1rem;
+  color: #333;
+}
+
+.table-filter-select {
+  padding: 8px 12px;
+  font-size: 1rem;
+  font-family: "Times New Roman", serif;
+  border: 1px solid #4caf50;
+  border-radius: 8px;
+  background: #fff;
+  min-width: 160px;
+}
+
+.table-filter-select:focus {
+  outline: none;
+  border-color: #333;
+}

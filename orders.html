@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Orders</title>
   <link rel="stylesheet" href="table.css">
+  <link rel="stylesheet" href="back-to-top.css">
+  <link rel="stylesheet" href="table-search.css">
 </head>
 
 <body>
@@ -71,7 +73,19 @@
 
   <main class="main">
     <h1>Orders</h1>
-
+    <div class="table-search-wrap">
+      <input type="text" class="table-search-input" id="table-search" placeholder="Search by Order ID, User/Client ID, or date..." data-search-tbody="orders-tbody" data-search-col="1,2,7" aria-label="Search orders by Order ID, User/Client ID, or date">
+    </div>
+    <div class="table-filter-wrap">
+      <label for="orders-status-filter" class="table-filter-label">Filter by status:</label>
+      <select id="orders-status-filter" class="table-filter-select" aria-label="Filter orders by status">
+        <option value="">All</option>
+        <option value="Delivered">Delivered</option>
+        <option value="Processing">Processing</option>
+        <option value="Pending">Pending</option>
+        <option value="Shipped">Shipped</option>
+      </select>
+    </div>
     <div class="table-container">
       <table class="table">
         <thead>
@@ -91,53 +105,32 @@
       </table>
     </div>
   </main>
+  <script src="JS/users-data.js"></script>
+  <script src="JS/orders-data.js"></script>
   <script>
     (function() {
-      const AVG_ORDER_VALUE = 22.40;
-      const TOTAL_ORDERS = 1284;
-      const STATUSES = ['Delivered', 'Delivered', 'Delivered', 'Processing', 'Pending', 'Shipped'];
-      const tbody = document.getElementById('orders-tbody');
+      var tbody = document.getElementById('orders-tbody');
       if (!tbody) return;
-
-      function randomInRange(min, max) {
-        return min + Math.random() * (max - min);
-      }
-      function formatDollars(n) {
-        return '$' + n.toFixed(2);
-      }
-      function pad(n, len) {
-        return String(n).padStart(len, '0');
-      }
-      function randomClientId() {
-        return pad(Math.floor(randomInRange(200000, 399999)), 6);
-      }
-
-      var sum = 0;
-      for (var i = 1; i <= TOTAL_ORDERS; i++) {
-        var value = randomInRange(AVG_ORDER_VALUE - 6, AVG_ORDER_VALUE + 6);
-        value = Math.round(value * 100) / 100;
-        sum += value;
-        var date = new Date();
-        date.setDate(date.getDate() - Math.floor(Math.random() * 30));
-        var dateStr = date.toISOString().slice(0, 10);
-        var status = STATUSES[Math.floor(Math.random() * STATUSES.length)];
-        var qty = Math.floor(randomInRange(1, 8));
-        var orderId = 'ORD' + pad(i, 4);
-        var clientId = randomClientId();
-
+      var total = window.ORDERS_TOTAL || 1284;
+      for (var i = 1; i <= total; i++) {
+        var order = window.getOrderById(i);
+        if (!order) continue;
         var tr = document.createElement('tr');
         tr.innerHTML =
           '<td>' + i + '</td>' +
-          '<td>' + orderId + '</td>' +
-          '<td>' + dateStr + '</td>' +
-          '<td>' + status + '</td>' +
-          '<td>' + qty + '</td>' +
-          '<td>' + formatDollars(value) + '</td>' +
+          '<td>' + order.orderId + '</td>' +
+          '<td>' + order.dateStr + '</td>' +
+          '<td>' + order.status + '</td>' +
+          '<td>' + order.qty + '</td>' +
+          '<td>' + order.valueFormatted + '</td>' +
           '<td class="buttons"><a href="form_order.html?id=' + i + '"><button type="button">👁 ✏️</button></a></td>' +
-          '<td>' + clientId + '</td>';
+          '<td>' + order.clientId + '</td>';
         tbody.appendChild(tr);
       }
     })();
   </script>
+  <script src="JS/table-search.js"></script>
+  <script src="JS/orders-status-filter.js"></script>
+  <script src="JS/back-to-top.js"></script>
 </body>
 </html>

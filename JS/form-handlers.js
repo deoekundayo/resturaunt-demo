@@ -490,17 +490,79 @@ function handleOrderForm() {
   const id = getUrlParameter('id');
   const isEdit = id !== null;
 
+  // Build Order Content checkboxes: all food items (98 total), items 87–98 unavailable (match dashboard)
+  const checkboxesContainer = document.getElementById('order-content-checkboxes');
+  const base = window.FOOD_ITEMS_BASE;
+  const totalItems = window.FOOD_ITEMS_TOTAL != null ? window.FOOD_ITEMS_TOTAL : 98;
+  const availableCount = window.FOOD_ITEMS_AVAILABLE_COUNT != null ? window.FOOD_ITEMS_AVAILABLE_COUNT : 86;
+
+  if (checkboxesContainer && base && base.length) {
+    checkboxesContainer.innerHTML = '';
+    for (let n = 1; n <= totalItems; n++) {
+      const idx = n - 1;
+      const item = base[idx];
+      const name = (item && item.name) ? item.name : 'Item ' + n;
+      const unavailable = n > availableCount;
+      const div = document.createElement('div');
+      div.className = 'order-content-item' + (unavailable ? ' unavailable' : '');
+      const input = document.createElement('input');
+      input.type = 'checkbox';
+      input.name = 'order-item';
+      input.value = String(n);
+      input.id = 'order-item-' + n;
+      if (unavailable) {
+        input.disabled = true;
+        input.setAttribute('aria-disabled', 'true');
+      }
+      const label = document.createElement('label');
+      label.htmlFor = 'order-item-' + n;
+      label.textContent = 'Item ' + n + ': ' + name;
+      div.appendChild(input);
+      div.appendChild(label);
+      checkboxesContainer.appendChild(div);
+    }
+  }
+
   if (isEdit) {
-    const orders = JSON.parse(localStorage.getItem('orders') || '[]');
-    const order = orders.find(o => o.id === parseInt(id));
-    
-    if (order) {
-      document.getElementById('order-id').value = order.orderId;
-      document.getElementById('order-content').value = order.content;
-      document.getElementById('date').value = order.date;
-      document.getElementById('order-status').value = order.status;
-      document.getElementById('quantity').value = order.quantity;
+    // Prefill from table data (deterministic by id) so each order form matches its table row
+    const orderFromTable = typeof getOrderById === 'function' ? getOrderById(id) : null;
+    if (orderFromTable) {
+      document.getElementById('order-id').value = orderFromTable.orderId;
+      document.getElementById('date').value = orderFromTable.dateStr;
+      document.getElementById('order-status').value = orderFromTable.status;
+      document.getElementById('quantity').value = orderFromTable.qty;
+      const orderValueEl = document.getElementById('order-value');
+      if (orderValueEl) orderValueEl.value = orderFromTable.valueFormatted;
+      const clientIdEl = document.getElementById('client-id');
+      if (clientIdEl) clientIdEl.value = orderFromTable.clientId;
       document.querySelector('h1').textContent = 'View/Edit Order';
+      // Pre-check the food items in this order
+      const selected = orderFromTable.selectedItemNumbers || [];
+      selected.forEach(function (num) {
+        const cb = document.getElementById('order-item-' + num);
+        if (cb && !cb.disabled) cb.checked = true;
+      });
+    } else {
+      // Fallback: try localStorage (e.g. custom saved orders)
+      const orders = JSON.parse(localStorage.getItem('orders') || '[]');
+      const order = orders.find(o => o.id === parseInt(id));
+      if (order) {
+        document.getElementById('order-id').value = order.orderId || '';
+        document.getElementById('date').value = order.date || '';
+        document.getElementById('order-status').value = order.status || 'Pending';
+        document.getElementById('quantity').value = order.quantity || '';
+        const orderValueEl = document.getElementById('order-value');
+        if (orderValueEl) orderValueEl.value = order.orderValue || '';
+        const clientIdEl = document.getElementById('client-id');
+        if (clientIdEl) clientIdEl.value = order.userId || order.clientId || '';
+        document.querySelector('h1').textContent = 'View/Edit Order';
+        if (order.selectedItemNumbers && Array.isArray(order.selectedItemNumbers)) {
+          order.selectedItemNumbers.forEach(function (num) {
+            const cb = document.getElementById('order-item-' + num);
+            if (cb && !cb.disabled) cb.checked = true;
+          });
+        }
+      }
     }
   } else {
     // For new orders, set minimum date to today
@@ -513,15 +575,27 @@ function handleOrderForm() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
+    const checked = [];
+    const orderItemCheckboxes = form.querySelectorAll('#order-content-checkboxes input[name="order-item"]:checked:not([disabled])');
+    orderItemCheckboxes.forEach(function (cb) {
+      checked.push(parseInt(cb.value, 10));
+    });
+    const contentNames = base && base.length ? checked.map(function (num) {
+      const item = base[num - 1];
+      return (item && item.name) ? item.name : 'Item ' + num;
+    }).join(', ') : checked.join(', ');
+
     const orders = JSON.parse(localStorage.getItem('orders') || '[]');
     const formData = {
       orderId: document.getElementById('order-id').value,
-      content: document.getElementById('order-content').value,
+      content: contentNames,
+      selectedItemNumbers: checked,
       date: document.getElementById('date').value,
       status: document.getElementById('order-status').value,
       quantity: parseInt(document.getElementById('quantity').value) || 0,
-      userId: isEdit ? (orders.find(o => o.id === parseInt(id))?.userId || '') : ''
+      orderValue: document.getElementById('order-value') ? document.getElementById('order-value').value : '',
+      userId: document.getElementById('client-id') ? document.getElementById('client-id').value : (isEdit ? (orders.find(o => o.id === parseInt(id))?.userId || '') : '')
     };
 
     if (isEdit) {

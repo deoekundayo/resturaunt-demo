@@ -61,7 +61,7 @@ async function loadUsersFromAPI() {
     
     if (users.length === 0) {
       const row = document.createElement('tr');
-      row.innerHTML = '<td colspan="5" style="text-align: center; padding: 20px;">No users found</td>';
+      row.innerHTML = '<td colspan="4" style="text-align: center; padding: 20px;">No users found</td>';
       tbody.appendChild(row);
       return;
     }
@@ -74,12 +74,6 @@ async function loadUsersFromAPI() {
         <td>${user.name || ''}</td>
         <td><a href="mailto:${user.email}" style="color:#050505;">${user.email || ''}</a></td>
         <td><a href="tel:${user.contact_number ? user.contact_number.replace(/\D/g, '') : ''}" style="color:#050505;">${user.contact_number || ''}</a></td>
-        <td>
-          <button onclick="deleteUser(${user.id}, '${(user.name || '').replace(/'/g, "\\'")}')" 
-                  style="background-color: #333; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">
-            Delete
-          </button>
-        </td>
       `;
       tbody.appendChild(row);
     });
@@ -99,39 +93,33 @@ async function loadUsersFromAPI() {
           <td>${user.name || ''}</td>
           <td><a href="mailto:${user.email}" style="color:#050505;">${user.email || ''}</a></td>
           <td><a href="tel:${user.contactNumber ? user.contactNumber.replace(/\D/g, '') : (user.contact_number ? user.contact_number.replace(/\D/g, '') : '')}" style="color:#050505;">${user.contactNumber || user.contact_number || ''}</a></td>
-          <td>
-            <button onclick="deleteUser(${user.id}, '${(user.name || '').replace(/'/g, "\\'")}')" 
-                    style="background-color: #333; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px;">
-              Delete
-            </button>
-          </td>
         `;
         tbody.appendChild(row);
       });
     } else {
-      // Show static content if no localStorage data
-      tbody.innerHTML = '';
-      const staticUsers = [
-        { id: 234567, name: 'John Doe', email: 'john.doe@gmail.com', contact: '704-654-3210' },
-        { id: 287654, name: 'Emma Smith', email: 'emma.smith@gmail.com', contact: '404-654-3211' },
-        { id: 215432, name: 'Michael Johnson', email: 'michael.j@gmail.com', contact: '336-654-3212' },
-        { id: 298765, name: 'Sarah Wilson', email: 'sarah.w@gmail.com', contact: '980-654-3213' },
-        { id: 223456, name: 'James Brown', email: 'james.b@gmail.com', contact: '864-654-3214' },
-        { id: 276543, name: 'Lisa Anderson', email: 'lisa.a@gmail.com', contact: '704-654-3215' },
-        { id: 245678, name: 'Robert Taylor', email: 'robert.t@gmail.com', contact: '404-654-3216' },
-        { id: 291234, name: 'Emily Davis', email: 'emily.d@gmail.com', contact: '336-654-3217' },
-        { id: 267890, name: 'David Miller', email: 'david.m@gmail.com', contact: '980-654-3218' },
-        { id: 254321, name: 'Jessica Lee', email: 'jessica.l@gmail.com', contact: '864-654-3219' }
+      // Fallback: use USERS_LIST (matches Orders table Client IDs) or keep table as-is
+      const staticUsers = window.USERS_LIST || [
+        { id: '234567', name: 'John Doe', email: 'john.doe@gmail.com', contact: '704-654-3210' },
+        { id: '287654', name: 'Emma Smith', email: 'emma.smith@gmail.com', contact: '404-654-3211' },
+        { id: '215432', name: 'Michael Johnson', email: 'michael.j@gmail.com', contact: '336-654-3212' },
+        { id: '298765', name: 'Sarah Wilson', email: 'sarah.w@gmail.com', contact: '980-654-3213' },
+        { id: '223456', name: 'James Brown', email: 'james.b@gmail.com', contact: '864-654-3214' },
+        { id: '276543', name: 'Lisa Anderson', email: 'lisa.a@gmail.com', contact: '704-654-3215' },
+        { id: '245678', name: 'Robert Taylor', email: 'robert.t@gmail.com', contact: '404-654-3216' },
+        { id: '291234', name: 'Emily Davis', email: 'emily.d@gmail.com', contact: '336-654-3217' },
+        { id: '267890', name: 'David Miller', email: 'david.m@gmail.com', contact: '980-654-3218' },
+        { id: '254321', name: 'Jessica Lee', email: 'jessica.l@gmail.com', contact: '864-654-3219' }
       ];
-      
-      staticUsers.forEach((user, index) => {
+      tbody.innerHTML = '';
+      staticUsers.forEach((user) => {
         const row = document.createElement('tr');
+        const id = String(user.id || '');
+        const contact = user.contact || user.contact_number || '';
         row.innerHTML = `
-          <td>${user.id}</td>
-          <td>${user.name}</td>
-          <td><a href="mailto:${user.email}" style="color:#050505;">${user.email}</a></td>
-          <td><a href="tel:${user.contact.replace(/\D/g, '')}" style="color:#050505;">${user.contact}</a></td>
-          <td><span style="color: #999; font-size: 12px;">Static data</span></td>
+          <td>${id}</td>
+          <td>${user.name || ''}</td>
+          <td><a href="mailto:${user.email || ''}" style="color:#050505;">${user.email || ''}</a></td>
+          <td><a href="tel:${contact.replace(/\D/g, '')}" style="color:#050505;">${contact}</a></td>
         `;
         tbody.appendChild(row);
       });

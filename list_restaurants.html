@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Restaurants</title>
   <link rel="stylesheet" href="table.css">
+  <link rel="stylesheet" href="back-to-top.css">
+  <link rel="stylesheet" href="table-search.css">
 </head>
 
 <body>
@@ -71,7 +73,9 @@
 
   <main class="main">
     <h1>All Restaurants</h1>
-
+    <div class="table-search-wrap">
+      <input type="text" class="table-search-input" id="table-search" placeholder="Search by restaurant name..." data-search-tbody="restaurants-tbody" data-search-col="1" aria-label="Search restaurants by name">
+    </div>
     <div class="table-container">
       <table>
         <thead>
@@ -84,7 +88,7 @@
             <th>Edit</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="restaurants-tbody">
           <tr>
             <td>1</td>
             <td>Food Palace</td>
@@ -165,9 +169,331 @@
               </a>
             </td>
           </tr>
+          <tr>
+            <td>5</td>
+            <td>Raleigh Bistro</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop" alt="Raleigh Bistro" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=420+Fayetteville+Street+Raleigh,+NC" style="color:#050505;">
+                420 Fayetteville street Raleigh, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:9195551234" style="color:#050505;">919-555-1234</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=5">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Downtown Diner</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop" alt="Downtown Diner" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=150+Main+Street+Durham,+NC" style="color:#050505;">
+                150 Main street Durham, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:9195552345" style="color:#050505;">919-555-2345</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=6">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>Asheville Table</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=400&h=300&fit=crop" alt="Asheville Table" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=78+Biltmore+Avenue+Asheville,+NC" style="color:#050505;">
+                78 Biltmore avenue Asheville, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:8285553456" style="color:#050505;">828-555-3456</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=7">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>Coastal Kitchen</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400&h=300&fit=crop" alt="Coastal Kitchen" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=210+Water+Street+Wilmington,+NC" style="color:#050505;">
+                210 Water street Wilmington, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:9105554567" style="color:#050505;">910-555-4567</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=8">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>Winston Grill</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=400&h=300&fit=crop" alt="Winston Grill" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=500+Trade+Street+Winston-Salem,+NC" style="color:#050505;">
+                500 Trade street Winston-Salem, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:3365555678" style="color:#050505;">336-555-5678</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=9">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>Greenville Eats</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400&h=300&fit=crop" alt="Greenville Eats" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=320+Main+Street+Greenville,+SC" style="color:#050505;">
+                320 Main street Greenville, SC
+              </a>
+            </td>
+            <td>
+              <a href="tel:8645556789" style="color:#050505;">864-555-6789</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=10">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>Savannah House</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=400&h=300&fit=crop" alt="Savannah House" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=101+River+Street+Savannah,+GA" style="color:#050505;">
+                101 River street Savannah, GA
+              </a>
+            </td>
+            <td>
+              <a href="tel:9125557890" style="color:#050505;">912-555-7890</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=11">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>12</td>
+            <td>Columbia Commons</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?w=400&h=300&fit=crop" alt="Columbia Commons" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=1200+Main+Street+Columbia,+SC" style="color:#050505;">
+                1200 Main street Columbia, SC
+              </a>
+            </td>
+            <td>
+              <a href="tel:8035558901" style="color:#050505;">803-555-8901</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=12">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>13</td>
+            <td>High Point Cafe</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&h=300&fit=crop" alt="High Point Cafe" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=200+North+Main+Street+High+Point,+NC" style="color:#050505;">
+                200 North Main street High Point, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:3365559012" style="color:#050505;">336-555-9012</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=13">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>14</td>
+            <td>Myrtle Beach Grill</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400&h=300&fit=crop" alt="Myrtle Beach Grill" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=1400+Ocean+Boulevard+Myrtle+Beach,+SC" style="color:#050505;">
+                1400 Ocean boulevard Myrtle Beach, SC
+              </a>
+            </td>
+            <td>
+              <a href="tel:8435550123" style="color:#050505;">843-555-0123</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=14">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>15</td>
+            <td>Cary Kitchen</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=400&h=300&fit=crop" alt="Cary Kitchen" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=100+Academy+Street+Cary,+NC" style="color:#050505;">
+                100 Academy street Cary, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:9195551235" style="color:#050505;">919-555-1235</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=15">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>16</td>
+            <td>Augusta Table</td>
+            <td>
+              <img src="images/augusta-table.png" alt="Augusta Table" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=800+Broad+Street+Augusta,+GA" style="color:#050505;">
+                800 Broad street Augusta, GA
+              </a>
+            </td>
+            <td>
+              <a href="tel:7065552346" style="color:#050505;">706-555-2346</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=16">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>17</td>
+            <td>Fayetteville Bistro</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop" alt="Fayetteville Bistro" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=225+Hay+Street+Fayetteville,+NC" style="color:#050505;">
+                225 Hay street Fayetteville, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:9105553457" style="color:#050505;">910-555-3457</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=17">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>18</td>
+            <td>Hilton Head Diner</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=400&h=300&fit=crop" alt="Hilton Head Diner" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=1+Forest+Beach+Drive+Hilton+Head+Island,+SC" style="color:#050505;">
+                1 Forest Beach drive Hilton Head Island, SC
+              </a>
+            </td>
+            <td>
+              <a href="tel:8435554568" style="color:#050505;">843-555-4568</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=18">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>19</td>
+            <td>Charlotte South End</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=400&h=300&fit=crop" alt="Charlotte South End" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=2000+South+Boulevard+Charlotte,+NC" style="color:#050505;">
+                2000 South boulevard Charlotte, NC
+              </a>
+            </td>
+            <td>
+              <a href="tel:7045555679" style="color:#050505;">704-555-5679</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=19">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td>20</td>
+            <td>Decatur Kitchen</td>
+            <td>
+              <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=400&h=300&fit=crop" alt="Decatur Kitchen" />
+            </td>
+            <td>
+              <a href="https://www.google.com/maps?q=315+Ponce+de+Leon+Avenue+Decatur,+GA" style="color:#050505;">
+                315 Ponce de Leon avenue Decatur, GA
+              </a>
+            </td>
+            <td>
+              <a href="tel:4045556780" style="color:#050505;">404-555-6780</a>
+            </td>
+            <td class="buttons">
+              <a href="form_restaurant.html?id=20">
+                <button type="button">Edit</button>
+              </a>
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>
   </main>
+  <script src="JS/table-search.js"></script>
+  <script src="JS/back-to-top.js"></script>
 </body>
 </html>

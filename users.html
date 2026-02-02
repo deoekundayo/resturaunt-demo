@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Users</title>
   <link rel="stylesheet" href="table.css">
+  <link rel="stylesheet" href="back-to-top.css">
+  <link rel="stylesheet" href="table-search.css">
 </head>
 
 <body>
@@ -72,7 +74,9 @@
 
   <main class="main">
     <h1>Users</h1>
-
+    <div class="table-search-wrap">
+      <input type="text" class="table-search-input" id="table-search" placeholder="Search by User ID, Name, Email, or Contact Number..." data-search-tbody="users-tbody" data-search-col="0,1,2,3" aria-label="Search users by User ID, Name, Email, or Contact Number">
+    </div>
     <div class="table-container">
       <table>
         <thead>
@@ -81,76 +85,37 @@
             <th>Name</th>
             <th>Email</th>
             <th>Contact Number</th>
-            <th>Actions</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>234567</td>
-            <td>John Doe</td>
-            <td><a href="mailto:john.doe@gmail.com" style="color:#050505;">john.doe@gmail.com</a></td>
-            <td><a href="tel:7046543210" style="color:#050505;">704-654-3210</a></td>
-          </tr>
-          <tr>
-            <td>287654</td>
-            <td>Emma Smith</td>
-            <td><a href="mailto:emma.smith@gmail.com" style="color:#050505;">emma.smith@gmail.com</a></td>
-            <td><a href="tel:4046543211" style="color:#050505;">404-654-3211</a></td>
-          </tr>
-          <tr>
-            <td>215432</td>
-            <td>Michael Johnson</td>
-            <td><a href="mailto:michael.j@gmail.com" style="color:#050505;">michael.j@gmail.com</a></td>
-            <td><a href="tel:3366543212" style="color:#050505;">336-654-3212</a></td>
-          </tr>
-          <tr>
-            <td>298765</td>
-            <td>Sarah Wilson</td>
-            <td><a href="mailto:sarah.w@gmail.com" style="color:#050505;">sarah.w@gmail.com</a></td>
-            <td><a href="tel:9806543213" style="color:#050505;">980-654-3213</a></td>
-          </tr>
-          <tr>
-            <td>223456</td>
-            <td>James Brown</td>
-            <td><a href="mailto:james.b@gmail.com" style="color:#050505;">james.b@gmail.com</a></td>
-            <td><a href="tel:8646543214" style="color:#050505;">864-654-3214</a></td>
-          </tr>
-          <tr>
-            <td>276543</td>
-            <td>Lisa Anderson</td>
-            <td><a href="mailto:lisa.a@gmail.com" style="color:#050505;">lisa.a@gmail.com</a></td>
-            <td><a href="tel:7046543215" style="color:#050505;">704-654-3215</a></td>
-          </tr>
-          <tr>
-            <td>245678</td>
-            <td>Robert Taylor</td>
-            <td><a href="mailto:robert.t@gmail.com" style="color:#050505;">robert.t@gmail.com</a></td>
-            <td><a href="tel:4046543216" style="color:#050505;">404-654-3216</a></td>
-          </tr>
-          <tr>
-            <td>291234</td>
-            <td>Emily Davis</td>
-            <td><a href="mailto:emily.d@gmail.com" style="color:#050505;">emily.d@gmail.com</a></td>
-            <td><a href="tel:3366543217" style="color:#050505;">336-654-3217</a></td>
-          </tr>
-          <tr>
-            <td>267890</td>
-            <td>David Miller</td>
-            <td><a href="mailto:david.m@gmail.com" style="color:#050505;">david.m@gmail.com</a></td>
-            <td><a href="tel:9806543218" style="color:#050505;">980-654-3218</a></td>
-          </tr>
-          <tr>
-            <td>254321</td>
-            <td>Jessica Lee</td>
-            <td><a href="mailto:jessica.l@gmail.com" style="color:#050505;">jessica.l@gmail.com</a></td>
-            <td><a href="tel:8646543219" style="color:#050505;">864-654-3219</a></td>
-          </tr>
+        <tbody id="users-tbody">
+          <!-- Populated from users-data.js so User IDs match Orders table Client IDs -->
         </tbody>
       </table>
     </div>
   </main>
-  
+
+  <script src="JS/users-data.js"></script>
+  <script>
+    (function() {
+      var tbody = document.getElementById('users-tbody');
+      var list = window.USERS_LIST;
+      if (!tbody || !list || !list.length) return;
+      tbody.innerHTML = '';
+      for (var i = 0; i < list.length; i++) {
+        var u = list[i];
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td>' + (u.id || '') + '</td>' +
+          '<td>' + (u.name || '') + '</td>' +
+          '<td><a href="mailto:' + (u.email || '').replace(/"/g, '&quot;') + '" style="color:#050505;">' + (u.email || '') + '</a></td>' +
+          '<td><a href="tel:' + (u.contact || '').replace(/\D/g, '') + '" style="color:#050505;">' + (u.contact || '') + '</a></td>';
+        tbody.appendChild(tr);
+      }
+    })();
+  </script>
   <script src="JS/users-loader.js"></script>
   <script src="JS/delete-second-user.js"></script>
+  <script src="JS/table-search.js"></script>
+  <script src="JS/back-to-top.js"></script>
 </body>
 </html>

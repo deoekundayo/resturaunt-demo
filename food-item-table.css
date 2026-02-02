@@ -164,6 +164,13 @@ button.menu-btn.dropbtn.active {
   color: #fff;
 }
 
+.dropbtn:hover,
+button.menu-btn.dropbtn:hover {
+  background: #333;
+  color: #fff;
+  transform: translateY(-1px);
+}
+
 h1 {
   margin: 24px auto 8px;
   text-align: center;

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Categories</title>
   <link rel="stylesheet" href="table.css">
+  <link rel="stylesheet" href="back-to-top.css">
+  <link rel="stylesheet" href="table-search.css">
 </head>
 
 <body>
@@ -71,7 +73,9 @@
 
   <main class="main">
     <h1>All Categories</h1>
-
+    <div class="table-search-wrap">
+      <input type="text" class="table-search-input" id="table-search" placeholder="Search by category name..." data-search-tbody="categories-tbody" data-search-col="1" aria-label="Search categories by name">
+    </div>
     <div class="table-container">
       <table>
         <thead>
@@ -130,5 +134,7 @@
       });
     })();
   </script>
+  <script src="JS/table-search.js"></script>
+  <script src="JS/back-to-top.js"></script>
 </body>
 </html>

@@ -80,9 +80,9 @@
 
     <div class="form">
       <p>
-        <label for="order-content">Order Content</label>
-        <input id="order-content" type="text" placeholder="Enter contents" style="font-family: 'Times New Roman', serif;" required/>
+        <label class="order-content-label">Order Content</label>
       </p>
+      <div id="order-content-checkboxes" class="order-content-checkboxes" aria-label="Food items in this order"></div>
     </div>
 
     <div class="form">
@@ -97,8 +97,9 @@
         <label for="order-status">Order Status</label>
         <select id="order-status" name="order-status" style="font-family: 'Times New Roman', serif;">
           <option value="Delivered">Delivered</option>
-          <option value="Pending Delivery">Pending Delivery</option>
-          <option value="Not Delivered">Not Delivered</option>
+          <option value="Processing">Processing</option>
+          <option value="Pending">Pending</option>
+          <option value="Shipped">Shipped</option>
         </select>
       </p>
     </div>
@@ -107,6 +108,20 @@
       <p>
         <label for="quantity">Quantity</label>
         <input id="quantity" type="number" size="40" style="font-family: 'Times New Roman', serif;" />
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="order-value">Order Value</label>
+        <input id="order-value" type="text" placeholder="e.g. $22.40" style="font-family: 'Times New Roman', serif;" />
+      </p>
+    </div>
+
+    <div class="form">
+      <p>
+        <label for="client-id">User/Client Id</label>
+        <input id="client-id" type="text" placeholder="e.g. 234567" style="font-family: 'Times New Roman', serif;" />
       </p>
     </div>
 
@@ -119,6 +134,9 @@
   </form>
 
   <script src="JS/utils.js"></script>
+  <script src="JS/food-items-data.js"></script>
+  <script src="JS/users-data.js"></script>
+  <script src="JS/orders-data.js"></script>
   <script src="JS/form-handlers.js"></script>
   <script>
     handleOrderForm();
