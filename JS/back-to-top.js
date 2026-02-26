@@ -1,9 +1,9 @@
 /**
  * Back to top button for table pages.
- * Shows when the user has scrolled past 10 table rows; scrolls to top on click.
+ * Shows when the user has scrolled past 7 table rows; scrolls to top on click.
  */
 (function() {
-  var ROW_THRESHOLD = 10;
+  var ROW_THRESHOLD = 7;
 
   function init() {
     var container = document.querySelector('.table-container');

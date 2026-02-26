@@ -186,15 +186,94 @@ function handleCategoryForm() {
   const id = getUrlParameter('id');
   const isEdit = id !== null;
 
+  function buildDefaultCategoriesFromFoodItems() {
+    const base = window.FOOD_ITEMS_BASE || [];
+    const byName = {};
+    base.forEach(function (item) {
+      const name = item && item.cat ? String(item.cat).trim() : '';
+      if (!name) return;
+      if (!byName[name]) {
+        byName[name] = {
+          name: name,
+          description: 'All ' + name + ' items',
+          imageUrl: item.img || '',
+          active: true
+        };
+      }
+    });
+    return Object.keys(byName).sort().map(function (name, index) {
+      return { id: index + 1, ...byName[name] };
+    });
+  }
+
+  function getMergedCategories() {
+    const defaults = buildDefaultCategoriesFromFoodItems();
+    const saved = JSON.parse(localStorage.getItem('categories') || '[]');
+    const byId = new Map();
+
+    defaults.forEach(function (c) {
+      byId.set(parseInt(c.id, 10), c);
+    });
+
+    saved.forEach(function (c) {
+      if (!c || c.id == null) return;
+      var idNum = parseInt(c.id, 10);
+      var base = byId.get(idNum) || { id: idNum };
+      var merged = { ...base, ...c };
+      var baseName = base.name ? String(base.name).trim() : '';
+      var savedName = c.name ? String(c.name).trim() : '';
+      var finalName = savedName || baseName || ('Category ' + idNum);
+      var baseDesc = base.description ? String(base.description).trim() : '';
+      var savedDesc = c.description ? String(c.description).trim() : '';
+      var finalDesc = savedDesc || baseDesc || ('All ' + finalName + ' items');
+      var baseImage = base.imageUrl ? String(base.imageUrl).trim() : '';
+      var savedImage = c.imageUrl ? String(c.imageUrl).trim() : '';
+      merged.name = finalName;
+      merged.description = finalDesc;
+      merged.imageUrl = savedImage || baseImage;
+      merged.active = (typeof c.active === 'boolean')
+        ? c.active
+        : (typeof base.active === 'boolean' ? base.active : true);
+      byId.set(idNum, merged);
+    });
+
+    return Array.from(byId.values()).sort(function (a, b) {
+      return parseInt(a.id, 10) - parseInt(b.id, 10);
+    });
+  }
+
   if (isEdit) {
-    const categories = JSON.parse(localStorage.getItem('categories') || '[]');
-    const category = categories.find(c => c.id === parseInt(id));
+    const categories = getMergedCategories();
+    const editId = parseInt(id, 10);
+    const category = categories.find(c => c.id === editId);
     
     if (category) {
       document.getElementById('name').value = category.name;
       document.getElementById('description').value = category.description;
       document.getElementById('image-url').value = category.imageUrl || '';
       document.getElementById(category.active ? 'yes-active' : 'no-active').checked = true;
+      document.querySelector('h1').textContent = 'Edit Food Category';
+
+      // Keep storage aligned with what table/form now show.
+      const savedCategories = JSON.parse(localStorage.getItem('categories') || '[]');
+      const idx = savedCategories.findIndex(function (c) { return parseInt(c.id, 10) === editId; });
+      const repaired = {
+        id: editId,
+        name: category.name,
+        description: category.description,
+        imageUrl: category.imageUrl || '',
+        active: !!category.active
+      };
+      if (idx !== -1) savedCategories[idx] = { ...savedCategories[idx], ...repaired };
+      else savedCategories.push(repaired);
+      localStorage.setItem('categories', JSON.stringify(savedCategories));
+    } else {
+      // Prevent a blank edit form if id is missing from storage/defaults.
+      const fallbackName = 'Category ' + editId;
+      document.getElementById('name').value = fallbackName;
+      document.getElementById('description').value = 'All ' + fallbackName + ' items';
+      document.getElementById('image-url').value = '';
+      document.getElementById('yes-active').checked = true;
       document.querySelector('h1').textContent = 'Edit Food Category';
     }
   }
@@ -203,6 +282,7 @@ function handleCategoryForm() {
     e.preventDefault();
     
     const categories = JSON.parse(localStorage.getItem('categories') || '[]');
+    const editId = parseInt(id, 10);
     const formData = {
       name: document.getElementById('name').value,
       description: document.getElementById('description').value,
@@ -211,9 +291,11 @@ function handleCategoryForm() {
     };
 
     if (isEdit) {
-      const index = categories.findIndex(c => c.id === parseInt(id));
+      const index = categories.findIndex(c => c.id === editId);
       if (index !== -1) {
         categories[index] = { ...categories[index], ...formData };
+      } else {
+        categories.push({ id: editId, ...formData });
       }
     } else {
       const newId = categories.length > 0 ? Math.max(...categories.map(c => c.id)) + 1 : 1;
@@ -233,9 +315,66 @@ function handleCuisineForm() {
   const id = getUrlParameter('id');
   const isEdit = id !== null;
 
+  function buildDefaultCuisinesFromFoodItems() {
+    const base = window.FOOD_ITEMS_BASE || [];
+    const byName = {};
+    base.forEach(function (item) {
+      const name = item && item.cuisine ? String(item.cuisine).trim() : '';
+      if (!name) return;
+      if (!byName[name]) {
+        byName[name] = {
+          name: name,
+          description: 'All ' + name + ' cuisine items',
+          imageUrl: item.img || '',
+          active: true
+        };
+      }
+    });
+    return Object.keys(byName).sort().map(function (name, index) {
+      return { id: index + 1, ...byName[name] };
+    });
+  }
+
+  function getMergedCuisines() {
+    const defaults = buildDefaultCuisinesFromFoodItems();
+    const saved = JSON.parse(localStorage.getItem('cuisines') || '[]');
+    const byId = new Map();
+
+    defaults.forEach(function (c) {
+      byId.set(parseInt(c.id, 10), c);
+    });
+
+    saved.forEach(function (c) {
+      if (!c || c.id == null) return;
+      var idNum = parseInt(c.id, 10);
+      var base = byId.get(idNum) || { id: idNum };
+      var merged = { ...base, ...c };
+      var baseName = base.name ? String(base.name).trim() : '';
+      var savedName = c.name ? String(c.name).trim() : '';
+      var finalName = savedName || baseName || ('Cuisine ' + idNum);
+      var baseDesc = base.description ? String(base.description).trim() : '';
+      var savedDesc = c.description ? String(c.description).trim() : '';
+      var finalDesc = savedDesc || baseDesc || ('All ' + finalName + ' cuisine items');
+      var baseImage = base.imageUrl ? String(base.imageUrl).trim() : '';
+      var savedImage = c.imageUrl ? String(c.imageUrl).trim() : '';
+      merged.name = finalName;
+      merged.description = finalDesc;
+      merged.imageUrl = savedImage || baseImage;
+      merged.active = (typeof c.active === 'boolean')
+        ? c.active
+        : (typeof base.active === 'boolean' ? base.active : true);
+      byId.set(idNum, merged);
+    });
+
+    return Array.from(byId.values()).sort(function (a, b) {
+      return parseInt(a.id, 10) - parseInt(b.id, 10);
+    });
+  }
+
   if (isEdit) {
-    const cuisines = JSON.parse(localStorage.getItem('cuisines') || '[]');
-    const cuisine = cuisines.find(c => c.id === parseInt(id));
+    const cuisines = getMergedCuisines();
+    const editId = parseInt(id, 10);
+    const cuisine = cuisines.find(c => c.id === editId);
     
     if (cuisine) {
       document.getElementById('name').value = cuisine.name;
@@ -243,6 +382,20 @@ function handleCuisineForm() {
       document.getElementById('image-url').value = cuisine.imageUrl || '';
       document.getElementById(cuisine.active ? 'yes-active' : 'no-active').checked = true;
       document.querySelector('h1').textContent = 'Edit Cuisine';
+
+      // Keep storage aligned with what table/form now show.
+      const savedCuisines = JSON.parse(localStorage.getItem('cuisines') || '[]');
+      const idx = savedCuisines.findIndex(function (c) { return parseInt(c.id, 10) === editId; });
+      const repaired = {
+        id: editId,
+        name: cuisine.name,
+        description: cuisine.description,
+        imageUrl: cuisine.imageUrl || '',
+        active: !!cuisine.active
+      };
+      if (idx !== -1) savedCuisines[idx] = { ...savedCuisines[idx], ...repaired };
+      else savedCuisines.push(repaired);
+      localStorage.setItem('cuisines', JSON.stringify(savedCuisines));
     }
   }
 
@@ -250,6 +403,7 @@ function handleCuisineForm() {
     e.preventDefault();
     
     const cuisines = JSON.parse(localStorage.getItem('cuisines') || '[]');
+    const editId = parseInt(id, 10);
     const formData = {
       name: document.getElementById('name').value,
       description: document.getElementById('description').value,
@@ -258,9 +412,11 @@ function handleCuisineForm() {
     };
 
     if (isEdit) {
-      const index = cuisines.findIndex(c => c.id === parseInt(id));
+      const index = cuisines.findIndex(c => c.id === editId);
       if (index !== -1) {
         cuisines[index] = { ...cuisines[index], ...formData };
+      } else {
+        cuisines.push({ id: editId, ...formData });
       }
     } else {
       const newId = cuisines.length > 0 ? Math.max(...cuisines.map(c => c.id)) + 1 : 1;
@@ -501,7 +657,7 @@ function handleOrderForm() {
     for (let n = 1; n <= totalItems; n++) {
       const idx = n - 1;
       const item = base[idx];
-      const name = (item && item.name) ? item.name : 'Item ' + n;
+      const name = (item && item.name) ? item.name : 'Menu Item';
       const unavailable = n > availableCount;
       const div = document.createElement('div');
       div.className = 'order-content-item' + (unavailable ? ' unavailable' : '');
@@ -516,7 +672,7 @@ function handleOrderForm() {
       }
       const label = document.createElement('label');
       label.htmlFor = 'order-item-' + n;
-      label.textContent = 'Item ' + n + ': ' + name;
+      label.textContent = name;
       div.appendChild(input);
       div.appendChild(label);
       checkboxesContainer.appendChild(div);

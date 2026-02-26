@@ -11,82 +11,85 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: calc(100vh - 100px);
+      min-height: calc(100vh - 120px);
       padding: 20px;
     }
     
     .sign-in-form {
       background: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      border: 1px solid #dbe4ee;
+      border-radius: 14px;
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.09);
       max-width: 450px;
-      padding: 40px;
+      padding: 32px 30px;
       width: 100%;
     }
     
     .sign-in-form h1 {
-      margin-bottom: 30px;
-      color: #333;
+      margin: 0 0 24px;
+      color: #0f172a;
+      width: 100%;
+      max-width: none;
+      display: block;
+      text-align: center;
     }
     
     .form-group {
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
     
     .form-group label {
       display: block;
-      margin-bottom: 8px;
-      color: #444;
+      margin-bottom: 6px;
+      color: #475569;
       font-weight: 600;
       text-align: left;
-      font-family: "Times New Roman", serif;
     }
     
     .form-group input[type="text"],
     .form-group input[type="email"],
     .form-group input[type="password"] {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ddd;
-      border-radius: 5px;
+      padding: 10px 12px;
+      border: 1px solid #dbe4ee;
+      border-radius: 10px;
       box-sizing: border-box;
-      font-family: "Times New Roman", serif;
-      font-size: 16px;
+      font-size: 15px;
     }
     
     .form-group input[type="text"]:focus,
     .form-group input[type="email"]:focus,
     .form-group input[type="password"]:focus {
-      border: 2px solid #4caf50;
+      border-color: #16a34a;
       outline: none;
+      box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.16);
     }
     
     #message {
       display: none;
-      margin-top: 15px;
+      margin-top: 12px;
       padding: 12px;
-      border-radius: 5px;
+      border-radius: 10px;
       text-align: center;
-      font-family: "Times New Roman", serif;
       font-size: 14px;
     }
     
     .sign-in-button {
       width: 100%;
       padding: 12px;
-      background-color: #4caf50;
+      background: linear-gradient(135deg, #16a34a, #15803d);
       color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      font-family: "Times New Roman", serif;
-      transition: background-color 0.3s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     
     .sign-in-button:hover {
-      background-color: #45a049;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(22, 163, 74, 0.25);
     }
     
     .sign-in-button:active {
@@ -96,20 +99,32 @@
     .add-user-button {
       width: 100%;
       padding: 12px;
-      background-color: #333;
+      background-color: #1f2937;
       color: #fff;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       font-size: 16px;
       font-weight: bold;
       cursor: pointer;
-      font-family: "Times New Roman", serif;
-      transition: background-color 0.3s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
       margin-top: 10px;
+    }
+
+    .sign-in-form .buttons p {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sign-in-form .buttons button {
+      width: 100%;
+      margin: 0;
     }
     
     .add-user-button:hover {
-      background-color: #555;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 18px rgba(15, 23, 42, 0.2);
     }
     
     .add-user-button:active {
@@ -121,15 +136,14 @@
       text-align: right;
       margin-top: 8px;
       margin-bottom: 0;
-      color: #333;
+      color: #475569;
       font-size: 14px;
-      font-family: "Times New Roman", serif;
     }
     
     .forgot-password-link a {
-      color: #333;
+      color: #0f172a;
       text-decoration: none;
-      transition: color 0.3s ease;
+      transition: color 0.2s ease;
     }
     
     .forgot-password-link a:hover {
@@ -156,14 +170,14 @@
       <h1>User Login</h1>
       
       <div class="form-group">
-        <label for="email">Email</label>
+        <label for="email">Email or User ID</label>
         <input 
-          type="email" 
+          type="text" 
           id="email" 
           name="email" 
-          placeholder="Enter your email address" 
+          placeholder="Enter your email or user ID" 
           required 
-          autocomplete="email"
+          autocomplete="username"
         />
       </div>
       
@@ -186,8 +200,8 @@
       
       <div class="buttons">
         <p>
-          <button type="button" onclick="window.location.href='form_user.html'" style="background-color: #333; color: #fff; width: 200px;">Add New User</button>
-          <button type="submit">Sign In</button>
+          <button type="button" class="add-user-button" onclick="window.location.href='form_user.html'">Add New User</button>
+          <button type="submit" class="sign-in-button">Sign In</button>
         </p>
       </div>
     </form>

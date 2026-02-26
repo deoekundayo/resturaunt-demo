@@ -21,7 +21,7 @@
         <button class="menu-btn dropbtn">Food Items</button>
         <div class="dropdown-content">
           <a href="list_fooditems.html">View Food Items</a>
-          <a href="add_fooditem.html">Add Food Item</a>
+          <a href="form_fooditem.html">Add Food Item</a>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
         <button class="menu-btn dropbtn">Categories</button>
         <div class="dropdown-content">
           <a href="list_categories.html">View Categories</a>
-          <a href="add_category.html">Add Category</a>
+          <a href="form_category.html">Add Category</a>
         </div>
       </div>
 
@@ -45,7 +45,7 @@
         <button class="menu-btn dropbtn">Restaurants</button>
         <div class="dropdown-content">
           <a href="list_restaurants.html">View Restaurants</a>
-          <a href="add_restaurant.html">Add Restaurant</a>
+          <a href="form_restaurant.html">Add Restaurant</a>
         </div>
       </div>
 
@@ -53,7 +53,7 @@
         <button class="menu-btn dropbtn">Orders</button>
         <div class="dropdown-content">
           <a href="orders.html">View Orders</a>
-          <a href="order-request.html">Request Order</a>
+          <a href="form_order.html">Request Order</a>
         </div>
       </div>
 
@@ -61,7 +61,7 @@
         <button class="menu-btn dropbtn">Users</button>
         <div class="dropdown-content">
           <a href="users.html">View Users</a>
-          <a href="add_user.html">Add User</a>
+          <a href="form_user.html">Add User</a>
         </div>
       </div>
     </nav>
@@ -82,6 +82,7 @@
           <tr>
             <th>Cuisine Number</th>
             <th>Cuisine Name</th>
+            <th>Description</th>
             <th>Active</th>
             <th>Image</th>
             <th>Edit</th>
@@ -108,23 +109,78 @@
       BASE.forEach(function(item) {
         var c = item.cuisine && String(item.cuisine).trim();
         if (!c) return;
-        if (!byCuisine[c]) byCuisine[c] = { name: c, img: item.img || '', alt: item.alt || c };
+        if (!byCuisine[c]) {
+          byCuisine[c] = {
+            name: c,
+            description: 'All ' + c + ' cuisine items',
+            imageUrl: item.img || '',
+            imageAlt: item.alt || c,
+            active: true
+          };
+        }
       });
-      var names = Object.keys(byCuisine).sort();
+
+      var defaultCuisines = Object.keys(byCuisine).sort().map(function(name, i) {
+        return { id: i + 1, ...byCuisine[name] };
+      });
+
+      var saved = [];
+      try {
+        saved = JSON.parse(localStorage.getItem('cuisines') || '[]');
+      } catch (e) {
+        saved = [];
+      }
+
+      var byId = {};
+      defaultCuisines.forEach(function(c) {
+        byId[String(c.id)] = c;
+      });
+      saved.forEach(function(c) {
+        if (!c || c.id == null) return;
+        var key = String(c.id);
+        var num = Number(c.id);
+        var base = byId[key] || { id: num };
+        var baseName = base.name ? String(base.name).trim() : '';
+        var savedName = c.name ? String(c.name).trim() : '';
+        var finalName = savedName || baseName || ('Cuisine ' + num);
+        var baseDesc = base.description ? String(base.description).trim() : '';
+        var savedDesc = c.description ? String(c.description).trim() : '';
+        var finalDesc = savedDesc || baseDesc || ('All ' + finalName + ' cuisine items');
+        var baseImage = base.imageUrl ? String(base.imageUrl).trim() : '';
+        var savedImage = c.imageUrl ? String(c.imageUrl).trim() : '';
+        byId[key] = {
+          ...base,
+          ...c,
+          name: finalName,
+          description: finalDesc,
+          imageUrl: savedImage || baseImage,
+          active: (typeof c.active === 'boolean')
+            ? c.active
+            : (typeof base.active === 'boolean' ? base.active : true)
+        };
+      });
+
+      var cuisines = Object.keys(byId)
+        .map(function(key) { return byId[key]; })
+        .sort(function(a, b) { return Number(a.id) - Number(b.id); });
+
       var tbody = document.getElementById('cuisines-tbody');
       if (!tbody) return;
-      names.forEach(function(name, i) {
-        var rec = byCuisine[name];
-        var num = i + 1;
-        var imgSrc = rec.img || '';
-        var imgAlt = rec.alt || name;
+      cuisines.forEach(function(rec) {
+        var num = Number(rec.id);
+        var name = rec.name || ('Cuisine ' + num);
+        var desc = rec.description || ('All ' + name + ' cuisine items');
+        var active = rec.active ? 'Yes' : 'No';
+        var imgSrc = rec.imageUrl || '';
+        var imgAlt = rec.imageAlt || name;
         var imgHtml = imgSrc
           ? '<img src="' + imgSrc.replace(/"/g, '&quot;') + '" width="100" alt="' + imgAlt.replace(/"/g, '&quot;') + '" />'
           : '';
         var row = '<tr>' +
           '<td>' + num + '</td>' +
-          '<td>All ' + escapeHtml(name) + '</td>' +
-          '<td>Yes</td>' +
+          '<td>' + escapeHtml(name) + '</td>' +
+          '<td>' + escapeHtml(desc) + '</td>' +
+          '<td>' + active + '</td>' +
           '<td>' + imgHtml + '</td>' +
           '<td class="buttons"><a href="form_cuisine.html?id=' + num + '"><button type="button">Edit</button></a></td>' +
           '</tr>';
@@ -134,5 +190,6 @@
   </script>
   <script src="JS/table-search.js"></script>
   <script src="JS/back-to-top.js"></script>
+  <script src="JS/auth-ui.js"></script>
 </body>
 </html>

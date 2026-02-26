@@ -1,4 +1,20 @@
 // Delete user function
+var REMOVED_USERS = [
+  { id: '1', name: 'deo', email: 'ekundayo63@gmail.com' }
+];
+
+function isRemovedUser(user) {
+  if (!user) return false;
+  var id = String(user.id || '').trim();
+  var name = String(user.name || '').trim().toLowerCase();
+  var email = String(user.email || '').trim().toLowerCase();
+  return REMOVED_USERS.some(function(r) {
+    return (r.id && id === r.id) ||
+      (r.name && name === r.name) ||
+      (r.email && email === r.email);
+  });
+}
+
 async function deleteUser(userId, userName) {
   if (!confirm(`Are you sure you want to delete user "${userName}" (ID: ${userId})?`)) {
     return;
@@ -37,6 +53,45 @@ async function deleteUser(userId, userName) {
   }
 }
 
+function renderUsers(tbody, users) {
+  tbody.innerHTML = '';
+  users.forEach(function(user) {
+    if (isRemovedUser(user)) return;
+    var id = String(user.id || '');
+    var name = user.name || '';
+    var email = user.email || '';
+    var contact = user.contact || user.contactNumber || user.contact_number || '';
+    var row = document.createElement('tr');
+    row.innerHTML =
+      '<td>' + id + '</td>' +
+      '<td>' + name + '</td>' +
+      '<td><a href="mailto:' + email + '" style="color:#050505;">' + email + '</a></td>' +
+      '<td><a href="tel:' + String(contact).replace(/\D/g, '') + '" style="color:#050505;">' + contact + '</a></td>';
+    tbody.appendChild(row);
+  });
+}
+
+function mergeUsersById() {
+  var staticUsers = window.USERS_LIST || [];
+  var localUsers = JSON.parse(localStorage.getItem('users') || '[]').filter(function(user) {
+    return !isRemovedUser(user);
+  });
+  localStorage.setItem('users', JSON.stringify(localUsers));
+  var merged = new Map();
+
+  staticUsers.forEach(function(user) {
+    if (!user || !user.id || isRemovedUser(user)) return;
+    merged.set(String(user.id), user);
+  });
+
+  localUsers.forEach(function(user) {
+    if (!user || !user.id || isRemovedUser(user)) return;
+    merged.set(String(user.id), { ...merged.get(String(user.id)), ...user });
+  });
+
+  return Array.from(merged.values());
+}
+
 // Load users from API and populate the table
 async function loadUsersFromAPI() {
   const API_URL = 'http://localhost:3001/api';
@@ -59,71 +114,24 @@ async function loadUsersFromAPI() {
     // Clear existing rows (except header)
     tbody.innerHTML = '';
     
-    if (users.length === 0) {
-      const row = document.createElement('tr');
-      row.innerHTML = '<td colspan="4" style="text-align: center; padding: 20px;">No users found</td>';
-      tbody.appendChild(row);
-      return;
-    }
-    
-    // Populate table with users from API
-    users.forEach(user => {
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>${user.id}</td>
-        <td>${user.name || ''}</td>
-        <td><a href="mailto:${user.email}" style="color:#050505;">${user.email || ''}</a></td>
-        <td><a href="tel:${user.contact_number ? user.contact_number.replace(/\D/g, '') : ''}" style="color:#050505;">${user.contact_number || ''}</a></td>
-      `;
-      tbody.appendChild(row);
+    // Always include built-in/static users so table is never empty,
+    // then let API users overwrite by id where available.
+    const merged = new Map();
+    mergeUsersById().forEach(function(user) {
+      merged.set(String(user.id), user);
     });
+    users.forEach(function(user) {
+      if (!user || !user.id || isRemovedUser(user)) return;
+      merged.set(String(user.id), {
+        ...merged.get(String(user.id)),
+        ...user
+      });
+    });
+    renderUsers(tbody, Array.from(merged.values()));
   } catch (error) {
     console.error('Error loading users from API:', error);
     console.log('Falling back to static content or localStorage');
-    
-    // Fallback to localStorage if API is not available
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    
-    if (users.length > 0) {
-      tbody.innerHTML = '';
-      users.forEach(user => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${user.id}</td>
-          <td>${user.name || ''}</td>
-          <td><a href="mailto:${user.email}" style="color:#050505;">${user.email || ''}</a></td>
-          <td><a href="tel:${user.contactNumber ? user.contactNumber.replace(/\D/g, '') : (user.contact_number ? user.contact_number.replace(/\D/g, '') : '')}" style="color:#050505;">${user.contactNumber || user.contact_number || ''}</a></td>
-        `;
-        tbody.appendChild(row);
-      });
-    } else {
-      // Fallback: use USERS_LIST (matches Orders table Client IDs) or keep table as-is
-      const staticUsers = window.USERS_LIST || [
-        { id: '234567', name: 'John Doe', email: 'john.doe@gmail.com', contact: '704-654-3210' },
-        { id: '287654', name: 'Emma Smith', email: 'emma.smith@gmail.com', contact: '404-654-3211' },
-        { id: '215432', name: 'Michael Johnson', email: 'michael.j@gmail.com', contact: '336-654-3212' },
-        { id: '298765', name: 'Sarah Wilson', email: 'sarah.w@gmail.com', contact: '980-654-3213' },
-        { id: '223456', name: 'James Brown', email: 'james.b@gmail.com', contact: '864-654-3214' },
-        { id: '276543', name: 'Lisa Anderson', email: 'lisa.a@gmail.com', contact: '704-654-3215' },
-        { id: '245678', name: 'Robert Taylor', email: 'robert.t@gmail.com', contact: '404-654-3216' },
-        { id: '291234', name: 'Emily Davis', email: 'emily.d@gmail.com', contact: '336-654-3217' },
-        { id: '267890', name: 'David Miller', email: 'david.m@gmail.com', contact: '980-654-3218' },
-        { id: '254321', name: 'Jessica Lee', email: 'jessica.l@gmail.com', contact: '864-654-3219' }
-      ];
-      tbody.innerHTML = '';
-      staticUsers.forEach((user) => {
-        const row = document.createElement('tr');
-        const id = String(user.id || '');
-        const contact = user.contact || user.contact_number || '';
-        row.innerHTML = `
-          <td>${id}</td>
-          <td>${user.name || ''}</td>
-          <td><a href="mailto:${user.email || ''}" style="color:#050505;">${user.email || ''}</a></td>
-          <td><a href="tel:${contact.replace(/\D/g, '')}" style="color:#050505;">${contact}</a></td>
-        `;
-        tbody.appendChild(row);
-      });
-    }
+    renderUsers(tbody, mergeUsersById());
   }
 }
 

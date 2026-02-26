@@ -1,28 +1,28 @@
-/* Customer Reviews list page – card and scrollable area */
+/* Customer Reviews page card */
 .reviews-page .reviews-card {
-  max-width: 700px;
-  margin: 0 auto 40px;
+  max-width: 760px;
+  margin: 0 auto 30px;
   background: #fff;
-  border-radius: 12px;
+  border: 1px solid #dbe4ee;
+  border-radius: 14px;
   padding: 24px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.09);
 }
 
 .reviews-page .reviews-card h2 {
   margin: 0 0 8px;
   font-size: 1.25rem;
-  color: #333;
+  color: #0f172a;
 }
 
 .reviews-page .reviews-card .reviews-avg {
   margin: 0 0 16px;
-  font-size: 1rem;
-  color: #4caf50;
-  font-weight: 600;
+  color: #15803d;
+  font-weight: 700;
 }
 
 .reviews-page .reviews-scroll {
-  max-height: 380px;
+  max-height: 400px;
   overflow-y: auto;
   padding-right: 8px;
 }
@@ -31,23 +31,14 @@
   width: 10px;
 }
 
-.reviews-page .reviews-scroll::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 5px;
-}
-
 .reviews-page .reviews-scroll::-webkit-scrollbar-thumb {
-  background: #4caf50;
-  border-radius: 5px;
-}
-
-.reviews-page .reviews-scroll::-webkit-scrollbar-thumb:hover {
-  background: #26912a;
+  background: linear-gradient(180deg, #16a34a, #15803d);
+  border-radius: 999px;
 }
 
 .reviews-page .review-item {
   padding: 14px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #e5edf4;
 }
 
 .reviews-page .review-item:last-child {
@@ -62,19 +53,17 @@
 }
 
 .reviews-page .review-item .reviewer-name {
-  font-weight: 600;
-  color: #333;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .reviews-page .review-item .review-stars {
-  color: #f5a623;
-  font-size: 1rem;
+  color: #f59e0b;
   letter-spacing: 1px;
 }
 
 .reviews-page .review-item .review-text {
   margin: 0;
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.5;
+  color: #475569;
+  line-height: 1.55;
 }

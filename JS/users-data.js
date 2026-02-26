@@ -12,5 +12,8 @@ window.USERS_LIST = [
   { id: '245678', name: 'Robert Taylor', email: 'robert.t@gmail.com', contact: '404-654-3216' },
   { id: '291234', name: 'Emily Davis', email: 'emily.d@gmail.com', contact: '336-654-3217' },
   { id: '267890', name: 'David Miller', email: 'david.m@gmail.com', contact: '980-654-3218' },
-  { id: '254321', name: 'Jessica Lee', email: 'jessica.l@gmail.com', contact: '864-654-3219' }
+  { id: '254321', name: 'Jessica Lee', email: 'jessica.l@gmail.com', contact: '864-654-3219' },
+  { id: '238901', name: 'Olivia Martin', email: 'olivia.martin@gmail.com', contact: '919-654-3220' },
+  { id: '246789', name: 'Noah Harris', email: 'noah.harris@gmail.com', contact: '803-654-3221' },
+  { id: '259876', name: 'Ava Thompson', email: 'ava.thompson@gmail.com', contact: '704-654-3222' }
 ];

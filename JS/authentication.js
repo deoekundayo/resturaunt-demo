@@ -16,6 +16,27 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Admin page URL to redirect to upon successful login
   const ADMIN_PAGE = 'admindashbord.html';
+
+  // Dedicated admin credentials
+  const ADMIN_USERNAME = 'admin';
+  const ADMIN_PASSWORD = 'Admin@123';
+
+  // Demo users (same IDs used elsewhere in the project)
+  const DEMO_USERS = [
+    { id: '234567', name: 'John Doe', email: 'john.doe@gmail.com' },
+    { id: '287654', name: 'Emma Smith', email: 'emma.smith@gmail.com' },
+    { id: '215432', name: 'Michael Johnson', email: 'michael.j@gmail.com' },
+    { id: '298765', name: 'Sarah Wilson', email: 'sarah.w@gmail.com' },
+    { id: '223456', name: 'James Brown', email: 'james.b@gmail.com' },
+    { id: '276543', name: 'Lisa Anderson', email: 'lisa.a@gmail.com' },
+    { id: '245678', name: 'Robert Taylor', email: 'robert.t@gmail.com' },
+    { id: '291234', name: 'Emily Davis', email: 'emily.d@gmail.com' },
+    { id: '267890', name: 'David Miller', email: 'david.m@gmail.com' },
+    { id: '254321', name: 'Jessica Lee', email: 'jessica.l@gmail.com' },
+    { id: '238901', name: 'Olivia Martin', email: 'olivia.martin@gmail.com' },
+    { id: '246789', name: 'Noah Harris', email: 'noah.harris@gmail.com' },
+    { id: '259876', name: 'Ava Thompson', email: 'ava.thompson@gmail.com' }
+  ];
   
   /**
    * Function to display error message to the user
@@ -37,6 +58,67 @@ document.addEventListener('DOMContentLoaded', function() {
     messageElement.style.display = 'none';
     messageElement.style.backgroundColor = '';
     messageElement.style.border = '';
+  }
+
+  function loadStoredCredentials() {
+    try {
+      const stored = localStorage.getItem('userCredentials');
+      return stored ? JSON.parse(stored) : {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function loadStoredUsers() {
+    try {
+      const stored = localStorage.getItem('users');
+      return stored ? JSON.parse(stored) : [];
+    } catch (e) {
+      return [];
+    }
+  }
+
+  function getAllKnownUsers() {
+    const merged = [...DEMO_USERS, ...loadStoredUsers()];
+    const byId = new Map();
+
+    merged.forEach((u) => {
+      if (!u || !u.id) return;
+      byId.set(String(u.id), {
+        id: String(u.id),
+        name: u.name || 'User',
+        email: (u.email || '').toLowerCase(),
+        password: u.password || ''
+      });
+    });
+
+    return Array.from(byId.values());
+  }
+
+  function authenticateLocally(identifier, password) {
+    const idOrEmail = identifier.trim().toLowerCase();
+    const users = getAllKnownUsers();
+    const matched = users.find(
+      (u) => u.email === idOrEmail || u.id === idOrEmail
+    );
+
+    if (!matched) return false;
+
+    const storedCredentials = loadStoredCredentials();
+    const storedPassword = storedCredentials[matched.id];
+    const localPassword = matched.password;
+    const defaultPassword = matched.id; // demo default
+    const effectivePassword = storedPassword || localPassword || defaultPassword;
+
+    if (password !== effectivePassword) return false;
+
+    handleSuccessfulLogin({
+      id: matched.id,
+      name: matched.name,
+      email: matched.email,
+      role: 'user'
+    });
+    return true;
   }
   
   /**
@@ -77,8 +159,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const data = await response.json();
 
       if (!response.ok) {
-        // Authentication failed
-        showError(data.error || 'Invalid email or password. Please try again.');
+        // If API rejects, fallback to local auth for demo mode.
+        if (authenticateLocally(email, password)) {
+          return true;
+        }
+        showError(data.error || 'Invalid credentials. Please try again.');
         passwordInput.value = '';
         passwordInput.focus();
         return false;
@@ -89,7 +174,11 @@ document.addEventListener('DOMContentLoaded', function() {
       return true;
     } catch (error) {
       console.error('Error during authentication:', error);
-      showError('Unable to connect to server. Please check if the backend is running on http://localhost:3001');
+      // If backend is unavailable, still allow demo/local sign-in.
+      if (authenticateLocally(email, password)) {
+        return true;
+      }
+      showError('Invalid credentials. Please try again.');
       passwordInput.value = '';
       passwordInput.focus();
       return false;
@@ -105,15 +194,15 @@ document.addEventListener('DOMContentLoaded', function() {
     event.preventDefault();
     
     // Get the values entered by the user
-    const enteredEmail = emailInput.value.trim();
+    const enteredIdentifier = emailInput.value.trim();
     const enteredPassword = passwordInput.value;
     
     // Clear any previous error messages
     clearError();
     
     // Basic validation
-    if (!enteredEmail) {
-      showError('Please enter your email address.');
+    if (!enteredIdentifier) {
+      showError('Please enter your email, user ID, or admin username.');
       emailInput.focus();
       return;
     }
@@ -124,10 +213,24 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
-    // Validate email format
+    // Dedicated admin login path
+    if (
+      enteredIdentifier.toLowerCase() === ADMIN_USERNAME &&
+      enteredPassword === ADMIN_PASSWORD
+    ) {
+      handleSuccessfulLogin({
+        name: 'Administrator',
+        email: 'admin@chefchain.local',
+        role: 'admin'
+      });
+      return;
+    }
+
+    // Allow either email or user ID for non-admin users.
+    const userIdRegex = /^\d{6}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(enteredEmail)) {
-      showError('Please enter a valid email address.');
+    if (!emailRegex.test(enteredIdentifier) && !userIdRegex.test(enteredIdentifier)) {
+      showError('Enter a valid email, 6-digit user ID, or admin username.');
       emailInput.focus();
       return;
     }
@@ -139,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
     submitButton.textContent = 'Signing in...';
     
     // Authenticate with backend API
-    await authenticateUser(enteredEmail, enteredPassword);
+    await authenticateUser(enteredIdentifier, enteredPassword);
     
     // Restore button state
     submitButton.disabled = false;

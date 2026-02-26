@@ -1,16 +1,13 @@
-/* =========================
-   Theme
-   ========================= */
 :root {
-  --brand: #4caf50;
-  --bg: #f5f6fa;
-  --muted: #ccc;
-  --dark: #2d2424;
-  --dark-hover: #050505;
-  --focus: #4caf50;
-  --row-odd: #d4c5c5;
-  --row-even: #4caf50;
-  --row-hover: #e6f7ff;
+  --bg: #eaf6ec;
+  --surface: #ffffff;
+  --surface-soft: #f5fbf6;
+  --text: #0f172a;
+  --brand: #16a34a;
+  --brand-strong: #15803d;
+  --border: #d4e8d7;
+  --shadow: 0 10px 28px rgba(15, 23, 42, 0.09);
+  --radius: 14px;
 }
 
 * {
@@ -27,415 +24,270 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  color: #333;
-  background: var(--bg);
-  line-height: 1.45;
-}
-.main {
-  flex: 1 0 auto;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top right, rgba(22, 163, 74, 0.16), transparent 42%),
+    linear-gradient(180deg, #f4fbf6 0%, var(--bg) 100%);
 }
 
-/* =========================
-     Header (now responsive)
-     ========================= */
+.main {
+  flex: 1 0 auto;
+  width: min(1240px, 96vw);
+  margin: 0 auto;
+}
+
 .header {
+  width: min(1240px, 96vw);
+  margin: 8px auto 0;
+  padding: 8px 10px 14px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 16px;
-  padding: 22px 20px;
-  background: #4caf50;
-  color: #333;
-  width: 1298px; /* match your table width */
-  margin: 0 auto; /* center it */
-  border-radius: 6px; /* optional, to match table card style */
-}
-.logo {
-  display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
 }
+
 .logo img {
-  width: 70px;
-  height: 70px;
+  width: 84px;
+  height: 84px;
   object-fit: cover;
   border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 6px 16px rgba(22, 163, 74, 0.25);
 }
-.logo span {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #333;
-}
+
 .auth-buttons {
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+  gap: 24px;
+  margin-left: auto;
+  transform: translateY(-8px);
 }
+
 .auth-buttons button {
-  padding: 8px 12px;
-  border: 0;
-  border-radius: 8px;
-  background: #fff;
-  color: #333;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  height: 50px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
 }
 
-/* ========== MENU BAR (Shared Across All Pages) ========== */
+.auth-buttons .signout {
+  display: none;
+}
+
+.auth-buttons button:hover {
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  color: #fff;
+  border-color: transparent;
+}
+
 .menu {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-left: 20px;
+  gap: 22px;
 }
 
-.menu-btn {
-  padding: 10px 18px; /* uniform size */
-  border-radius: 6px;
-  background: #fff;
-  color: #333;
-  text-decoration: none;
-  font-weight: 600;
-  border: 1px solid #4caf50;
-  transition: all 0.2s ease;
-  font-family: "Times New Roman", serif;
-}
-
-.menu-btn:hover {
-  background: #333;
-  color: #fff;
-  transform: translateY(-1px); /* subtle hover lift */
-}
-
-.menu-btn.active {
-  background-color: #333; /* active page highlight */
-  color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-  padding: 10px 18px; /* same size even when active */
-}
-
+.menu-btn,
 .dropbtn,
 button.menu-btn.dropbtn {
-  padding: 10px 18px !important; /* same size as menu-btn */
-  border-radius: 6px;
-  background: #fff;
-  color: #333;
-  text-decoration: none;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 999px;
+  height: 50px;
+  padding: 0 16px !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
   font-weight: 600;
-  border: 1px solid #4caf50;
-  transition: all 0.2s ease;
-  font-family: "Times New Roman", serif;
   cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
 }
 
+.menu-btn:hover,
+.dropbtn:hover,
+button.menu-btn.dropbtn:hover {
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
+}
+
+.menu-btn.active,
 .dropbtn.active,
-button.menu-btn.dropbtn.active {
-  background-color: #333 !important;
-  color: #fff !important;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+button.menu-btn.dropbtn.active,
+.dropdown:hover .dropbtn {
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  color: #fff;
+  border-color: transparent;
 }
 
-/* Optional dropdown consistency */
+.dropdown {
+  position: relative;
+}
+
 .dropdown-content {
   display: none;
   position: absolute;
-  background: #fff;
-  min-width: 160px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  z-index: 50;
 }
 
 .dropdown-content a {
-  color: #333;
-  padding: 10px 15px;
-  text-decoration: none;
   display: block;
+  padding: 10px 14px;
+  text-decoration: none;
+  color: var(--text);
 }
 
 .dropdown-content a:hover {
-  background: #ccc;
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  color: #fff;
 }
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
-.dropdown:hover .dropbtn {
-  background: #333;
-  color: #fff;
-}
-
-.dropbtn:hover,
-button.menu-btn.dropbtn:hover {
-  background: #333;
-  color: #fff;
-  transform: translateY(-1px);
-}
-
 h1 {
-  margin: 24px auto 8px;
+  margin: 26px 0 14px;
   text-align: center;
-  font-size: clamp(1.25rem, 1rem + 1.2vw, 2rem);
-  font-family: "Times New Roman", serif;
+  letter-spacing: -0.02em;
 }
 
-/* =========================
-     Form (kept; width sane)
-     ========================= */
-form {
-  width: min(92%, 720px);
-  margin: 32px auto;
-  background: #fff;
-  padding: 20px 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  font-family: "Times New Roman", serif;
-}
-.form-row {
-  display: grid;
-  grid-template-columns: 150px 1fr;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  font-family: "Times New Roman", serif;
-}
-label {
-  text-align: right;
-  font-family: "Times New Roman", serif;
-}
-input[type="text"],
-textarea {
-  width: 100%;
-  padding: 8px 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-family: "Times New Roman", serif;
-}
-input:focus,
-textarea:focus {
-  border: 2px solid var(--focus);
-  outline: 0;
-}
-
-/* =========================
-     Buttons (shared)
-     ========================= */
-.buttons {
-  text-align: center;
-  margin-top: 16px;
-}
-.buttons button,
-.btn {
-  display: inline-block;
-  margin: 0 8px;
-  padding: 10px 16px;
-  border: 0;
-  border-radius: 8px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: 0.2s ease;
-  font-family: "Times New Roman", serif;
-}
-.buttons button {
-  background: #333;
-  color: #fff;
-}
-.buttons button:hover {
-  background: var(--dark-hover);
-}
-.btn {
-  background: #333;
-  color: #fff;
-}
-.btn:hover {
-  background: #333;
-}
-
-/* =========================
-     Table Container = Card + Scroll
-     (single class, like your original)
-     ========================= */
 .table-container {
-  width: min(100%, 1200px);
-  margin: 32px auto 0;
-  background: #fff;
-  padding: 20px 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-  overflow: auto; /* enables horizontal scroll on narrow phones */
+  margin: 0 auto 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  overflow-x: auto;
 }
 
-/* =========================
-     Table
-     ========================= */
 table.food-items-table {
   width: 100%;
-  border-collapse: collapse;
-  table-layout: auto; /* column width from content so Name can flex */
-  min-width: 680px; /* keeps columns readable; container scrolls if needed */
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 960px;
 }
 
-/* Name column: flex to content length so words never break mid-word */
 table.food-items-table .col-name {
-  min-width: 14ch; /* at least one long word (e.g. Cheeseburger, Margherita) */
-  width: auto;     /* column grows to fit longest word in column */
+  min-width: 14ch;
 }
+
 table.food-items-table th.th-name,
 table.food-items-table td:nth-child(2) {
-  word-break: normal;   /* never break within a word */
-  overflow-wrap: break-word; /* wrap only at spaces when needed */
+  word-break: normal;
   white-space: normal;
-  min-width: 14ch;      /* ensure column wide enough for one long word */
 }
 
 thead th {
-  position: sticky;
-  top: 0;
-  background: #333;
+  background: linear-gradient(180deg, #1f2937, #111827);
   color: #fff;
-  z-index: 1;
-  font-family: "Times New Roman", serif;
+  font-weight: 700;
+  padding: 13px 12px;
+  border-bottom: 1px solid #111827;
+}
+
+thead th:first-child {
+  border-top-left-radius: 10px;
+}
+
+thead th:last-child {
+  border-top-right-radius: 10px;
 }
 
 th,
 td {
-  border: 1px solid #000; /* your original black border */
-  padding: 12px 10px;
   text-align: center;
-  vertical-align: middle;
-  word-break: normal;
-  overflow-wrap: break-word;
-  font-family: "Times New Roman", serif;
+  padding: 12px 10px;
+  border-bottom: 1px solid #e5edf4;
+  color: var(--text);
 }
 
-/* Striping from your original palette */
-tbody tr:nth-child(even) {
-  background: var(--row-odd);
-  color: #050505;
-}
 tbody tr:nth-child(odd) {
-  background: var(--row-even);
-  color: #050505;
+  background: #ffffff;
 }
+
+tbody tr:nth-child(even) {
+  background: #e8f7ea;
+}
+
 tbody tr:hover {
-  background: var(--row-hover);
-  color: #000;
+  background: #e6f4ff;
 }
 
 td img {
-  display: block;
-  width: clamp(56px, 8vw, 100px);
+  width: min(100px, 16vw);
   height: auto;
-  border-radius: 8px;
-  margin-inline: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
 }
 
 td.buttons {
   white-space: nowrap;
 }
-td.buttons .btn,
+
 td.buttons button {
-  padding: 8px 14px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--brand), var(--brand-strong));
+  color: #fff;
+  cursor: pointer;
 }
 
-/* =========================
-     Footer (responsive grid)
-     ========================= */
-.footer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  background: #333;
-  color: #fff;
-  padding: 40px 20px;
-  margin-top: auto;
-}
-.footer h3 {
-  margin: 0 0 12px;
-  font-size: 1.1rem;
-  color: var(--brand);
-  text-align: left;
-}
-.footer p,
-.footer a,
-.footer li {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--muted);
+td.buttons a {
   text-decoration: none;
-  text-align: left;
-}
-.footer ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.footer ul li {
-  margin-bottom: 8px;
-}
-.footer a:hover {
-  color: #fff;
-}
-.social-icons {
-  text-align: left;
-}
-.social-icons a {
-  margin: 0 5px;
-  color: var(--brand);
 }
 
-/* =========================
-     Responsiveness
-     ========================= */
-
-/* Medium (table still readable; footer becomes 2 cols) */
-@media (max-width: 900px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-  label {
-    text-align: left;
-  }
-  .footer {
-    grid-template-columns: 1fr 1fr;
-  }
-  table {
-    min-width: 640px;
-  } /* slightly smaller breakpoint */
-}
-
-/* Small (phones) */
-@media (max-width: 600px) {
+@media (max-width: 1024px) {
   .header {
     flex-wrap: wrap;
-    gap: 8px;
   }
+
+  .menu {
+    width: 100%;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
   .auth-buttons {
     width: 100%;
-    justify-content: flex-start;
   }
-  .auth-buttons button {
-    padding: 8px 10px;
-  }
-  .table-container {
-    padding: 14px;
-  } /* tighter padding for more viewport room */
+
   th,
   td {
     padding: 10px 8px;
-    font-size: 0.95rem;
-  }
-  td.buttons {
-    white-space: normal;
-  }
-  td.buttons .btn,
-  td.buttons button {
-    width: 100%;
-    margin: 6px 0; /* big tap targets, stack vertically */
-  }
-  table {
-    min-width: 560px;
-  } /* allow one more step down before scroll */
-  .footer {
-    grid-template-columns: 1fr;
+    font-size: 0.92rem;
   }
 }
